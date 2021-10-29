@@ -722,8 +722,6 @@ namespace Wisol.MES
                     SetLanguage();
                     GetMenu();
                     accordionControl1.Visible = true;
-
-                    ShowAlert();
                 }
                 else if (loginFlag)
                 {
@@ -747,7 +745,7 @@ namespace Wisol.MES
                 {
                     this.Text = Consts.PROJECT_NAME.Translation() + "(" + Consts.ACCESS_PLANT + ")" + " - " + Consts.USER_INFO.Name;
                 }
-                this.Text = "WHC법인_SPARE PART" + " - " + Consts.DEPARTMENT + " - " +  Consts.USER_INFO.Name;
+                this.Text = "WHC법인_NAME APP" + " - " + Consts.DEPARTMENT + " - " +  Consts.USER_INFO.Name;
             }
             catch (Exception ex)
             {
@@ -1061,7 +1059,7 @@ namespace Wisol.MES
 
                 SetLanguage();
                 GetMenu();
-                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_NAME APP" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
                 accordionControl1.Visible = true;
             }
         }
@@ -1172,38 +1170,8 @@ namespace Wisol.MES
             }
         }
 
-        private void ShowAlert()
-        {
-            try
-            {
-                var parameters = new Dictionary<string, string>();
-                parameters.Add("A_DEPARTMENT", Consts.DEPARTMENT);
-                var result = m_DBAccess.ExcuteProc("PKG_BUSINESS_SP_INVENTORY.CHECK_INVENTORY_ALARM", parameters);
-
-                if (result.ReturnInt == 0)
-                {
-                    if (result.ReturnDataSet.Tables[0].Rows.Count > 0)
-                    {
-                        //SoundPlayer soundPlayer = new SoundPlayer(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "answer-tone.wav"));
-                        //soundPlayer.Play();
-                        string url = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Images/storage.png");
-                        Image img = Image.FromFile(url);
-                        AlertInfo info = new AlertInfo("Tồn kho", "Một số thiết bị tồn kho tới ngưỡng  Click để kiểm tra!", img);
-                        alertControl1.Show(this, info);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-        }
-
         private void alertControl1_AlertClick(object sender, AlertClickEventArgs e)
         {
-            pop.buttonTag = "SPAREPART_INVENTORY";
-            pop.buttonText = "Tồn Kho";
-            this.NewPage(pop.buttonTag, pop.buttonText, "W", "Y");
         }
     }
 

@@ -20,7 +20,7 @@ namespace Wisol.DataAcess
         private string userId = string.Empty;
         //private string connectionString = "Data Source = 172.22.100.150\\SQLEXPRESS;Initial Catalog = WHNP1;Persist Security Info=True;User id = sa;Password = 123456@a;Connect Timeout=90";
         //private string connectionString = "Data Source = 10.70.21.72\\SQLEXPRESS;Initial Catalog = WHNP_TEST;Persist Security Info=True;User id = sa;Password = 123456;Connect Timeout=3";
-        private string connectionString = "Data Source = 10.70.10.97;Initial Catalog = SPARE_PART_UPDATE;User Id = sa;Password = Wisol@123;Connect Timeout=3";
+        private string connectionString = "Data Source = 10.70.10.97;Initial Catalog = TEMP_DB;User Id = sa;Password = Wisol@123;Connect Timeout=3";
         private string connectionString1 = "Data Source = 10.70.10.97;Initial Catalog = WHNP1;User Id = sa;Password = Wisol@123;Connect Timeout=3";
         public DBAccess(string _connectionString)
         {
