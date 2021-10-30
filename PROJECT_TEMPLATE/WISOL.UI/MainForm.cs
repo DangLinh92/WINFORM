@@ -33,6 +33,8 @@ using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Alerter;
 using System.Media;
+using System.Runtime.InteropServices;
+using static IDAT.Win.Manager.MyClass.IdleTimeCheck;
 
 namespace Wisol.MES
 {
@@ -45,6 +47,11 @@ namespace Wisol.MES
         private DBAccess m_DBAccess = null;
 
         private DataTable m_Menus = null;
+
+        [DllImport("user32.dll")]
+        static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
+        private Timer timer;
 
         public MainForm()
         {
@@ -63,8 +70,57 @@ namespace Wisol.MES
             loginFlag = false;
             UserLookAndFeel.Default.StyleChanged += new EventHandler(Default_StyleChanged);
             accordionControl1.Visible = false;
+
+            timer = new Timer();
+            timer.Interval = 30000; // 30 s
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
             //ExtractFromAssembly();
             //m_IconBar.Visible = false;
+        }
+
+        /// <summary>
+        /// check session time out
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (!loginFlag)
+            {
+                return;
+            }
+
+            //Debug.WriteLine("check time:" + DateTime.Now.ToString());
+            uint lastAccessTime = GetLastInputTime();
+            //Debug.WriteLine("check time:" + lastAccessTime);
+
+            if (lastAccessTime > 1200) // 20 minute
+            {
+                // Logout
+                if (tabForm.TabPages.Count > 0)
+                {
+                    for (int i = tabForm.TabPages.Count - 1; i >= 0; i--)
+                    {
+                        tabForm.TabPages[i].Controls.RemoveAt(0);
+                        tabForm.TabPages[i].Dispose();
+                    }
+                }
+                accordionControl1.Visible = false;
+                pop.Hide();
+                loginFlag = false;
+
+                FrmLogin login = new FrmLogin();
+                if (login.ShowDialog() == DialogResult.Cancel) return;
+
+                loginFlag = true;
+                SetLanguage();
+                GetMenu();
+                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                accordionControl1.Visible = true;
+            }
+
         }
 
         //private void ExtractFromAssembly()
@@ -192,22 +248,22 @@ namespace Wisol.MES
                 if (control.Name == String.Empty) continue;
 
                 var baseControl = control as BaseControl;
-                if (baseControl != null) { baseControl.ToolTip = baseControl.Text.Translation("KOR"); }    
+                if (baseControl != null) { baseControl.ToolTip = baseControl.Text.Translation("KOR"); }
 
-                if (control is LabelControl || control is SimpleButton || control is GroupControl || control is CheckEdit || control is TabPage )        
+                if (control is LabelControl || control is SimpleButton || control is GroupControl || control is CheckEdit || control is TabPage)
                 {
                     control.Text = control.Text.Translation();
                 }
-                else if(control is AccordionControl)
+                else if (control is AccordionControl)
                 {
                     AccordionControl accordionControl = control as AccordionControl;
 
-                    foreach(AccordionControlElement item in accordionControl.Elements)
+                    foreach (AccordionControlElement item in accordionControl.Elements)
                     {
                         item.Text = item.Tag.ToString().Translation();
                     }
                 }
-                else if (control is RadioGroup)  
+                else if (control is RadioGroup)
                 {
                     RadioGroup radioGroup = control as RadioGroup;
 
@@ -216,7 +272,7 @@ namespace Wisol.MES
                         item.Description = item.Description.Translation();
                     }
                 }
-                else if (control is LayoutControl)   
+                else if (control is LayoutControl)
                 {
                     LayoutControl layoutCtrl = control as LayoutControl;
                     layoutCtrl.AllowCustomization = false;
@@ -224,11 +280,11 @@ namespace Wisol.MES
 
                     foreach (BaseLayoutItem item in layoutCtrl.Items)
                     {
-                        item.OptionsToolTip.ToolTip = item.Text.Translation("KOR");    
+                        item.OptionsToolTip.ToolTip = item.Text.Translation("KOR");
                         item.Text = item.Text.Translation();
                         item.AppearanceItemCaption.TextOptions.HAlignment = HorzAlignment.Far;
 
-                        if (item.IsGroup)      
+                        if (item.IsGroup)
                         {
                             var layoutCtrlGrp = item as LayoutControlGroup;
                             layoutCtrlGrp.AppearanceGroup.Font = new Font(layoutCtrlGrp.AppearanceGroup.Font.Name, layoutCtrlGrp.AppearanceGroup.Font.Size, FontStyle.Bold);
@@ -291,7 +347,7 @@ namespace Wisol.MES
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 var type = assembly.GetTypes().FirstOrDefault(x => x.Name == moduleCode);
 
-                
+
                 PageType pageType = assembly.CreateInstance(type.FullName, true) as PageType;
                 if (pageType == null)
                 {
@@ -305,7 +361,7 @@ namespace Wisol.MES
                 //if (Consts.USER_INFO.Id.ToUpper() == "H2002001")
                 //{
                 //pageType.ModuleCode = result.Aggregate((x, y) => { return x + " > " + y; }) + " > " + moduleName + " (" + moduleCode + ")";
-                pageType.ModuleCode =  moduleCode ;
+                pageType.ModuleCode = moduleCode;
                 //}
                 //else
                 //{
@@ -320,7 +376,7 @@ namespace Wisol.MES
                 var page = new DevExpress.XtraTab.XtraTabPage();
 
                 page.PageVisible = false;
-                page.Tooltip = page.Text.Translation("KOR");      
+                page.Tooltip = page.Text.Translation("KOR");
 
                 if (tabForm.TabPages.Count > 0)
                 {
@@ -354,7 +410,7 @@ namespace Wisol.MES
             }
         }
 
-        public void NewPageFromOtherPage(string moduleCode, string moduleName, string moduleAuth, string accessType,object mainID)
+        public void NewPageFromOtherPage(string moduleCode, string moduleName, string moduleAuth, string accessType, object mainID)
         {
             try
             {
@@ -374,14 +430,14 @@ namespace Wisol.MES
                     MsgBox.Show("MSG_ERR_021".Translation(), MsgType.Warning);
                     return;
                 }
-            
+
                 pageType.ModuleCode = moduleCode;
                 pageType.ModuleName = moduleName;
                 pageType.ModuleAuth = moduleAuth;
                 pageType.MainID = mainID;
 
                 pageType.Dock = DockStyle.Fill;
-                
+
 
                 tabForm.PaintStyleName = "Default";
 
@@ -658,7 +714,7 @@ namespace Wisol.MES
             }
         }
 
-        
+
 
         private void Login(string userId)
         {
@@ -745,7 +801,7 @@ namespace Wisol.MES
                 {
                     this.Text = Consts.PROJECT_NAME.Translation() + "(" + Consts.ACCESS_PLANT + ")" + " - " + Consts.USER_INFO.Name;
                 }
-                this.Text = "WHC법인_NAME APP" + " - " + Consts.DEPARTMENT + " - " +  Consts.USER_INFO.Name;
+                this.Text = "WHC법인_SPARE PART" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
             }
             catch (Exception ex)
             {
@@ -887,7 +943,7 @@ namespace Wisol.MES
 
                 //    return;
                 //}
-                if(m_PageType == null)
+                if (m_PageType == null)
                 {
                     return;
                 }
@@ -903,7 +959,7 @@ namespace Wisol.MES
                         m_PageType.SaveCodes();
                         break;
                     case "CLOSE[F9]":
-                        if(tabForm.TabPages.Count <= 0)
+                        if (tabForm.TabPages.Count <= 0)
                         {
                             return;
                         }
@@ -987,7 +1043,7 @@ namespace Wisol.MES
 
         private void accordionControl1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         POP_MENU pop = new POP_MENU();
@@ -1054,12 +1110,14 @@ namespace Wisol.MES
                 }
                 accordionControl1.Visible = false;
                 pop.Hide();
+                loginFlag = false;
                 FrmLogin login = new FrmLogin();
                 if (login.ShowDialog() == DialogResult.Cancel) return;
 
+                loginFlag = true;
                 SetLanguage();
                 GetMenu();
-                this.Text = "WHC법인_NAME APP" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
                 accordionControl1.Visible = true;
             }
         }
@@ -1106,7 +1164,8 @@ namespace Wisol.MES
                 //{
                 //    this.NewPage(pop.buttonTag, pop.buttonText, "W", "Y");
                 //}
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MsgBox.Show(ex.Message, MsgType.Warning);
             }
@@ -1152,7 +1211,7 @@ namespace Wisol.MES
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
-           
+
             try
             {
                 pop.Close();
@@ -1161,7 +1220,7 @@ namespace Wisol.MES
                 DataTable d_menu = menu.CopyToDataTable();
                 pop = new POP_MENU(index, accordionControlElement4.Tag.ToString().Translation(), d_menu);
                 pop.FormClosed += Pop_FormClosed;
-               
+
                 pop.Show();
             }
             catch (Exception ex)
@@ -1170,8 +1229,23 @@ namespace Wisol.MES
             }
         }
 
-        private void alertControl1_AlertClick(object sender, AlertClickEventArgs e)
+        public static uint GetLastInputTime()
         {
+            uint idleTime = 0;
+            LASTINPUTINFO lastInputInfo = new LASTINPUTINFO();
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            lastInputInfo.dwTime = 0;
+
+            uint envTicks = (uint)Environment.TickCount;
+
+            if (GetLastInputInfo(ref lastInputInfo))
+            {
+                uint lastInputTick = lastInputInfo.dwTime;
+
+                idleTime = envTicks - lastInputTick;
+            }
+
+            return ((idleTime > 0) ? (idleTime / 1000) : 0);
         }
     }
 
