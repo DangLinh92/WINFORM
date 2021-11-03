@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wisol.MES</RootNamespace>
-    <AssemblyName>SPW</AssemblyName>
+    <AssemblyName>WHC_FINACE</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -62,7 +62,7 @@
     <StartupObject>Wisol.MES.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SPW-ICON.ico</ApplicationIcon>
+    <ApplicationIcon>icons8_money_bag.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -193,294 +193,224 @@
     <Compile Include="Classes\IdleTimeCheck.cs" />
     <Compile Include="Classes\PrinterClass.cs" />
     <Compile Include="Classes\Settings.cs" />
-    <Compile Include="Dialogue\DialogueNoticeMinChemical.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialogueNoticeMinChemical.cs" />
     <Compile Include="Dialogue\DialogueNoticeMinChemical.Designer.cs">
       <DependentUpon>DialogueNoticeMinChemical.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\DialogueWarning.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialogueWarning.cs" />
     <Compile Include="Dialogue\DialogueWarning.Designer.cs">
       <DependentUpon>DialogueWarning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\SplashScreen.cs" />
     <Compile Include="Dialogue\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\DialoguePasswordChange.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialoguePasswordChange.cs" />
     <Compile Include="Dialogue\DialoguePasswordChange.Designer.cs">
       <DependentUpon>DialoguePasswordChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\DialogueLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialogueLogin.cs" />
     <Compile Include="Dialogue\DialogueLogin.Designer.cs">
       <DependentUpon>DialogueLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\DialoguePassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialoguePassword.cs" />
     <Compile Include="Dialogue\DialoguePassword.Designer.cs">
       <DependentUpon>DialoguePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogue\DialogueSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialogueSettings.cs" />
     <Compile Include="Dialogue\DialogueSettings.Designer.cs">
       <DependentUpon>DialogueSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\CONTENT\FRM_BANK_STATEMENT.cs" />
+    <Compile Include="Forms\CONTENT\FRM_BANK_STATEMENT.Designer.cs">
+      <DependentUpon>FRM_BANK_STATEMENT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.cs" />
+    <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.Designer.cs">
+      <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.cs" />
     <Compile Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.Designer.cs">
       <DependentUpon>PURCHASE_REQUEST_DETAIL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CONTENT\PURCHASE_REQUEST.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\CONTENT\PURCHASE_REQUEST.cs" />
     <Compile Include="Forms\CONTENT\PURCHASE_REQUEST.Designer.cs">
       <DependentUpon>PURCHASE_REQUEST.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.cs">
+    <Compile Include="Forms\CONTENT\SplashScreen1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\CONTENT\SplashScreen1.Designer.cs">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\WaitForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\WaitForm2.Designer.cs">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.cs" />
     <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.Designer.cs">
       <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.cs" />
     <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.Designer.cs">
       <DependentUpon>POP_CANCEL_STOCKOUT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.cs" />
     <Compile Include="Forms\SETTING\POP\POP_LAYOUT.Designer.cs">
       <DependentUpon>POP_LAYOUT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.cs" />
     <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.Designer.cs">
       <DependentUpon>POP_LISTDETAIL.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.cs" />
     <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.Designer.cs">
       <DependentUpon>POP_STOCKOUT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.Designer.cs">
       <DependentUpon>POP_SETTING001_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.Designer.cs">
       <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.Designer.cs">
       <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.Designer.cs">
       <DependentUpon>POP_SETTING003_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.Designer.cs">
       <DependentUpon>POP_SETTING006_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.cs" />
     <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.Designer.cs">
       <DependentUpon>POP_SETTING006_2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.cs" />
     <Compile Include="Forms\SETTING\POP\POP_STOCKIN.Designer.cs">
       <DependentUpon>POP_STOCKIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING001.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING001.cs" />
     <Compile Include="Forms\SETTING\SETTING001.Designer.cs">
       <DependentUpon>SETTING001.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING002.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING002.cs" />
     <Compile Include="Forms\SETTING\SETTING002.Designer.cs">
       <DependentUpon>SETTING002.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING003.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING003.cs" />
     <Compile Include="Forms\SETTING\SETTING003.Designer.cs">
       <DependentUpon>SETTING003.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING004.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING004.cs" />
     <Compile Include="Forms\SETTING\SETTING004.Designer.cs">
       <DependentUpon>SETTING004.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING005.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING005.cs" />
     <Compile Include="Forms\SETTING\SETTING005.Designer.cs">
       <DependentUpon>SETTING005.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING006.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING006.cs" />
     <Compile Include="Forms\SETTING\SETTING006.Designer.cs">
       <DependentUpon>SETTING006.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING007.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING007.cs" />
     <Compile Include="Forms\SETTING\SETTING007.Designer.cs">
       <DependentUpon>SETTING007.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING008.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.cs" />
     <Compile Include="Forms\SETTING\SETTING008.Designer.cs">
       <DependentUpon>SETTING008.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SETTING\SETTING009.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.cs" />
     <Compile Include="Forms\SETTING\SETTING009.Designer.cs">
       <DependentUpon>SETTING009.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.cs" />
     <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.Designer.cs">
       <DependentUpon>POP_SYSTEM007.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM001.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM001.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM001.Designer.cs">
       <DependentUpon>SYSTEM001.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM002.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM002.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM002.Designer.cs">
       <DependentUpon>SYSTEM002.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM004.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM004.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM004.Designer.cs">
       <DependentUpon>SYSTEM004.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM005.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM005.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM005.Designer.cs">
       <DependentUpon>SYSTEM005.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM006.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM006.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM006.Designer.cs">
       <DependentUpon>SYSTEM006.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM007.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM007.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM007.Designer.cs">
       <DependentUpon>SYSTEM007.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LOGDAT\LOGDAT001.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT001.cs" />
     <Compile Include="Forms\LOGDAT\LOGDAT001.Designer.cs">
       <DependentUpon>LOGDAT001.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LOGDAT\LOGDAT002.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT002.cs" />
     <Compile Include="Forms\LOGDAT\LOGDAT002.Designer.cs">
       <DependentUpon>LOGDAT002.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.cs" />
     <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.Designer.cs">
       <DependentUpon>POP_LOGDAT002.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SYSTEM\SYSTEM008.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM008.cs" />
     <Compile Include="Forms\SYSTEM\SYSTEM008.Designer.cs">
       <DependentUpon>SYSTEM008.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inherit\BaseDocument.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Inherit\BaseDocument.cs" />
     <Compile Include="Inherit\BaseDocument.Designer.cs">
       <DependentUpon>BaseDocument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inherit\FormType.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Inherit\FormType.cs" />
     <Compile Include="Inherit\FormType.Designer.cs">
       <DependentUpon>FormType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inherit\PageType.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Inherit\PageType.cs" />
     <Compile Include="Inherit\PageType.Designer.cs">
       <DependentUpon>PageType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inherit\PageTypeListDetail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Inherit\PageTypeListDetail.cs" />
     <Compile Include="Inherit\PageTypeListDetail.Designer.cs">
       <DependentUpon>PageTypeListDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IButton.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="POP_MENU.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="POP_MENU.cs" />
     <Compile Include="POP_MENU.Designer.cs">
       <DependentUpon>POP_MENU.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dialogue\DialogueWait.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Dialogue\DialogueWait.cs" />
     <Compile Include="Dialogue\DialogueWait.Designer.cs">
       <DependentUpon>DialogueWait.cs</DependentUpon>
     </Compile>
@@ -511,11 +441,26 @@
       <DependentUpon>DialogueSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\FRM_BANK_STATEMENT.resx">
+      <DependentUpon>FRM_BANK_STATEMENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\IMPORT_EXCEL.resx">
+      <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.resx">
       <DependentUpon>PURCHASE_REQUEST_DETAIL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\PURCHASE_REQUEST.resx">
       <DependentUpon>PURCHASE_REQUEST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\WaitForm2.resx">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.resx">
       <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
@@ -644,6 +589,9 @@
       <DependentUpon>DialogueWait.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="BANK_STATEMENT.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -683,6 +631,7 @@
     <None Include="Resources\icons8-combo-chart-32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="icons8_money_bag.ico" />
     <Content Include="Images\AboveAverage_32x32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -701,7 +650,7 @@
     <Content Include="Images\AVG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\bar-chart.png">
+    <Content Include="Images\bank-statement.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\BelowAverage_32x32.png">
@@ -735,9 +684,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\category.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\chart_line_report.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\China.png">
@@ -1075,6 +1021,7 @@
     <Content Include="Resources\exchange.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\icons8_money_bag.ico" />
     <Content Include="Resources\inventory_sheet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1087,6 +1034,7 @@
     <Content Include="Resources\maintenance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\money_bag_200px.png" />
     <Content Include="Resources\MRP.png" />
     <Content Include="Resources\plan_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1094,8 +1042,6 @@
     <Content Include="Resources\purchase_order.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SPW-ICON.ico" />
-    <Content Include="spw.ico" />
     <None Include="bin\Debug\Itenso.TimePeriod.dll" />
     <Content Include="LABEL_POINT.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

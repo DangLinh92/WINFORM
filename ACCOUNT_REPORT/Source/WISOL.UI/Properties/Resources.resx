@@ -121,6 +121,9 @@
   <data name="cancel_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-combo-chart-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-combo-chart-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="delete_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -129,9 +132,6 @@
   </data>
   <data name="usa_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usa_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bdcd801c-194a-44e0-b02d-a3164d977a3c_200x200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bdcd801c-194a-44e0-b02d-a3164d977a3c_200x200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WisolLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WisolLogo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,6 +147,9 @@
   </data>
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_bag_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_bag_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="app_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\app_error.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -404,7 +407,7 @@
   <data name="vietnam_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vietnam_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-combo-chart-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-combo-chart-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="money_bag_200px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_bag_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -124,9 +124,6 @@ namespace Wisol.MES.Forms.CONTENT.POP
 
         private void RepositoryItemGridLookUpEdit1_BeforePopup(object sender, EventArgs e)
         {
-            GridLookUpEdit item = sender as GridLookUpEdit;
-            string code = gvList.GetRowCellValue(rowHandleUnit, gvList.Columns["SPAREPART_CODE"]).NullString();
-            item.Properties.DataSource = Wisol.MES.Classes.Common.GetUnitBySparePart(code);
         }
 
         private void GetData()

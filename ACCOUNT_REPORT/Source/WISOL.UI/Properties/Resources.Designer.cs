@@ -103,16 +103,6 @@ namespace Wisol.MES.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bdcd801c_194a_44e0_b02d_a3164d977a3c_200x200 {
-            get {
-                object obj = ResourceManager.GetObject("bdcd801c-194a-44e0-b02d-a3164d977a3c_200x200", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap cancel_16x16 {
             get {
                 object obj = ResourceManager.GetObject("cancel_16x16", resourceCulture);
@@ -307,6 +297,26 @@ namespace Wisol.MES.Properties {
             get {
                 object obj = ResourceManager.GetObject("MES", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money_bag_200px {
+            get {
+                object obj = ResourceManager.GetObject("money_bag_200px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money_bag_200px1 {
+            get {
+                object obj = ResourceManager.GetObject("money_bag_200px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

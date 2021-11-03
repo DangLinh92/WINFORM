@@ -20,8 +20,7 @@ namespace Wisol.DataAcess
         private string userId = string.Empty;
         //private string connectionString = "Data Source = 172.22.100.150\\SQLEXPRESS;Initial Catalog = WHNP1;Persist Security Info=True;User id = sa;Password = 123456@a;Connect Timeout=90";
         //private string connectionString = "Data Source = 10.70.21.72\\SQLEXPRESS;Initial Catalog = WHNP_TEST;Persist Security Info=True;User id = sa;Password = 123456;Connect Timeout=3";
-        private string connectionString = "Data Source = 10.70.10.97;Initial Catalog = TEMP_DB;User Id = sa;Password = Wisol@123;Connect Timeout=3";
-        private string connectionString1 = "Data Source = 10.70.10.97;Initial Catalog = WHNP1;User Id = sa;Password = Wisol@123;Connect Timeout=3";
+        private string connectionString = "Data Source = 10.70.10.97;Initial Catalog = WHC_FINANCE_REPORT;User Id = sa;Password = Wisol@123;Connect Timeout=3";
         public DBAccess(string _connectionString)
         {
             this.connectionString = _connectionString;
@@ -280,15 +279,9 @@ namespace Wisol.DataAcess
         {
             try
             {
-                string connection = connectionString;
-                if (connectionStringParam == 1)
-                {
-                    connection = connectionString1;
-                }
-
                 ResultDB resultDb = new ResultDB();
                 DataSet dataSet = new DataSet();
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(connectionString);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();
@@ -334,15 +327,10 @@ namespace Wisol.DataAcess
         {
             try
             {
-                string connection = connectionString;
-                if (connectionStringParam == 1)
-                {
-                    connection = connectionString1;
-                }
 
                 ResultDB resultDb = new ResultDB();
                 DataSet dataSet = new DataSet();
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(connectionString);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();
@@ -389,15 +377,10 @@ namespace Wisol.DataAcess
         {
             try
             {
-                string connection = connectionString;
-                if (connectionStringParam == 1)
-                {
-                    connection = connectionString1;
-                }
 
                 ResultDB resultDb = new ResultDB();
                 DataSet dataSet = new DataSet();
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(connectionString);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();
@@ -445,15 +428,9 @@ namespace Wisol.DataAcess
         {
             try
             {
-                string connection = connectionString;
-                if (connectionStringParam == 1)
-                {
-                    connection = connectionString1;
-                }
-
                 ResultDB resultDb = new ResultDB();
                 DataSet dataSet = new DataSet();
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(connectionString);
                 SqlCommand cmd = new SqlCommand();
                 SqlDataAdapter da = new SqlDataAdapter();
                 DataSet ds = new DataSet();

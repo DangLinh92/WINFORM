@@ -117,7 +117,7 @@ namespace Wisol.MES
                 loginFlag = true;
                 SetLanguage();
                 GetMenu();
-                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_FINANCE REPORT" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
                 accordionControl1.Visible = true;
             }
 
@@ -164,7 +164,7 @@ namespace Wisol.MES
 
         private void InitializeTitlet()
         {
-            this.Text = "WHC법인-SPARE PART";
+            this.Text = "WHC법인_FINANCE REPORT";
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -229,8 +229,6 @@ namespace Wisol.MES
 
                 //DialogueNoticeMinChemical di = new DialogueNoticeMinChemical();
                 //di.ShowDialog();
-
-                Wisol.MES.Classes.Common.GetEncriptCode();
 
                 Consts.mainForm = this;
             }
@@ -801,7 +799,7 @@ namespace Wisol.MES
                 {
                     this.Text = Consts.PROJECT_NAME.Translation() + "(" + Consts.ACCESS_PLANT + ")" + " - " + Consts.USER_INFO.Name;
                 }
-                this.Text = "WHC법인_SPARE PART" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_FINANCE REPORT" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
             }
             catch (Exception ex)
             {
@@ -1117,7 +1115,7 @@ namespace Wisol.MES
                 loginFlag = true;
                 SetLanguage();
                 GetMenu();
-                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_FINANCE REPORT" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
                 accordionControl1.Visible = true;
             }
         }

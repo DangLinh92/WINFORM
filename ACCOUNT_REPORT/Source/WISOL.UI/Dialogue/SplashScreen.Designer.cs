@@ -40,12 +40,14 @@
             // lblTitle
             // 
             this.lblTitle.Appearance.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.SteelBlue;
             this.lblTitle.Appearance.Options.UseFont = true;
+            this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Location = new System.Drawing.Point(69, 133);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(249, 32);
+            this.lblTitle.Size = new System.Drawing.Size(306, 32);
             this.lblTitle.TabIndex = 21;
-            this.lblTitle.Text = "WHC법인_SPARE PART";
+            this.lblTitle.Text = "WHC법인_FINANCE REPORT";
             // 
             // lblMsg
             // 
@@ -73,6 +75,7 @@
             this.marqueeProgressBarControl1.EditValue = 0;
             this.marqueeProgressBarControl1.Location = new System.Drawing.Point(21, 255);
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
+            this.marqueeProgressBarControl1.Properties.Appearance.ForeColor = System.Drawing.Color.Green;
             this.marqueeProgressBarControl1.Size = new System.Drawing.Size(404, 12);
             this.marqueeProgressBarControl1.TabIndex = 16;
             // 

@@ -26,157 +26,6 @@ namespace Wisol.MES.Classes
 {
     public class Common
     {
-        public static void GetEncriptCode()
-        {
-            try
-            {
-                if (Consts.DEPARTMENT == Consts.SMT_DEPT)
-                {
-                    ResultDB result = Program.dbAccess.ExcuteProc("PKG_BUSINESS_SPAREPART.ENCRIPT_CODE"
-                                                                    , new string[] { "A_DEPARTMENT" }
-                                                                    , new string[] { Consts.DEPARTMENT }
-                                                                    );
-
-                    if (result.ReturnInt == 0)
-                    {
-                        Consts.SPAREPART_TO_ID = result.ReturnDataSet.Tables[0];
-                    }
-                    else
-                    {
-                        Consts.SPAREPART_TO_ID = new DataTable();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-        }
-
-        public static string GetSparepartCodeWithEncript(string codeEncript)
-        {
-            try
-            {
-                if (Consts.DEPARTMENT != Consts.SMT_DEPT)
-                {
-                    return codeEncript;
-                }
-
-                if (Regex.Match(codeEncript, @"[a-zA-Z]").Success)
-                {
-                    return codeEncript;
-                }
-
-                if (Consts.SPAREPART_TO_ID == null || Consts.SPAREPART_TO_ID.Rows.Count == 0)
-                {
-                    GetEncriptCode();
-                }
-
-                DataRow[] rows = Consts.SPAREPART_TO_ID.Select("[ENCRIPT_CODE] = '" + codeEncript + "'");
-                if (rows != null && rows.Length == 1)
-                {
-                    return rows[0]["SPARE_PART_CODE"].NullString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-            return codeEncript;
-        }
-
-        public static void GetUnitBySparePart(string sparepartCode, AceGridLookUpEdit unitControl, BindData m_BindData)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(sparepartCode))
-                {
-                    ResultDB m_ResultDB = Program.dbAccess.ExcuteProc("PKG_BUSINESS_UNIT_SPAREPART.GET_UNIT_BY_SPAREPART",
-                        new string[] { "A_DEPT_CODE", "A_SPARE_PART_CODE" },
-                        new string[] { Consts.DEPARTMENT, sparepartCode });
-
-                    if (m_ResultDB.ReturnInt == 0)
-                    {
-                        DataTable table = m_ResultDB.ReturnDataSet.Tables[0];
-                        m_BindData.BindGridLookEdit(unitControl, table, "CODE", "NAME", "IMAGE");
-
-                        if (table.Rows.Count > 0)
-                        {
-                            unitControl.EditValue = table.Rows[0]["CODE"].NullString();
-                        }
-                    }
-                    else
-                    {
-                        MsgBox.Show("NOT FOUND UNIT FOR SPAREPART", MsgType.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-        }
-
-        public static string GetUnitMinBySparePart(string sparepartCode, string unit)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(sparepartCode))
-                {
-                    ResultDB m_ResultDB = Program.dbAccess.ExcuteProc("PKG_BUSINESS_UNIT_SPAREPART.GET_UNIT_MIN_BY_SPAREPART",
-                        new string[] { "A_DEPT_CODE", "A_SPARE_PART_CODE", "A_UNIT_CODE" },
-                        new string[] { Consts.DEPARTMENT, sparepartCode, unit });
-
-                    if (m_ResultDB.ReturnInt == 0)
-                    {
-                        DataTable table = m_ResultDB.ReturnDataSet.Tables[0];
-
-                        if (table.Rows.Count > 0)
-                        {
-                            return table.Rows[0]["UNIT_CODE_MIN"].NullString() + "^" + table.Rows[0]["RATE"].NullString();
-                        }
-                    }
-                    else
-                    {
-                        MsgBox.Show("NOT FOUND UNIT FOR SPAREPART", MsgType.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-            return "^";
-        }
-
-        public static DataTable GetUnitBySparePart(string sparepartCode)
-        {
-            DataTable table = new DataTable();
-            try
-            {
-                if (!string.IsNullOrEmpty(sparepartCode))
-                {
-                    ResultDB m_ResultDB = Program.dbAccess.ExcuteProc("PKG_BUSINESS_UNIT_SPAREPART.GET_UNIT_BY_SPAREPART",
-                        new string[] { "A_DEPT_CODE", "A_SPARE_PART_CODE" },
-                        new string[] { Consts.DEPARTMENT, sparepartCode });
-
-                    if (m_ResultDB.ReturnInt == 0)
-                    {
-                        table = m_ResultDB.ReturnDataSet.Tables[0];
-                    }
-                    else
-                    {
-                        MsgBox.Show("NOT FOUND UNIT FOR SPAREPART", MsgType.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
-            return table;
-        }
-
         public static void ShowImge(string image, DevExpress.XtraEditors.PictureEdit img)
         {
             if (!string.IsNullOrWhiteSpace(image))
@@ -244,7 +93,7 @@ namespace Wisol.MES.Classes
             }
         }
 
-        public static float ConvertUnit(string unitFrom, string unitTo, string spareCode)
+        protected internal static float ConvertUnit(string unitFrom, string unitTo, string spareCode)
         {
             try
             {
@@ -408,8 +257,8 @@ namespace Wisol.MES.Classes
             crypto.GetNonZeroBytes(data);
             StringBuilder result = new StringBuilder(size);
             foreach (byte b in data)
-            { 
-                result.Append(chars[b % (chars.Length - 1)]); 
+            {
+                result.Append(chars[b % (chars.Length - 1)]);
             }
 
             return result.ToString();

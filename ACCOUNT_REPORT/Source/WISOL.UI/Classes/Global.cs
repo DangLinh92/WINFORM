@@ -115,15 +115,8 @@ namespace Wisol.MES
         public static char CHAR_SPILIT_WITH_QUANTITY = ':';
         public static string ZERO = "0";
         public static string SHEET_NAME_EWIP_SPAREPART_LOCATION = "EWIP_SPAREPART_LOCATION$";
-        public static string IMPORT_TYPE_INVENTORY_REAL = "0";
-        public static string IMPORT_TYPE_BUSINESS_LOCATION_SPAREPART_INSERT_BATCH = "1";
-        public static string IMPORT_TYPE_PRICE = "2";
-        public static string IMPORT_TYPE_INVOICE = "3";
-        public static string IMPORT_TYPE_LOGISTICS_DAILY = "4";
-        public static string IMPORT_TYPE_GOC_PLAN = "5";
-        public static string IMPORT_TYPE_ACTUAL_PRODUCT = "6";
-        public static string CONDITION_DEFAULT = "OK";
-        public static string PACK_UNIT = "PACK";
+
+        public static string IMPORT_TYPE_BANK_STATEMENT = "0";
 
         private static DataTable DataMemory;
 

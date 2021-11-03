@@ -359,7 +359,7 @@ namespace Wisol.MES.Dialog
                 //{
                 //    lblSystem.Text = lblSystem.Tag.NullString().Translation();
                 //}
-                lblSystem.Text = "WHC법인\r\n                        SPARE PART";
+                lblSystem.Text = "WHC법인\r\n                        FINANCE REPORT";
                 //if (chkSaveId.Tag.NullString().Translation() == string.Empty)
                 //{
                 //    chkSaveId.Text = chkSaveId.Tag.NullString().Translation();

@@ -606,7 +606,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainForm.IconOptions.Icon")));
-            this.IconOptions.Image = global::Wisol.MES.Properties.Resources.bdcd801c_194a_44e0_b02d_a3164d977a3c_200x200;
+            this.IconOptions.Image = global::Wisol.MES.Properties.Resources.money_bag_200px1;
             this.InactiveGlowColor = System.Drawing.Color.Black;
             this.Name = "MainForm";
             this.Ribbon = this.ribbonControl1;
