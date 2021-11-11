@@ -54,7 +54,7 @@ namespace WHC_FinaceService
             try
             {
                 Utilities.WriteLogError(DateTime.Now.ToString("yyyyMMdd")+"---1---"+ DateTime.Now.Hour);
-                if ((DateTime.Now.Hour == 14 && DateTime.Now.Minute >= 30) && !isUpdate)
+                if (((DateTime.Now.Hour == 8 || DateTime.Now.Hour == 16) && DateTime.Now.Minute >= 30) && !isUpdate)
                 {
                     string exchange = await ExchangeRateDownload.DownloadAsync(DateTime.Now.ToString("yyyyMMdd"));
 
