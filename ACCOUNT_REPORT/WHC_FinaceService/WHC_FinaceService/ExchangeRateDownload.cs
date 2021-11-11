@@ -92,6 +92,7 @@ namespace WHC_FinaceService
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Utilities.WriteLogError("GET FILE " + DateTime.Now.ToString("yyyyMMdd") + ex.Message);
                     return null;
                 }
             }

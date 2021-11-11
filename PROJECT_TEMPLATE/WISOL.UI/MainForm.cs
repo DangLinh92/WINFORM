@@ -230,8 +230,6 @@ namespace Wisol.MES
                 //DialogueNoticeMinChemical di = new DialogueNoticeMinChemical();
                 //di.ShowDialog();
 
-                Wisol.MES.Classes.Common.GetEncriptCode();
-
                 Consts.mainForm = this;
             }
             catch (Exception ex)

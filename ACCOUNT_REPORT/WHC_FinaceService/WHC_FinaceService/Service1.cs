@@ -53,12 +53,17 @@ namespace WHC_FinaceService
         {
             try
             {
-                if ((DateTime.Now.Hour == 8 && DateTime.Now.Minute >= 30) && !isUpdate)
+                Utilities.WriteLogError(DateTime.Now.ToString("yyyyMMdd")+"---1---"+ DateTime.Now.Hour);
+                if ((DateTime.Now.Hour == 14 && DateTime.Now.Minute >= 30) && !isUpdate)
                 {
                     string exchange = await ExchangeRateDownload.DownloadAsync(DateTime.Now.ToString("yyyyMMdd"));
 
+                    Utilities.WriteLogError(DateTime.Now.ToString("yyyyMMdd") + "---2");
+
                     if (exchange.Contains("-"))
                     {
+                        Utilities.WriteLogError(DateTime.Now.ToString("yyyyMMdd") + "---3");
+
                         string usd = exchange.Split('-')[0].Split(' ')[0];
                         string krw = (float.Parse(exchange.Split('-')[1].Split(' ')[0].Trim()) / 100).ToString();
 
