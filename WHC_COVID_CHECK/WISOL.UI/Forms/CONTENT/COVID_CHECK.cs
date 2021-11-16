@@ -52,9 +52,16 @@ namespace Wisol.MES.Forms.CONTENT
                     m_BindData.BindGridLookEdit(stlDeptCode, data[1], "CODE", "DEPARTMENT");
                     gcList.DataSource = data[2];
                     gvList.Columns["ID"].Visible = false;
-                    gvList.OptionsView.ColumnAutoWidth = true;
+                    gvList.Columns["PCR"].Width = 50;
+                    gvList.Columns["QUICK_TEST"].Width = 50;
+                    gvList.Columns["OKE_NG"].Width = 50;
+                    gvList.Columns["NGAY_TEST"].Width = 50;
+                    gvList.Columns["DEPT_CODE"].Width = 50;
+                    gvList.Columns["NOTE"].Width = 150;
+                    //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
+                    gvList.ClearColumnsFilter();
                 }
                 else
                 {
@@ -80,6 +87,8 @@ namespace Wisol.MES.Forms.CONTENT
 
                 if (e.KeyCode == Keys.Enter)
                 {
+                    gvList.ClearColumnsFilter();
+
                     bool isChecked = false;
                     int rowHandle = -1;
                     string qrCode = txtQRCODE.EditValue.NullString().ToUpper().ToString(new CultureInfo("en-US"));
@@ -110,17 +119,34 @@ namespace Wisol.MES.Forms.CONTENT
 
                         gvList.SetRowCellValue(rowHandle, "OKE_NG", "OK");
                         gvList.SetRowCellValue(rowHandle, "PCR", cboPCR_Quick.Text);
+                        gvList.SetRowCellValue(rowHandle, "THOI_GIAN_TEST", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        gvList.SetRowCellValue(rowHandle, "DIA_DIEM_TEST", txtLocation.EditValue.NullString());
                         gvList.MakeRowVisible(rowHandle);
                     }
                     else
                     {
                         txtNote.EditValue = qrCode;
-                        txtCode.EditValue = "";
-                        txtName.EditValue = "";
-                        stlDeptCode.EditValue = "";
-                        cboCalam.Text = "";
-                        cheTested.Checked = true;
-                        txtID.EditValue = "";
+
+                        if(qrCode.NullString().Contains(" "))
+                        {
+                            txtCode.EditValue = qrCode.NullString().Split(' ')[0].NullString();
+                            txtName.EditValue = qrCode.NullString().Substring(qrCode.IndexOf(' ')).NullString();
+                            stlDeptCode.EditValue = qrCode.NullString().Substring(qrCode.LastIndexOf(' ')).NullString();
+                            cboCalam.Text = "";
+                            cheTested.Checked = true;
+                            txtID.EditValue = "";
+                            txtNote.EditValue = "PHAT SINH";
+                        }
+                        else
+                        {
+                            txtCode.EditValue = qrCode.NullString();
+                            txtName.EditValue = "";
+                            stlDeptCode.EditValue = "";
+                            cboCalam.Text = "";
+                            cheTested.Checked = true;
+                            txtID.EditValue = "";
+                            txtNote.EditValue = "PHAT SINH";
+                        }
                     }
 
                     txtQRCODE.EditValue = "";
@@ -156,8 +182,8 @@ namespace Wisol.MES.Forms.CONTENT
                 OK_NG = cheTested.Checked ? "OK" : "NG";
 
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.UPDATE_ITEM",
-                    new string[] { "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG", "A_NOTE", "A_CA_LAM" },
-                    new string[] { dateCheck.EditValue.NullString(), cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), dept, OK_NG, txtNote.EditValue.NullString(), cboCalam.Text });
+                    new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST" },
+                    new string[] { txtID.EditValue.NullString(),dateCheck.EditValue.NullString(), cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), dept, OK_NG, txtNote.EditValue.NullString(), cboCalam.Text,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
 
                 if (base.m_ResultDB.ReturnInt != 0)
                 {
@@ -165,9 +191,23 @@ namespace Wisol.MES.Forms.CONTENT
                 }
                 else
                 {
-                    if (txtCode.EditValue.NullString() == "") // TH k co ma
+                    if (isClick)
+                    {
+                        MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Information);
+                        Init();
+                    }
+
+                    if (txtID.EditValue.NullString() == "")
                     {
                         Init();
+                    }
+
+                    if (txtCode.EditValue.NullString() == "") // TH k co ma
+                    {
+                        if(gvList.RowCount > 0)
+                        {
+                            gvList.MakeRowVisible(gvList.RowCount - 1);
+                        }
                     }
 
                     txtQRCODE.Text = "";
@@ -177,6 +217,7 @@ namespace Wisol.MES.Forms.CONTENT
                     cheTested.Checked = false;
                     cboCalam.Text = "";
                     txtID.EditValue = "";
+                    txtNote.EditValue = "";
                 }
             }
             catch (Exception ex)
@@ -201,7 +242,13 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     gcList.DataSource = base.m_ResultDB.ReturnDataSet.Tables[2];
                     gvList.Columns["ID"].Visible = false;
-                    gvList.OptionsView.ColumnAutoWidth = true;
+                    gvList.Columns["PCR"].Width = 50;
+                    gvList.Columns["QUICK_TEST"].Width = 50;
+                    gvList.Columns["OKE_NG"].Width = 50;
+                    gvList.Columns["NGAY_TEST"].Width = 50;
+                    gvList.Columns["DEPT_CODE"].Width = 50;
+                    gvList.Columns["NOTE"].Width = 150;
+                    //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
                 }
@@ -356,7 +403,7 @@ namespace Wisol.MES.Forms.CONTENT
 
                 List<XtraReport> reports = new List<XtraReport>();
 
-                xml_content = xml_content.Replace("$CODE$", code).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyyMMdd"));
+                xml_content = xml_content.Replace("$CODE$", code).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyy-MM-dd"));
 
                 xml_content = xml_content.Replace("&", "&amp;");
                 File.WriteAllText(designFile, xml_content);

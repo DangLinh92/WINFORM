@@ -151,7 +151,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1277, 871);
+            this.groupControl1.Size = new System.Drawing.Size(1627, 871);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "DANH SÁCH KIỂM TRA COVID";
             // 
@@ -164,7 +164,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.xLayoutControl1.Location = new System.Drawing.Point(2, 23);
             this.xLayoutControl1.Name = "xLayoutControl1";
             this.xLayoutControl1.Root = this.Root;
-            this.xLayoutControl1.Size = new System.Drawing.Size(1273, 846);
+            this.xLayoutControl1.Size = new System.Drawing.Size(1623, 846);
             this.xLayoutControl1.TabIndex = 0;
             this.xLayoutControl1.Text = "xLayoutControl1";
             // 
@@ -180,7 +180,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.stackPanel1.Controls.Add(this.btnGetFileTemp);
             this.stackPanel1.Location = new System.Drawing.Point(12, 12);
             this.stackPanel1.Name = "stackPanel1";
-            this.stackPanel1.Size = new System.Drawing.Size(1249, 39);
+            this.stackPanel1.Size = new System.Drawing.Size(1599, 39);
             this.stackPanel1.TabIndex = 6;
             // 
             // labelControl1
@@ -274,8 +274,9 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             // panelControl1
             // 
+            this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl1.Controls.Add(this.xLayoutControl2);
-            this.panelControl1.Location = new System.Drawing.Point(838, 55);
+            this.panelControl1.Location = new System.Drawing.Point(1188, 55);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(423, 779);
             this.panelControl1.TabIndex = 5;
@@ -719,7 +720,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.gcList.Location = new System.Drawing.Point(12, 55);
             this.gcList.MainView = this.gvList;
             this.gcList.Name = "gcList";
-            this.gcList.Size = new System.Drawing.Size(822, 779);
+            this.gcList.Size = new System.Drawing.Size(1172, 779);
             this.gcList.TabIndex = 4;
             this.gcList.UseEmbeddedNavigator = true;
             this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -742,7 +743,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem2,
             this.layoutControlItem17});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1273, 846);
+            this.Root.Size = new System.Drawing.Size(1623, 846);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -750,14 +751,14 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem1.Control = this.gcList;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 43);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(826, 783);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1176, 783);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.panelControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(826, 43);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1176, 43);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(427, 783);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -768,7 +769,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem17.Control = this.stackPanel1;
             this.layoutControlItem17.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(1253, 43);
+            this.layoutControlItem17.Size = new System.Drawing.Size(1603, 43);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
@@ -778,7 +779,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupControl1);
             this.Name = "COVID_CHECK";
-            this.Size = new System.Drawing.Size(1277, 871);
+            this.Size = new System.Drawing.Size(1627, 871);
             this.Controls.SetChildIndex(this.groupControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

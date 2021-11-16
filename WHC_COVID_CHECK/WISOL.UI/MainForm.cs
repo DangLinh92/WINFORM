@@ -74,7 +74,7 @@ namespace Wisol.MES
             timer = new Timer();
             timer.Interval = 30000; // 30 s
             timer.Tick += Timer_Tick;
-            timer.Start();
+            //timer.Start();
 
             //ExtractFromAssembly();
             //m_IconBar.Visible = false;
