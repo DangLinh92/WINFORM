@@ -46,6 +46,10 @@ namespace Wisol.MES.Forms.CONTENT.POP
                     {
                         base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_BANK_STATEMENT.IMPORT", new string[] { "A_USER" }, "A_DATA", new string[] { Consts.USER_INFO.Id }, Data);
                     }
+                    else if(ImportType == Consts.IMPORT_TYPE_RECEIVE_PAYMENT)
+                    {
+                        base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_RECEIVE_PAYMENT_DETAIL.IMPORT", new string[] { "A_USER" }, "A_DATA", new string[] { Consts.USER_INFO.Id }, Data);
+                    }
 
                     if (mResultDB.ReturnInt == 0)
                     {
@@ -140,6 +144,19 @@ namespace Wisol.MES.Forms.CONTENT.POP
                                 row[4] = row[4].NullString().Replace(",", ""); // GHI NO
                                 row[5] = row[5].NullString().Replace(",", ""); // GHI CO
                                 row[6] = row[6].NullString().Replace(",", ""); // SO DU
+                            }
+                            i++;
+                        }
+                    }
+                    else if (ImportType == Consts.IMPORT_TYPE_RECEIVE_PAYMENT)
+                    {
+                        int i = 0;
+                        foreach (DataRow row in Data.Rows)
+                        {
+                            if (i > 0)
+                            {
+                                row[7] = row[7].NullString().Replace(",", ""); // Cash
+                                row[6] = row[6].NullString().Replace(",", ""); // Deposit
                             }
                             i++;
                         }

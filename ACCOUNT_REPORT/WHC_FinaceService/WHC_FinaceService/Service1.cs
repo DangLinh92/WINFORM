@@ -95,7 +95,7 @@ namespace WHC_FinaceService
                     }
                 }
 
-                if (DateTime.Now.Hour == 1)
+                if (DateTime.Now.Hour == 1 || DateTime.Now.Hour == 9)
                 {
                     isUpdate = false;
                 }

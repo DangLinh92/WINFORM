@@ -252,11 +252,35 @@
     <Compile Include="Forms\CONTENT\FRM_BANK_STATEMENT.Designer.cs">
       <DependentUpon>FRM_BANK_STATEMENT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CONTENT\FRM_ELECTRICITY_CONTRACT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_ELECTRICITY_CONTRACT.Designer.cs">
+      <DependentUpon>FRM_ELECTRICITY_CONTRACT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CONTENT\FRM_EXCHANGE_RATE.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\CONTENT\FRM_EXCHANGE_RATE.Designer.cs">
       <DependentUpon>FRM_EXCHANGE_RATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_FINACING_STATEMENT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_FINACING_STATEMENT.Designer.cs">
+      <DependentUpon>FRM_FINACING_STATEMENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_LOAN_REPORT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_LOAN_REPORT.Designer.cs">
+      <DependentUpon>FRM_LOAN_REPORT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_RECEIVED_PAYMENT DETAIL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\FRM_RECEIVED_PAYMENT DETAIL.Designer.cs">
+      <DependentUpon>FRM_RECEIVED_PAYMENT DETAIL.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.cs">
       <SubType>Form</SubType>
@@ -564,8 +588,20 @@
     <EmbeddedResource Include="Forms\CONTENT\FRM_BANK_STATEMENT.resx">
       <DependentUpon>FRM_BANK_STATEMENT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\FRM_ELECTRICITY_CONTRACT.resx">
+      <DependentUpon>FRM_ELECTRICITY_CONTRACT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\FRM_EXCHANGE_RATE.resx">
       <DependentUpon>FRM_EXCHANGE_RATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\FRM_FINACING_STATEMENT.resx">
+      <DependentUpon>FRM_FINACING_STATEMENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\FRM_LOAN_REPORT.resx">
+      <DependentUpon>FRM_LOAN_REPORT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\FRM_RECEIVED_PAYMENT DETAIL.resx">
+      <DependentUpon>FRM_RECEIVED_PAYMENT DETAIL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\POP\IMPORT_EXCEL.resx">
       <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
@@ -715,6 +751,9 @@
     <None Include="BANK_STATEMENT.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="FINANCING_STATEMENT.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -733,6 +772,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RECEIVE_PAYMENT.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SPW_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -812,6 +854,9 @@
     <Content Include="Images\category.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\charging-station.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\China.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -848,6 +893,9 @@
     <Content Include="Images\delivery_logistics.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\detail.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\drilling-machine.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -861,6 +909,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\faviconS.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\finance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Find_32x32.png">
@@ -936,6 +987,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\LoadLayout3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loan.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\lock.png">

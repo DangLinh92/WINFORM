@@ -117,6 +117,7 @@ namespace Wisol.MES
         public static string SHEET_NAME_EWIP_SPAREPART_LOCATION = "EWIP_SPAREPART_LOCATION$";
 
         public static string IMPORT_TYPE_BANK_STATEMENT = "0";
+        public static string IMPORT_TYPE_RECEIVE_PAYMENT = "1";
 
         private static DataTable DataMemory;
 
