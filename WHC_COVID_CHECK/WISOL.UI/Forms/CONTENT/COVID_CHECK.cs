@@ -219,7 +219,7 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     OK_NG_QUICK = cheTested.Checked ? "OK" : "NG";
                 }
-                
+
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.UPDATE_ITEM",
                     new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG_PCR", "A_OKE_NG_QUICK", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST" },
                     new string[] { txtID.EditValue.NullString(), dateCheck.EditValue.NullString(), cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), dept, OK_NG_PCR, OK_NG_QUICK, txtNote.EditValue.NullString(), txtCalamviec.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
@@ -314,15 +314,15 @@ namespace Wisol.MES.Forms.CONTENT
                 e.Appearance.BackColor = Color.LightGreen;
                 gvList.SelectRow(e.RowHandle);
             }
-            else if(gvList.GetRowCellValue(e.RowHandle, "QUICK_OK").NullString() == "OK")
+            else if (gvList.GetRowCellValue(e.RowHandle, "QUICK_OK").NullString() == "OK")
             {
-                if(e.Column.FieldName == "QUICK_OK")
+                if (e.Column.FieldName == "QUICK_OK")
                 {
                     e.Appearance.BackColor = Color.FromArgb(253, 235, 208);
                     gvList.SelectRow(e.RowHandle);
                 }
             }
-            
+
         }
 
         private void gvList_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -342,7 +342,7 @@ namespace Wisol.MES.Forms.CONTENT
                 txtNote.EditValue = gvList.GetRowCellValue(e.RowHandle, "NOTE").NullString();
                 txtLocation.EditValue = txtLocation.EditValue.NullString() == "" ? gvList.GetRowCellValue(e.RowHandle, "DIA_DIEM_TEST").NullString() : txtLocation.EditValue.NullString();
 
-                if(cboPCR_Quick.Text == "PCR")
+                if (cboPCR_Quick.Text == "PCR")
                 {
                     cheTested.Checked = gvList.GetRowCellValue(e.RowHandle, "PCR_OK").NullString() == "OK";
                 }
@@ -350,7 +350,7 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     cheTested.Checked = gvList.GetRowCellValue(e.RowHandle, "QUICK_OK").NullString() == "OK";
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -453,6 +453,27 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 designFile = "STOCK_LABEL.xml";
 
+                string maNV = "";
+                string nameNV = "";
+                if (code.NullString().Contains(" "))
+                {
+                    try
+                    {
+                        maNV = code.NullString().Split(' ')[0].NullString();
+                        nameNV = code.NullString().Substring(code.IndexOf(' ')).NullString();
+                    }
+                    catch (Exception)
+                    {
+                        maNV = code;
+                        nameNV = "";
+                    }
+                }
+                else
+                {
+                    maNV = code;
+                    nameNV = "";
+                }
+
                 XtraReport reportPrint = new XtraReport();
 
                 ReportPrintTool pt1 = new ReportPrintTool(reportPrint);
@@ -460,7 +481,7 @@ namespace Wisol.MES.Forms.CONTENT
 
                 List<XtraReport> reports = new List<XtraReport>();
 
-                xml_content = xml_content.Replace("$CODE$", code).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyy-MM-dd"));
+                xml_content = xml_content.Replace("$CODE$", maNV).Replace("$NAME$",nameNV).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyy-MM-dd"));
 
                 xml_content = xml_content.Replace("&", "&amp;");
                 File.WriteAllText(designFile, xml_content);
