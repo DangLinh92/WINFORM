@@ -147,6 +147,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 24);
             this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
             this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1621, 31);
+            this.spreadsheetFormulaBar1.SpreadsheetControl = this.spreadsheetMain;
             this.spreadsheetFormulaBar1.TabIndex = 5;
             // 
             // spreadsheetMain

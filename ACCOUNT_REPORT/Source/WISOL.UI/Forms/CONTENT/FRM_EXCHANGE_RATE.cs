@@ -49,13 +49,20 @@ namespace Wisol.MES.Forms.CONTENT
         {
             try
             {
-
                 var exchange = await ExchangeRateDownload.DownloadAsync(date);
 
-                if (exchange.Contains("-"))
+                if (exchange != null && exchange.Contains("-"))
                 {
                     txtUSD_Latest.Text = exchange.Split('-')[0].Split(' ')[0];
-                    txtKrw_Latest.Text = (float.Parse(exchange.Split('-')[1].Split(' ')[0].Trim()) / 100).ToString();
+
+                    if(exchange.Split('-')[1].Split(' ')[0].Trim() != "")
+                    {
+                        txtKrw_Latest.Text = (float.Parse(exchange.Split('-')[1].Split(' ')[0].Trim()) / 100).ToString();
+                    }
+                    else
+                    {
+                        txtKrw_Latest.Text = "";
+                    }
                 }
             }
             catch (Exception ex)

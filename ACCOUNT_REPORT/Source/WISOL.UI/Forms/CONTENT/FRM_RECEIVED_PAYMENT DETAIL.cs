@@ -43,6 +43,7 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     DataTableCollection dataCollection = base.m_ResultDB.ReturnDataSet.Tables;
                     m_BindData.BindGridLookEdit(stlBank, dataCollection[0], "ID", "BANK_NAME", "BANK_ACCOUNT");
+                    m_BindData.BindGridLookEdit(stlBank_Account, dataCollection[0], "BANK_ACCOUNT", "BANK_ACCOUNT", "ID,BANK_NAME");
 
                     gcList.DataSource = dataCollection[1];
                     gvList.Columns["ID"].Visible = false;
@@ -77,6 +78,7 @@ namespace Wisol.MES.Forms.CONTENT
             try
             {
                 if (stlBank.EditValue.NullString() == "" ||
+                    stlBank_Account.EditValue.NullString() == "" ||
                     dateRevPay.EditValue.NullString() == "" ||
                     cboCurrency.Text.NullString() == "" ||
                     txtCash.EditValue.NullString() == "" ||
@@ -88,12 +90,13 @@ namespace Wisol.MES.Forms.CONTENT
                 }
 
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_RECEIVE_PAYMENT_DETAIL.PUT",
-                   new string[] { "A_ID", "A_BANK_ID", "A_BANK_NAME", "A_TRANS_DATE", "A_DETAIL", "A_CURRENCY", "A_CASH", "A_DEPOSIT", "A_VENDOR", "A_USER", "A_ITEM_TYPE", "A_ITEM" },
+                   new string[] { "A_ID", "A_BANK_ID", "A_BANK_NAME","A_BANK_ACCOUNT", "A_TRANS_DATE", "A_DETAIL", "A_CURRENCY", "A_CASH", "A_DEPOSIT", "A_VENDOR", "A_USER", "A_ITEM_TYPE", "A_ITEM" },
                    new string[]
                    {
                          txtID.EditValue.NullString(),
                          stlBank.EditValue.NullString(),
                          stlBank.Text.NullString(),
+                         stlBank_Account.EditValue.NullString(),
                          dateRevPay.EditValue.NullString(),
                          txtDetail.EditValue.NullString(),
                          cboCurrency.Text.NullString(),
@@ -168,6 +171,7 @@ namespace Wisol.MES.Forms.CONTENT
             txtVendor.EditValue = "";
             cboItemType.Text = "";
             txtItem.EditValue = "";
+            stlBank_Account.EditValue = "";
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -238,6 +242,34 @@ namespace Wisol.MES.Forms.CONTENT
                 txtVendor.EditValue = gvList.GetRowCellValue(e.RowHandle, "VENDOR_ID").NullString();
                 cboItemType.Text = gvList.GetRowCellValue(e.RowHandle, "ITEM_TYPE").NullString();
                 txtItem.EditValue = gvList.GetRowCellValue(e.RowHandle, "ITEM").NullString();
+                stlBank_Account.EditValue = gvList.GetRowCellValue(e.RowHandle, "BANK_ACCOUNT").NullString();
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
+            }
+        }
+
+        private void stlBank_Account_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_BANK.GET_BANK_FROM_ACCOUNT",
+                   new string[] { "A_BANK_ACCOUNT" },
+                   new string[] { stlBank_Account.EditValue.NullString() });
+
+                if (base.m_ResultDB.ReturnInt == 0)
+                {
+                    DataTable data = base.m_ResultDB.ReturnDataSet.Tables[0];
+                    if (data.Rows.Count > 0)
+                    {
+                        stlBank.EditValue = data.Rows[0]["ID"].NullString();
+                    }
+                    else
+                    {
+                        stlBank.EditValue = "";
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -182,6 +182,10 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         stlBank.EditValue = data.Rows[0]["ID"].NullString();
                     }
+                    else
+                    {
+                        stlBank.EditValue = "";
+                    }
                 }
             }
             catch (Exception ex)

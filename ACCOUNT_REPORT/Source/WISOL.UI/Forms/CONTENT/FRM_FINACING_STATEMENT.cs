@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wisol.Common;
 using Wisol.Components;
+using Wisol.MES.Classes;
 using Wisol.MES.Inherit;
 
 namespace Wisol.MES.Forms.CONTENT
@@ -71,7 +72,7 @@ namespace Wisol.MES.Forms.CONTENT
             workbook.EndUpdate();
         }
 
-        private void GetDataForPRRequest(Worksheet sheet)
+        private async void GetDataForPRRequest(Worksheet sheet)
         {
             try
             {
@@ -95,10 +96,7 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         if (data[0].Rows.Count > 2)
                         {
-                            for (int i = 2; i < data[0].Rows.Count; i++)
-                            {
-                                sheet.Rows[i + startOnHand - 1].Insert(InsertCellsMode.EntireRow);
-                            }
+                            sheet.Rows.Insert(startOnHand + 1, data[0].Rows.Count - 2, RowFormatMode.FormatAsNext);
                         }
                         else if (data[0].Rows.Count == 1)
                         {
@@ -122,10 +120,7 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         if (data[1].Rows.Count > 2)
                         {
-                            for (int i = 2; i < data[1].Rows.Count; i++)
-                            {
-                                sheet.Rows[startCashVND + i - 1].Insert(InsertCellsMode.EntireRow);
-                            }
+                            sheet.Rows.Insert(startCashVND + 1, data[1].Rows.Count - 2, RowFormatMode.FormatAsNext);
                         }
                         else if (data[1].Rows.Count == 1)
                         {
@@ -141,6 +136,8 @@ namespace Wisol.MES.Forms.CONTENT
                         endCashVND = startCashVND + 1;
                     }
 
+                    sheet.Cells["H" + (endCashVND + 2)].Value = await GetExchangeRate(createDate,"USD","VND");
+
                     // tien gui ngan hang usd
                     int startCashUsd = endCashVND + 4;
                     int endCashUsd = startCashUsd + 2;
@@ -149,10 +146,7 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         if (data[2].Rows.Count > 2)
                         {
-                            for (int i = 2; i < data[2].Rows.Count; i++)
-                            {
-                                sheet.Rows[startCashUsd + i - 1].Insert(InsertCellsMode.EntireRow);
-                            }
+                            sheet.Rows.Insert(startCashUsd + 1, data[2].Rows.Count - 2, RowFormatMode.FormatAsNext);
                         }
                         else if (data[2].Rows.Count == 1)
                         {
@@ -177,10 +171,7 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         if (data[3].Rows.Count > 2)
                         {
-                            for (int i = 2; i < data[3].Rows.Count; i++)
-                            {
-                                sheet.Rows[startElectric + i - 1].Insert(InsertCellsMode.EntireRow);
-                            }
+                            sheet.Rows.Insert(startElectric + 1, data[3].Rows.Count - 2, RowFormatMode.FormatAsNext);
                         }
                         else if (data[3].Rows.Count == 1)
                         {
@@ -197,6 +188,8 @@ namespace Wisol.MES.Forms.CONTENT
                         endElectric = startElectric + 1;
                     }
 
+                    sheet.Cells["H" + (endElectric + 2)].Value = await GetExchangeRate(createDate, "USD", "VND");
+
                     // Bao cao vay
                     int startLoan = endElectric + 4;
                     int endLoan = startLoan + 2;
@@ -205,12 +198,9 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         if (data[4].Rows.Count > 2)
                         {
-                            for (int i = 2; i < data[4].Rows.Count; i++)
-                            {
-                                sheet.Rows[startLoan + i - 1].Insert(InsertCellsMode.EntireRow);
-                            }
+                            sheet.Rows.Insert(startLoan + 1, data[4].Rows.Count - 2, RowFormatMode.FormatAsNext);
                         }
-                        else if(data[4].Rows.Count == 1)
+                        else if (data[4].Rows.Count == 1)
                         {
                             sheet.Rows[startLoan + 1].Delete();
                         }
@@ -223,6 +213,54 @@ namespace Wisol.MES.Forms.CONTENT
                         sheet.Rows[startLoan + 1].Delete();
                         endLoan = startLoan + 1;
                     }
+
+                    // Chi tiet receive
+                    int starDetail = endLoan + 4;
+                    int endDetailReceive = starDetail + 2;
+
+                    if (data[5].Rows.Count > 0)
+                    {
+                        if (data[5].Rows.Count > 2)
+                        {
+                            sheet.Rows.Insert(starDetail + 1, data[5].Rows.Count - 2, RowFormatMode.FormatAsNext);
+                        }
+                        else if (data[5].Rows.Count == 1)
+                        {
+                            sheet.Rows[starDetail + 1].Delete();
+                        }
+
+                        sheet.DataBindings.BindToDataSource(data[5], starDetail, 0);
+                        endDetailReceive = starDetail + data[5].Rows.Count;
+                    }
+                    else
+                    {
+                        sheet.Rows[starDetail + 1].Delete();
+                        endDetailReceive = starDetail + 1;
+                    }
+
+                    // chi tiet payment
+                    int starDetailPay = endDetailReceive + 2;
+                    int endDetailPay = starDetailPay + 2;
+
+                    if (data[6].Rows.Count > 0)
+                    {
+                        if (data[6].Rows.Count > 2)
+                        {
+                            sheet.Rows.Insert(starDetailPay + 1, data[6].Rows.Count - 2, RowFormatMode.FormatAsNext);
+                        }
+                        else if (data[6].Rows.Count == 1)
+                        {
+                            sheet.Rows[starDetailPay + 1].Delete();
+                        }
+
+                        sheet.DataBindings.BindToDataSource(data[6], starDetailPay, 0);
+                        endDetailPay = starDetailPay + data[6].Rows.Count;
+                    }
+                    else
+                    {
+                        sheet.Rows[starDetailPay + 1].Delete();
+                        endDetailPay = starDetailPay + 1;
+                    }
                 }
                 else
                 {
@@ -233,6 +271,57 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
             }
+        }
+
+        private async Task<string> GetExchangeRate(string date,string from, string to)
+        {
+            try
+            {
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_EXCHANGE.GET", new string[] { "A_DATE", "A_FROM", "A_TO" }, new string[] { date, from,to });
+                if (base.m_ResultDB.ReturnInt == 0)
+                {
+                    DataTable data = base.m_ResultDB.ReturnDataSet.Tables[0];
+                  
+                    if(data.Rows.Count > 0)
+                    {
+                        if(data.Rows[0]["USER_UPDATE"].NullString() == "WHC_FinaceService")
+                        {
+                            return await GetLatestExchange(DateTime.Parse(date).ToString("yyyyMMdd"));
+                        }
+                        else
+                        {
+                            return data.Rows[0]["RATE"].NullString();
+                        }
+                    }
+                }
+                else
+                {
+                    MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
+            }
+            return "";
+        }
+
+        private async Task<string> GetLatestExchange(string date)
+        {
+            try
+            {
+                var exchange = await ExchangeRateDownload.DownloadAsync(date);
+
+                if (exchange != null && exchange.Contains("-"))
+                {
+                    return exchange.Split('-')[0].Split(' ')[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
+            }
+            return "";
         }
     }
 }
