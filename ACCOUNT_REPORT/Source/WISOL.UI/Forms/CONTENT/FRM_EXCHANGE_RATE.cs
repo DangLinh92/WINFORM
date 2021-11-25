@@ -55,7 +55,7 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     txtUSD_Latest.Text = exchange.Split('-')[0].Split(' ')[0];
 
-                    if(exchange.Split('-')[1].Split(' ')[0].Trim() != "")
+                    if (exchange.Split('-')[1].Split(' ')[0].Trim() != "")
                     {
                         txtKrw_Latest.Text = (float.Parse(exchange.Split('-')[1].Split(' ')[0].Trim()) / 100).ToString();
                     }
@@ -123,14 +123,35 @@ namespace Wisol.MES.Forms.CONTENT
 
                     if (dateSearch.EditValue.NullString() != "" && searchTime.ToString("yyyyMMdd") == DateTime.Now.ToString("yyyyMMdd"))
                     {
+                        bool needUpdate = false;
                         if (txtUSD.Text.NullString() == "")
                         {
                             txtUSD.Text = txtUSD_Latest.Text.Trim();
+                            needUpdate = true;
                         }
 
                         if (txtKRW.Text.NullString() == "")
                         {
                             txtKRW.Text = txtKrw_Latest.Text.Trim();
+                            needUpdate = true;
+                        }
+
+                        if (needUpdate)
+                        {
+                            base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_EXCHANGE.PUT",
+                                                                            new string[] { "A_DATE", "A_USD", "A_KRW", "A_USER" },
+                                                                            new string[]
+                                                                            {
+                                                                               dateSearch.EditValue.NullString(),
+                                                                               txtUSD.EditValue.NullString(),
+                                                                               txtKRW.EditValue.NullString(),
+                                                                               Consts.USER_INFO.Id
+                                                                            });
+
+                            if (base.m_ResultDB.ReturnInt != 0)
+                            {
+                                MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Error);
+                            }
                         }
                     }
                 }
@@ -250,6 +271,14 @@ namespace Wisol.MES.Forms.CONTENT
         {
             dateFrom.EditValue = null;
             dateTo.EditValue = null;
+        }
+
+        private void gvList_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if(e.Column.FieldName == "DATE" && e.CellValue.NullString() == DateTime.Now.ToString("yyyy/MM/dd"))
+            {
+                e.Appearance.BackColor = Color.FromArgb(42, 190, 37);
+            }
         }
     }
 }

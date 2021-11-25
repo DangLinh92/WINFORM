@@ -31,7 +31,10 @@ namespace Wisol.MES.Forms.CONTENT
 
         private void btnLoadFileData_Click(object sender, EventArgs e)
         {
-            LoadTemplate();
+            if(dateLoad.EditValue.NullString() != "")
+            {
+                LoadTemplate();
+            }
         }
 
         private void btnDownloadFile_Click(object sender, EventArgs e)
@@ -76,7 +79,7 @@ namespace Wisol.MES.Forms.CONTENT
         {
             try
             {
-                string createDate = createDate = dateLoad.EditValue.NullString();
+                string createDate = dateLoad.EditValue.NullString();
 
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_FINACING_STATEMENT.GET_DATE_REPORT",
                   new string[] { "A_DATE" },
