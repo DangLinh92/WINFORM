@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Word;
 
 namespace sMail
 {
@@ -32,13 +33,14 @@ namespace sMail
             txtCc.Text = "thidao335@wisol.co.kr";
             Data = null;
             lblCount.Text = "COUNT: ";
+            richTextMailContent.LoadDocument("H1611001_PAYSLIP.docx");
         }
 
         private void btnGetFileTemp_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = Application.StartupPath + @"\\MailToList.xlsx";
+                string url = System.Windows.Forms.Application.StartupPath + @"\\MailToList.xlsx";
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "All files (*.*)|*.*";
@@ -61,7 +63,7 @@ namespace sMail
                 MessageBox.Show("ERROR :" + ex.Message);
             }
         }
-        DataTable Data;
+        System.Data.DataTable Data;
         private void btnLoadTo_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -86,7 +88,7 @@ namespace sMail
                 try
                 {
                     conexcel.Open();
-                    DataTable dtExcel = conexcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    System.Data.DataTable dtExcel = conexcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
                     string sheetName = "DATA$";
 
@@ -103,7 +105,7 @@ namespace sMail
                     cmdexcel1.Connection = conexcel;
                     cmdexcel1.CommandText = "select * from[" + sheetName + "]";
 
-                    Data = new DataTable();
+                    Data = new System.Data.DataTable();
                     OleDbDataAdapter da = new OleDbDataAdapter();
                     da.SelectCommand = cmdexcel1;
                     da.Fill(Data);
@@ -124,6 +126,8 @@ namespace sMail
 
                     Data.Rows.RemoveAt(0);
                     gcList.DataSource = Data;
+
+                    //SaveDocument();
                 }
                 catch (Exception ex)
                 {
@@ -200,7 +204,7 @@ namespace sMail
                 {
                     emailSender = new EmailSender();
                     emailSender.FROM_ADDRESS = txtFrom.Text.ToString().Trim();
-                    emailSender.AddCcEmailAddress(txtCc.Text.Trim());
+                    //emailSender.AddCcEmailAddress(txtCc.Text.Trim());
                     emailSender.Subject = txtSubject.Text.Trim();
 
                     if (gvList.GetRowCellValue(i, "Email") != null)
@@ -213,7 +217,7 @@ namespace sMail
                         emailSender.AddAttachmentFilePath(gvList.GetRowCellValue(i, "PATH_FILE").ToString());
                     }
 
-                    emailSender.Body = richTextMailContent.HtmlText;
+                    emailSender.Body = File.ReadAllText(System.Windows.Forms.Application.StartupPath + "\\Template.html");//richTextMailContent.HtmlText;
 
                     result = emailSender.Send();
 
@@ -274,6 +278,613 @@ namespace sMail
                 {
                     e.Appearance.BackColor = Color.FromArgb(236, 112, 99);
                 }
+            }
+        }
+
+        private void SaveDocument()
+        {
+            try
+            {
+                Object oMissing = System.Reflection.Missing.Value;
+
+                Object oTemplatePath = System.Windows.Forms.Application.StartupPath + "\\MAU_BANG_LUONG.dotx";
+
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+
+                string folderPath = System.Windows.Forms.Application.StartupPath + "\\PAYSLIP";
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                else
+                {
+                    Directory.Delete(folderPath, true);
+                }
+
+                foreach (DataRow row in Data.Rows)
+                {
+                    Document wordDoc = new Document();
+                    wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+
+                    foreach (Field myMergeField in wordDoc.Fields)
+                    {
+                        Range rngFieldCode = myMergeField.Code;
+
+                        String fieldText = rngFieldCode.Text;
+
+                        // ONLY GETTING THE MAILMERGE FIELDS
+                        if (fieldText.StartsWith(" MERGEFIELD"))
+                        {
+                            // THE TEXT COMES IN THE FORMAT OF
+
+                            // MERGEFIELD  MyFieldName  \\* MERGEFORMAT
+
+                            // THIS HAS TO BE EDITED TO GET ONLY THE FIELDNAME "MyFieldName"
+
+                            Int32 endMerge = fieldText.IndexOf("\\");
+
+                            Int32 fieldNameLength = fieldText.Length - endMerge;
+
+                            String fieldName = fieldText.Substring(11, endMerge - 11);
+
+                            // GIVES THE FIELDNAMES AS THE USER HAD ENTERED IN .dot FILE
+
+                            fieldName = fieldName.Trim();
+
+                            // **** FIELD REPLACEMENT IMPLEMENTATION GOES HERE ****//
+
+                            // THE PROGRAMMER CAN HAVE HIS OWN IMPLEMENTATIONS HERE
+
+                            if (fieldName == "Thang_nam")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            if (fieldName == "Thang_nam_text")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+                            if (fieldName == "Ten")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            if (fieldName == "BP")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            if (fieldName == "Code")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            if (fieldName == "Ngayvao")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            // THONG TIN CO BAN
+                            if (fieldName == "LCB")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("Vivek");
+                            }
+
+                            if (fieldName == "PCDS")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("500000");
+                            }
+
+                            if (fieldName == "PCCV")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Luong_D")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "PHEP_NAM_TON")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "PCTN")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "PCDH")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "LUONG_H")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // thoi gian lam viec
+                            if (fieldName == "TV_ngay")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TV_dem")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "CT_ngay")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "CT_dem")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Nghi_co_luong")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong_ngay")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong_dem")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TTien_nghi_co_luong")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "nghi_KL")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TT_Lviec")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Luong_theo_ngay_cong")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // TANG CA
+                            if (fieldName == "OT_time_150")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_200")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_210")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_270")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_300")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_390")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "OT_time_260")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            //
+                            if (fieldName == "Cong15_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong20_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong21_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong27_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong30_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong39_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong26_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Tong_OT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // Ho tro thoi gian lam viec
+                            if (fieldName == "HT_15_Total")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_200_Total")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_270_Total")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_300_Total")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_390_Total")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            //. so tien
+                            if (fieldName == "Cong15_HT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong20_HT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong27_HT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong30_HT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong39_HT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Tong_HTLV")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // HO TRO THANH LAP CTY
+                            if (fieldName == "Ca_ngay_TV")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ca_ngay_CT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ca_dem_TV_truoc_le")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ca_dem_CT_truoc_le")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Thanh_tien_truoc_le")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // NGHI BU
+                            if (fieldName == "Nghi_Bu_CT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ho_tro_PC_NB")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ho_tro_luong30")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Tong_ho_tro_NB")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // LUU TRU CONG TY
+                            if (fieldName == "so_ngay_nghi_70")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "So_ngay_luu_tru_cty")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Thanh_tien_nghi_70")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Thanh_tien_luu_tru_cty")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Ho_tro_dthoai")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // Cac khoan khac
+                            if (fieldName == "Cong_them")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Chuyen_can")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Incentive")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_gui_tre")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_PCCC_co_so")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_ATNVSV")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "HT_CD")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TN_Khac")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TT_TV_dem")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Dem_TV")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Dem_CT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TT_CT_dem")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            // KHOAN KHAU TRU
+                            if (fieldName == "Cong_tru")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "BH_XH")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "TRUY_THU_BHYT")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Cong_doan")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Thue_TNCN")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Di_muon")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "tru_khac")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "hmuon")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+
+                            if (fieldName == "Thuc_nhan")
+                            {
+                                myMergeField.Select();
+                                wordApp.Selection.TypeText("120000000");
+                            }
+                        }
+                    }
+
+                    try
+                    {
+                        string filePath = folderPath + "\\" + row["Code"] + "_PAYSLIP.docx";
+                        wordDoc.SaveAs(filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Send error :" + ex.Message);
+                    }
+
+                }
+
+                //wordApp.Documents.Open(filePath);
+                wordApp.Documents.Close();
+                wordApp.Application.Quit();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Send error :" + ex.Message);
             }
         }
     }
