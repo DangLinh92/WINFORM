@@ -18,5 +18,15 @@ namespace sMail
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+        public static string NullString(this object obj)
+        {
+            if (obj == null)
+                return "";
+
+            return obj.ToString();
+        }
     }
+
+
 }
