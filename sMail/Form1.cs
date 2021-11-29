@@ -255,7 +255,7 @@ namespace sMail
 
                     progressFinishMail.PerformStep();
                     progressFinishMail.Update();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
 
                 lblCount.Text += countSuccess + "/" + gvList.RowCount;
@@ -399,9 +399,6 @@ namespace sMail
                 {
                     document.Save(stream);
                     stream.Position = 0;
-
-                    //richTextMailContent.LoadDocument(stream);
-
                     return new StreamReader(stream).ReadToEnd();
                 }
 
@@ -1049,7 +1046,7 @@ namespace sMail
         {
             if(datePaySlip.EditValue != null && datePaySlip.EditValue.ToString() != "")
             {
-                txtSubject.Text += DateTime.Parse(datePaySlip.EditValue.ToString()).ToString("MM-yyyyy");
+                txtSubject.Text += (DateTime.Parse(datePaySlip.EditValue.ToString()).Month.ToString() + "/" + DateTime.Parse(datePaySlip.EditValue.ToString()).Year.ToString());
             }
         }
     }
