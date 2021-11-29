@@ -97,9 +97,9 @@ namespace sMail
 
                     foreach (DataRow drSheet in dtExcel.Rows)
                     {
-                        if (drSheet["TABLE_NAME"].ToString().Contains("$"))
+                        if (drSheet["TABLE_NAME"].NullString().Contains("$"))
                         {
-                            sheetName = drSheet["TABLE_NAME"].ToString();
+                            sheetName = drSheet["TABLE_NAME"].NullString();
                             break;
                         }
                     }
@@ -117,7 +117,7 @@ namespace sMail
                     {
                         for (int i = 0; i < Data.Columns.Count; i++)
                         {
-                            Data.Columns[i].ColumnName = Data.Rows[0][i].ToString();
+                            Data.Columns[i].ColumnName = Data.Rows[0][i].NullString();
                         }
                     }
 
@@ -198,7 +198,7 @@ namespace sMail
                     return;
                 }
 
-                if(datePaySlip.EditValue == null || datePaySlip.EditValue+ "" == "")
+                if (datePaySlip.EditValue == null || datePaySlip.EditValue + "" == "")
                 {
                     MessageBox.Show("Hãy chọn tháng năm xác nhận lương tháng !");
                     datePaySlip.Focus();
@@ -226,13 +226,13 @@ namespace sMail
                 for (int i = 0; i < gvList.RowCount; i++)
                 {
                     emailSender = new EmailSender();
-                    emailSender.FROM_ADDRESS = txtFrom.Text.ToString().Trim();
+                    emailSender.FROM_ADDRESS = txtFrom.Text.NullString();
                     emailSender.AddCcEmailAddress(txtCc.Text.Trim());
                     emailSender.Subject = txtSubject.Text;
 
                     if (gvList.GetRowCellValue(i, "Email") != null)
                     {
-                        emailSender.AddToEmailAddress(gvList.GetRowCellValue(i, "Email").ToString());
+                        emailSender.AddToEmailAddress(gvList.GetRowCellValue(i, "Email").NullString());
                     }
 
                     // emailSender.AddAttachmentFilePath(gvList.GetRowCellValue(i, "PATH_FILE").ToString());
@@ -379,7 +379,7 @@ namespace sMail
                 document.GetElementbyId("TN_Khac_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "TN khac").NullString();
                 document.GetElementbyId("TT_TV_dem_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "T.tien_TV").NullString();
                 document.GetElementbyId("TT_CT_dem_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "T.tien_CT").NullString();
-                document.GetElementbyId("Dem_TV_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Dem TV").NullString(); 
+                document.GetElementbyId("Dem_TV_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Dem TV").NullString();
                 document.GetElementbyId("Dem_CT_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Dem CT").NullString();
 
                 // CAC KHOAN KHAU TRU
@@ -1044,7 +1044,7 @@ namespace sMail
 
         private void datePaySlip_EditValueChanged(object sender, EventArgs e)
         {
-            if(datePaySlip.EditValue != null && datePaySlip.EditValue.ToString() != "")
+            if (datePaySlip.EditValue != null && datePaySlip.EditValue.NullString() != "" && DateTime.TryParse(datePaySlip.EditValue.ToString(), out _))
             {
                 txtSubject.Text += (DateTime.Parse(datePaySlip.EditValue.ToString()).Month.ToString() + "/" + DateTime.Parse(datePaySlip.EditValue.ToString()).Year.ToString());
             }

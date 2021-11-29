@@ -24,7 +24,7 @@ namespace sMail
             if (obj == null)
                 return "";
 
-            return obj.ToString();
+            return obj.ToString().Trim();
         }
     }
 
