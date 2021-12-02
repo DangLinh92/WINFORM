@@ -97,6 +97,11 @@ namespace Wisol.MES.Forms.CONTENT
                     int rowHandle = -1;
                     string qrCode = txtQRCODE.EditValue.NullString().ToUpper().ToString(new CultureInfo("en-US"));
 
+                    if (qrCode == "" || qrCode == null)
+                    {
+                        qrCode = txtQRCODE.EditValue + "";
+                    }
+
                     if (cheIsPrintLabel.Checked)
                     {
                         Print(qrCode);
@@ -481,7 +486,7 @@ namespace Wisol.MES.Forms.CONTENT
 
                 List<XtraReport> reports = new List<XtraReport>();
 
-                xml_content = xml_content.Replace("$CODE$", maNV).Replace("$NAME$",nameNV).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyy-MM-dd"));
+                xml_content = xml_content.Replace("$CODE$", maNV).Replace("$NAME$", nameNV).Replace("$DATE_PRINT$", DateTime.Now.ToString("yyyy-MM-dd"));
 
                 xml_content = xml_content.Replace("&", "&amp;");
                 File.WriteAllText(designFile, xml_content);
