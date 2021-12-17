@@ -1,4 +1,6 @@
 ﻿
+using DevExpress.XtraEditors;
+
 namespace Wisol.MES.Forms.CONTENT
 {
     partial class FRM_FINACING_STATEMENT
@@ -34,6 +36,11 @@ namespace Wisol.MES.Forms.CONTENT
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xLayoutControl1 = new Wisol.XLayoutControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dateCloseMonth = new DevExpress.XtraEditors.DateEdit();
+            this.btnCloseData = new Wisol.XSimpleButton(this.components);
+            this.cheDaily = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateTo = new DevExpress.XtraEditors.DateEdit();
             this.btnDownloadFile = new Wisol.XSimpleButton(this.components);
             this.btnLoadFileData = new Wisol.XSimpleButton(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -44,12 +51,18 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Wisol.MES.FrmWaitForm), true, true, typeof(System.Windows.Forms.UserControl));
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).BeginInit();
             this.xLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCloseMonth.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCloseMonth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cheDaily.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTo.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateLoad.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateLoad.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -83,6 +96,11 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.dateCloseMonth);
+            this.panelControl1.Controls.Add(this.btnCloseData);
+            this.panelControl1.Controls.Add(this.cheDaily);
+            this.panelControl1.Controls.Add(this.labelControl2);
+            this.panelControl1.Controls.Add(this.dateTo);
             this.panelControl1.Controls.Add(this.btnDownloadFile);
             this.panelControl1.Controls.Add(this.btnLoadFileData);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -92,12 +110,70 @@ namespace Wisol.MES.Forms.CONTENT
             this.panelControl1.Size = new System.Drawing.Size(1621, 40);
             this.panelControl1.TabIndex = 6;
             // 
+            // dateCloseMonth
+            // 
+            this.dateCloseMonth.EditValue = null;
+            this.dateCloseMonth.Location = new System.Drawing.Point(1286, 10);
+            this.dateCloseMonth.Name = "dateCloseMonth";
+            this.dateCloseMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateCloseMonth.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateCloseMonth.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dateCloseMonth.Size = new System.Drawing.Size(253, 20);
+            this.dateCloseMonth.TabIndex = 8;
+            // 
+            // btnCloseData
+            // 
+            this.btnCloseData.FormId = null;
+            this.btnCloseData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseData.ImageOptions.Image")));
+            this.btnCloseData.isFormType = false;
+            this.btnCloseData.Location = new System.Drawing.Point(1151, 5);
+            this.btnCloseData.MaximumSize = new System.Drawing.Size(129, 30);
+            this.btnCloseData.MinimumSize = new System.Drawing.Size(129, 30);
+            this.btnCloseData.Name = "btnCloseData";
+            this.btnCloseData.Size = new System.Drawing.Size(129, 30);
+            this.btnCloseData.TabIndex = 7;
+            this.btnCloseData.Text = "Close Data Monthly";
+            this.btnCloseData.Click += new System.EventHandler(this.btnCloseData_Click);
+            // 
+            // cheDaily
+            // 
+            this.cheDaily.Location = new System.Drawing.Point(535, 8);
+            this.cheDaily.Name = "cheDaily";
+            this.cheDaily.Properties.Caption = "Daily/일일";
+            this.cheDaily.Size = new System.Drawing.Size(75, 20);
+            this.cheDaily.TabIndex = 6;
+            this.cheDaily.CheckedChanged += new System.EventHandler(this.cheDaily_CheckedChanged);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(287, 11);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(11, 17);
+            this.labelControl2.TabIndex = 5;
+            this.labelControl2.Text = "~";
+            // 
+            // dateTo
+            // 
+            this.dateTo.EditValue = null;
+            this.dateTo.Location = new System.Drawing.Point(304, 9);
+            this.dateTo.Name = "dateTo";
+            this.dateTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateTo.Size = new System.Drawing.Size(211, 20);
+            this.dateTo.TabIndex = 4;
+            // 
             // btnDownloadFile
             // 
             this.btnDownloadFile.FormId = null;
             this.btnDownloadFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadFile.ImageOptions.Image")));
             this.btnDownloadFile.isFormType = false;
-            this.btnDownloadFile.Location = new System.Drawing.Point(434, 5);
+            this.btnDownloadFile.Location = new System.Drawing.Point(751, 5);
             this.btnDownloadFile.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnDownloadFile.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnDownloadFile.Name = "btnDownloadFile";
@@ -111,7 +187,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.btnLoadFileData.FormId = null;
             this.btnLoadFileData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadFileData.ImageOptions.Image")));
             this.btnLoadFileData.isFormType = false;
-            this.btnLoadFileData.Location = new System.Drawing.Point(299, 5);
+            this.btnLoadFileData.Location = new System.Drawing.Point(616, 5);
             this.btnLoadFileData.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnLoadFileData.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnLoadFileData.Name = "btnLoadFileData";
@@ -154,6 +230,7 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             this.spreadsheetMain.Location = new System.Drawing.Point(12, 91);
             this.spreadsheetMain.Name = "spreadsheetMain";
+            this.spreadsheetMain.Options.Culture = new System.Globalization.CultureInfo("en-US");
             this.spreadsheetMain.Size = new System.Drawing.Size(1621, 732);
             this.spreadsheetMain.TabIndex = 4;
             this.spreadsheetMain.Text = "spreadsheetControl1";
@@ -197,6 +274,10 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // FRM_FINACING_STATEMENT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +293,11 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCloseMonth.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCloseMonth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cheDaily.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTo.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateLoad.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateLoad.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -238,5 +324,11 @@ namespace Wisol.MES.Forms.CONTENT
         private DevExpress.XtraEditors.DateEdit dateLoad;
         private XSimpleButton btnLoadFileData;
         private XSimpleButton btnDownloadFile;
+        private LabelControl labelControl2;
+        private DateEdit dateTo;
+        private CheckEdit cheDaily;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private XSimpleButton btnCloseData;
+        private DateEdit dateCloseMonth;
     }
 }

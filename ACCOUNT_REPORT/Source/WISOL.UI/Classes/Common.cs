@@ -27,6 +27,11 @@ namespace Wisol.MES.Classes
 {
     public class Common
     {
+        public static int MonthDifference(DateTime lValue, DateTime rValue)
+        {
+            return Math.Abs((lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year));
+        }
+
         public static void ShowImge(string image, DevExpress.XtraEditors.PictureEdit img)
         {
             if (!string.IsNullOrWhiteSpace(image))

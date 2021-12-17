@@ -21,6 +21,11 @@ namespace Wisol.MES.Forms.CONTENT.POP
         public string ImportType { get; set; }
         DataTable Data;
 
+        public DateTime Date { get; set; }
+        public string ExRev { get; set; }
+        public string ExPay { get; set; }
+        public string IsPlant { get; set; }
+
         private void IMPORT_EXCEL_Load(object sender, EventArgs e)
         {
             Data = new DataTable();
@@ -46,9 +51,27 @@ namespace Wisol.MES.Forms.CONTENT.POP
                     {
                         base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_BANK_STATEMENT.IMPORT", new string[] { "A_USER" }, "A_DATA", new string[] { Consts.USER_INFO.Id }, Data);
                     }
-                    else if(ImportType == Consts.IMPORT_TYPE_RECEIVE_PAYMENT)
+                    else if (ImportType == Consts.IMPORT_TYPE_RECEIVE_PAYMENT)
                     {
-                        base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_RECEIVE_PAYMENT_DETAIL.IMPORT", new string[] { "A_USER" }, "A_DATA", new string[] { Consts.USER_INFO.Id }, Data);
+                        base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_DETAIL_MONHTLY.IMPORT",
+                            new string[]
+                            {
+                                "A_USER",
+                                "A_DATE",
+                                "A_EX_REV",
+                                "A_EX_PAY",
+                                "A_IS_PLANT",
+                            },
+                            "A_DATA",
+                            new string[]
+                            {
+                                Consts.USER_INFO.Id,
+                                Date.ToString("yyyy-MM-dd"),
+                                ExRev,
+                                ExPay,
+                                IsPlant
+                            },
+                            Data);
                     }
 
                     if (mResultDB.ReturnInt == 0)
@@ -139,11 +162,26 @@ namespace Wisol.MES.Forms.CONTENT.POP
                         int i = 0;
                         foreach (DataRow row in Data.Rows)
                         {
-                            if(i > 0)
+                            if (i > 0)
                             {
                                 row[4] = row[4].NullString().Replace(",", ""); // GHI NO
                                 row[5] = row[5].NullString().Replace(",", ""); // GHI CO
                                 row[6] = row[6].NullString().Replace(",", ""); // SO DU
+
+                                if (row[4].NullString() == "")
+                                {
+                                    row[4] = "0";
+                                }
+
+                                if (row[5].NullString() == "")
+                                {
+                                    row[5] = "0";
+                                }
+
+                                if (row[6].NullString() == "")
+                                {
+                                    row[6] = "0";
+                                }
                             }
                             i++;
                         }
@@ -153,17 +191,67 @@ namespace Wisol.MES.Forms.CONTENT.POP
                         int i = 0;
                         foreach (DataRow row in Data.Rows)
                         {
-                            if (i > 0)
+                            if (i > 2)
                             {
-                                row[7] = row[7].NullString().Replace(",", ""); // Cash
-                                row[6] = row[6].NullString().Replace(",", ""); // Deposit
+
+                                row[2] = row[2].NullString().Replace(",", ""); // Debit Amt.
+                                row[3] = row[3].NullString().Replace(",", ""); // Debit Amt.(Local)
+                                row[4] = row[4].NullString().Replace(",", "");
+                                row[5] = row[5].NullString().Replace(",", "");
+                                
+                                if (row[2].NullString() == "" || row[2].NullString() == "-" )
+                                {
+                                    row[2] = "0";
+                                }
+
+                                if (row[3].NullString() == "" || row[3].NullString() == "-" )
+                                {
+                                    row[3] = "0";
+                                }
+
+                                if (row[4].NullString() == "" || row[4].NullString() == "-" )
+                                {
+                                    row[4] = "0";
+                                }
+
+                                if (row[5].NullString() == "" || row[5].NullString() == "-" )
+                                {
+                                    row[5] = "0";
+                                }
+
+                                double x1;
+                                double x2;
+                                double x3;
+                                double x4;
+                                try
+                                {
+                                    x1 = double.Parse(row[2].NullString());
+                                    x2 = double.Parse(row[3].NullString());
+                                    x3 = double.Parse(row[4].NullString());
+                                    x4 = double.Parse(row[5].NullString());
+                                }
+                                catch (Exception)
+                                {
+                                    string msg = "Debit Amt: " + row[2].NullString() + "Debit Amt.(Local): " + row[3].NullString() + "Credit Amt: " + row[4].NullString() + "Credit Amt(local):" + row[5].NullString();
+                                    MessageBox.Show("Data Error: "+ msg);
+                                    return;
+                                }
                             }
                             i++;
                         }
                     }
 
-                    Data.Rows.RemoveAt(0);
-
+                    if (ImportType == Consts.IMPORT_TYPE_RECEIVE_PAYMENT)
+                    {
+                        Data.Rows.RemoveAt(0);
+                        Data.Rows.RemoveAt(0);
+                        Data.Rows.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Data.Rows.RemoveAt(0);
+                    }
+                      
                     base.mBindData.BindGridView(gcList, Data);
                     //gvList.DeleteRow(0);
                 }

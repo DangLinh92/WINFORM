@@ -45,7 +45,7 @@ namespace Wisol.MES.Forms.CONTENT
         {
             try
             {
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { dateSearch.EditValue.NullString() });
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd") });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTableCollection data = base.m_ResultDB.ReturnDataSet.Tables;
@@ -65,7 +65,7 @@ namespace Wisol.MES.Forms.CONTENT
                     //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
-                    gvList.ClearColumnsFilter();
+                    //gvList.ClearColumnsFilter();
                 }
                 else
                 {
@@ -92,6 +92,8 @@ namespace Wisol.MES.Forms.CONTENT
                 if (e.KeyCode == Keys.Enter)
                 {
                     gvList.ClearColumnsFilter();
+
+                    lblQRCODE.Text = txtQRCODE.EditValue.NullString();
 
                     bool isChecked = false;
                     int rowHandle = -1;
@@ -238,12 +240,21 @@ namespace Wisol.MES.Forms.CONTENT
                     if (isClick)
                     {
                         MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Information);
-                        Init();
                     }
+                    Init();
 
                     if (txtID.EditValue.NullString() == "")
                     {
-                        Init();
+                        string code = "";
+                        for (int i = 0; i < gvList.RowCount; i++)
+                        {
+                            code = gvList.GetRowCellValue(i, "CODE").NullString();
+                            if (txtCode.EditValue.NullString().Contains(code))
+                            {
+                                gvList.MakeRowVisible(i);
+                                break;
+                            }
+                        }
                     }
 
                     if (txtCode.EditValue.NullString() == "") // TH k co ma
@@ -281,7 +292,7 @@ namespace Wisol.MES.Forms.CONTENT
                     return;
                 }
 
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { dateSearch.EditValue.NullString() });
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd") });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     gcList.DataSource = base.m_ResultDB.ReturnDataSet.Tables[2];

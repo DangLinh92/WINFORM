@@ -751,6 +751,8 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             this.gvList.GridControl = this.gcList;
             this.gvList.Name = "gvList";
+            this.gvList.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.True;
+            this.gvList.OptionsMenu.ShowSummaryItemMode = DevExpress.Utils.DefaultBoolean.True;
             this.gvList.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvList_RowCellClick);
             this.gvList.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvList_RowStyle);
             // 

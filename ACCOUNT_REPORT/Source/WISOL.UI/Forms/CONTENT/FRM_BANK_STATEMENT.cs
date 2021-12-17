@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Data;
+using DevExpress.XtraGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -114,6 +116,25 @@ namespace Wisol.MES.Forms.CONTENT
                     gvList.Columns["ID"].Visible = false;
 
                     gvList.OptionsView.ColumnAutoWidth = true;
+
+                    GridColumnSummaryItem debitTotal = new GridColumnSummaryItem();
+                    debitTotal.SummaryType = SummaryItemType.Sum;
+                    debitTotal.DisplayFormat = "Debit: {0:#.###}";
+
+                    GridColumnSummaryItem creditTotal = new GridColumnSummaryItem();
+                    creditTotal.SummaryType = SummaryItemType.Sum;
+                    creditTotal.DisplayFormat = "Credit: {0:#.###}";
+                    if(gvList.Columns["DEBIT"].Summary.Count == 0)
+                    {
+                        gvList.Columns["DEBIT"].Summary.Add(debitTotal);
+                    }
+
+                    if (gvList.Columns["CREDIT"].Summary.Count == 0)
+                    {
+                        gvList.Columns["CREDIT"].Summary.Add(creditTotal);
+                    }
+                        
+                    gvList.OptionsView.ShowFooter = true;
                 }
                 else
                 {
