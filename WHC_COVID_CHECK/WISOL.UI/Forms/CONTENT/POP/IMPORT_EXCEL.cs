@@ -20,6 +20,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
 
         public string ImportType = "";
         public string DateTest = "";
+        public string Event = "";
         DataTable Data;
 
         private void IMPORT_EXCEL_Load(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
                     {
                         if (DateTest != "")
                         {
-                            base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_NHANVIEN_TEST.IMPORT", new string[] { "A_DATE" }, "A_DATA", new string[] { DateTest }, Data);
+                            base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_NHANVIEN_TEST.IMPORT", new string[] { "A_DATE", "A_EVENT" }, "A_DATA", new string[] { DateTest, Event }, Data);
                         }
                         else
                         {
@@ -82,6 +83,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Excel Files (.xls*)|*.xls*|All Files (*.*)|*.*";
             dlg.Multiselect = false;
+            dlg.InitialDirectory = Application.StartupPath;
 
             DialogResult dlgResult = dlg.ShowDialog();
             if (dlgResult == DialogResult.OK)

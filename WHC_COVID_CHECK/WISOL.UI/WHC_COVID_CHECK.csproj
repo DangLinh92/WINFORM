@@ -241,11 +241,23 @@
     <Compile Include="Forms\CONTENT\COVID_CHECK.Designer.cs">
       <DependentUpon>COVID_CHECK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CONTENT\HISTORY_COVID_CHECK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\HISTORY_COVID_CHECK.Designer.cs">
+      <DependentUpon>HISTORY_COVID_CHECK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CONTENT\NHAN_VIEN.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\CONTENT\NHAN_VIEN.Designer.cs">
       <DependentUpon>NHAN_VIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\ADD_EVENT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\ADD_EVENT.Designer.cs">
+      <DependentUpon>ADD_EVENT.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.cs">
       <SubType>Form</SubType>
@@ -532,8 +544,14 @@
     <EmbeddedResource Include="Forms\CONTENT\COVID_CHECK.resx">
       <DependentUpon>COVID_CHECK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\HISTORY_COVID_CHECK.resx">
+      <DependentUpon>HISTORY_COVID_CHECK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\NHAN_VIEN.resx">
       <DependentUpon>NHAN_VIEN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\ADD_EVENT.resx">
+      <DependentUpon>ADD_EVENT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\POP\IMPORT_EXCEL.resx">
       <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
@@ -675,6 +693,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="DANH_SACH_TEST.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DANH_SACH_TEST_ALL_CONG_TY.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

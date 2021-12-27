@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using System;
@@ -41,11 +42,11 @@ namespace Wisol.MES.Forms.CONTENT
             Init();
         }
 
-        private void Init()
+        private void Init(bool clearFilter = true)
         {
             try
             {
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd") });
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE","A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"),cboEvent.SelectedItem.NullString() });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTableCollection data = base.m_ResultDB.ReturnDataSet.Tables;
@@ -65,7 +66,19 @@ namespace Wisol.MES.Forms.CONTENT
                     //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
-                    //gvList.ClearColumnsFilter();
+
+                    if (clearFilter)
+                    {
+                        gvList.ClearColumnsFilter();
+                    }
+
+                    cboEvent.Properties.Items.Clear();
+                    foreach (DataRow item in data[3].Rows)
+                    {
+                        cboEvent.Properties.Items.Add(item["EVENT"].NullString());
+                    }
+
+                    SetResult();
                 }
                 else
                 {
@@ -76,6 +89,97 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
             }
+        }
+
+        private void SetResult()
+        {
+            Dictionary<string, int> lstOK_PCR = new Dictionary<string, int>();
+            Dictionary<string, int> lstNG_PCR = new Dictionary<string, int>();
+
+            Dictionary<string, int> lstOK_QUICK = new Dictionary<string, int>();
+            Dictionary<string, int> lstNG_QUICK = new Dictionary<string, int>();
+
+            string dept = "";
+            for (int i = 0; i < gvList.RowCount; i++)
+            {
+                dept = gvList.GetRowCellValue(i, "DEPT_CODE").NullString();
+                if (!lstOK_PCR.ContainsKey(dept))
+                {
+                    lstOK_PCR.Add(dept, 0);
+                }
+
+                if (!lstNG_PCR.ContainsKey(dept))
+                {
+                    lstNG_PCR.Add(dept, 0);
+                }
+
+                if (!lstOK_QUICK.ContainsKey(dept))
+                {
+                    lstOK_QUICK.Add(dept, 0);
+                }
+
+                if (!lstNG_QUICK.ContainsKey(dept))
+                {
+                    lstNG_QUICK.Add(dept, 0);
+                }
+
+                if (gvList.GetRowCellValue(i, "PCR_OK").NullString() == "OK")
+                {
+                    lstOK_PCR[dept] += 1;
+                }
+                else
+                {
+                    lstNG_PCR[dept] += 1;
+                }
+
+                if (gvList.GetRowCellValue(i, "QUICK_OK").NullString() == "OK")
+                {
+                    lstOK_QUICK[dept] += 1;
+                }
+                else
+                {
+                    lstNG_QUICK[dept] += 1;
+                }
+            }
+
+            DataTable resultData = new DataTable();
+            resultData.Columns.Add("DEPT");
+            resultData.Columns.Add("PCR_OK");
+            resultData.Columns.Add("PCR_NG");
+            resultData.Columns.Add("QUICK_OK");
+            resultData.Columns.Add("QUICK_NG");
+            resultData.Columns.Add("TOTAL");
+
+            DataRow row;
+            foreach (var item in lstOK_PCR)
+            {
+                row = resultData.NewRow();
+                row["DEPT"] = item.Key;
+                row["PCR_OK"] = item.Value.NullString();
+                row["PCR_NG"] = lstNG_PCR[item.Key].NullString();
+                row["QUICK_OK"] = lstOK_QUICK[item.Key].NullString();
+                row["QUICK_NG"] = lstNG_QUICK[item.Key].NullString();
+                row["TOTAL"] = item.Value + lstNG_PCR[item.Key];
+                resultData.Rows.Add(row);
+            }
+            //m_BindData.BindGridView(gcListResult, resultData);
+            gcListResult.DataSource = resultData;
+            gvListResult.Columns["PCR_OK"].Summary.Clear();
+            gvListResult.Columns["PCR_NG"].Summary.Clear();
+            gvListResult.Columns["QUICK_OK"].Summary.Clear();
+            gvListResult.Columns["QUICK_NG"].Summary.Clear();
+            gvListResult.Columns["TOTAL"].Summary.Clear();
+            GridColumnSummaryItem item1 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PCR_OK", "{0}");
+            GridColumnSummaryItem item2 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PCR_NG", "{0}");
+            GridColumnSummaryItem item3 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QUICK_OK", "{0}");
+            GridColumnSummaryItem item4 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QUICK_NG", "{0}");
+            GridColumnSummaryItem item5 = new GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TOTAL", "{0}");
+            gvListResult.Columns["PCR_OK"].Summary.Add(item1);
+            gvListResult.Columns["PCR_NG"].Summary.Add(item2);
+            gvListResult.Columns["QUICK_OK"].Summary.Add(item3);
+            gvListResult.Columns["QUICK_NG"].Summary.Add(item4);
+            gvListResult.Columns["TOTAL"].Summary.Add(item5);
+
         }
 
         private void txtQRCODE_KeyDown(object sender, KeyEventArgs e)
@@ -228,8 +332,10 @@ namespace Wisol.MES.Forms.CONTENT
                 }
 
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.UPDATE_ITEM",
-                    new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG_PCR", "A_OKE_NG_QUICK", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST" },
-                    new string[] { txtID.EditValue.NullString(), dateCheck.EditValue.NullString(), cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), dept, OK_NG_PCR, OK_NG_QUICK, txtNote.EditValue.NullString(), txtCalamviec.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
+                    new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG_PCR", "A_OKE_NG_QUICK", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST", "A_EVENT" },
+                    new string[] { txtID.EditValue.NullString(), dateCheck.EditValue.NullString(),
+                        cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), 
+                        dept, OK_NG_PCR, OK_NG_QUICK, txtNote.EditValue.NullString(), txtCalamviec.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),cboEvent.SelectedItem.NullString() });
 
                 if (base.m_ResultDB.ReturnInt != 0)
                 {
@@ -241,19 +347,16 @@ namespace Wisol.MES.Forms.CONTENT
                     {
                         MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Information);
                     }
-                    Init();
+                    Init(!isClick);
 
-                    if (txtID.EditValue.NullString() == "")
+                    string code = "";
+                    for (int i = 0; i < gvList.RowCount; i++)
                     {
-                        string code = "";
-                        for (int i = 0; i < gvList.RowCount; i++)
+                        code = gvList.GetRowCellValue(i, "CODE").NullString();
+                        if (txtCode.EditValue.NullString().Contains(code))
                         {
-                            code = gvList.GetRowCellValue(i, "CODE").NullString();
-                            if (txtCode.EditValue.NullString().Contains(code))
-                            {
-                                gvList.MakeRowVisible(i);
-                                break;
-                            }
+                            gvList.MakeRowVisible(i);
+                            break;
                         }
                     }
 
@@ -265,6 +368,7 @@ namespace Wisol.MES.Forms.CONTENT
                         }
                     }
 
+                    lastCode = txtCode.Text.NullString();
                     txtQRCODE.Text = "";
                     txtCode.EditValue = "";
                     txtName.EditValue = "";
@@ -282,6 +386,8 @@ namespace Wisol.MES.Forms.CONTENT
 
         }
 
+        private string lastCode = "";
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -292,10 +398,11 @@ namespace Wisol.MES.Forms.CONTENT
                     return;
                 }
 
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd") });
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE", "A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"), cboEvent.SelectedItem.NullString() }) ;
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
-                    gcList.DataSource = base.m_ResultDB.ReturnDataSet.Tables[2];
+                    DataTableCollection data = base.m_ResultDB.ReturnDataSet.Tables;
+                    gcList.DataSource = data[2];
                     gvList.Columns["ID"].Visible = false;
                     gvList.Columns["PCR"].Width = 40;
                     gvList.Columns["QUICK_TEST"].Width = 70;
@@ -310,6 +417,15 @@ namespace Wisol.MES.Forms.CONTENT
                     //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
+
+                    cboEvent.Properties.Items.Clear();
+
+                    foreach (DataRow item in data[3].Rows)
+                    {
+                        cboEvent.Properties.Items.Add(item["EVENT"].NullString());
+                    }
+
+                    SetResult();
                 }
                 else
                 {
@@ -339,6 +455,13 @@ namespace Wisol.MES.Forms.CONTENT
                 }
             }
 
+            if(e.Column.FieldName == "CODE")
+            {
+                if (gvList.GetRowCellValue(e.RowHandle, "CODE").NullString() == lastCode && lastCode != "")
+                {
+                    e.Appearance.BackColor = Color.Pink;
+                }
+            }
         }
 
         private void gvList_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -376,41 +499,18 @@ namespace Wisol.MES.Forms.CONTENT
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            if (dateUploadForTest.EditValue.NullString() != "")
+            if (dateUploadForTest.EditValue.NullString() != "" && cboEvent.SelectedItem.NullString() != "")
             {
                 POP.IMPORT_EXCEL import = new POP.IMPORT_EXCEL();
                 import.ImportType = "1";
+                import.Event = cboEvent.SelectedItem.NullString();
                 import.DateTest = dateUploadForTest.EditValue.NullString();
                 import.ShowDialog();
                 btnSearch.PerformClick();
             }
             else
             {
-                MsgBox.Show("HÃY NHẬP NGÀY DỰ KIẾN TEST COVID", MsgType.Warning);
-            }
-        }
-
-        private void btnSearchAll_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.GETALL", new string[] { }, new string[] { });
-                if (base.m_ResultDB.ReturnInt == 0)
-                {
-                    gcList.DataSource = base.m_ResultDB.ReturnDataSet.Tables[0];
-                    gvList.Columns["ID"].Visible = false;
-                    gvList.OptionsView.ColumnAutoWidth = true;
-                    gvList.OptionsSelection.MultiSelect = true;
-                    gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
-                }
-                else
-                {
-                    MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
+                MsgBox.Show("HÃY NHẬP NGÀY DỰ KIẾN TEST COVID VÀ SỰ KIỆN TEST", MsgType.Warning);
             }
         }
 
@@ -588,7 +688,7 @@ namespace Wisol.MES.Forms.CONTENT
                     if (m_ResultDB.ReturnInt == 0)
                     {
                         MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Information);
-                        Init();
+                        Init(false);
                     }
                     else
                     {
@@ -629,6 +729,44 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
             }
+        }
+
+        private void gvListResult_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+
+        }
+
+        private void btnAddEvent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                POP.ADD_EVENT pop = new POP.ADD_EVENT();
+                pop.ShowDialog();
+
+                if(pop.Event.NullString() != "" && !cboEvent.Properties.Items.Contains(pop.Event.NullString()))
+                {
+                    cboEvent.Properties.Items.Add(pop.Event.NullString());
+                    cboEvent.SelectedItem = pop.Event.NullString();
+                    btnSearch.PerformClick();
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
+            }
+        }
+
+        private void cboEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnSearch.PerformClick();
+        }
+
+        private void gvListResult_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (e.RowHandle < 0)
+                return;
+
+            gvList.ActiveFilterString = "[DEPT_CODE] = '" + gvListResult.GetRowCellValue(e.RowHandle, "DEPT").NullString() + "'";
         }
     }
 }
