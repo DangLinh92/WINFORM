@@ -698,6 +698,9 @@
     <None Include="DANH_SACH_TEST_ALL_CONG_TY.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="FILE_TEMPLATE_TIEM_CHUNG.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>

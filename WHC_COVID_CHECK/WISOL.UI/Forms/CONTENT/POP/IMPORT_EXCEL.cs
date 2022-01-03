@@ -48,6 +48,10 @@ namespace Wisol.MES.Forms.CONTENT.POP
                     {
                         base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_NHANVIEN.IMPORT", new string[] { }, "A_DATA", new string[] { }, Data);
                     }
+                    else if (ImportType == "2")
+                    {
+                        base.mResultDB = base.mDBaccess.ExcuteProcWithTableParam("PKG_BUSINESS_NHANVIEN_TIEM_VACCIN.IMPORT", new string[] { }, "A_DATA", new string[] { }, Data);
+                    }
                     else
                     {
                         if (DateTest != "")
@@ -138,6 +142,11 @@ namespace Wisol.MES.Forms.CONTENT.POP
                     conexcel.Close();
 
                     Data.Rows.RemoveAt(0);
+
+                    if(ImportType == "2") // vaccin
+                    {
+                        Data.Rows.RemoveAt(0);
+                    }
 
                     base.mBindData.BindGridView(gcList, Data);
                     //gvList.DeleteRow(0);

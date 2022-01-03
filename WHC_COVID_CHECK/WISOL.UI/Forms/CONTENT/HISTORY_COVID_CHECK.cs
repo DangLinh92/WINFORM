@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,7 @@ namespace Wisol.MES.Forms.CONTENT
         private void HISTORY_COVID_CHECK_Load(object sender, EventArgs e)
         {
             Classes.Common.SetFormIdToButton(this, "HISTORY_COVID_CHECK");
+            txtID.ReadOnly = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -39,6 +42,8 @@ namespace Wisol.MES.Forms.CONTENT
                     gcList.DataSource = base.m_ResultDB.ReturnDataSet.Tables[0];
                     gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.Columns["ID"].Visible = false;
+
+                    base.m_BindData.BindGridView(gcVaccin, base.m_ResultDB.ReturnDataSet.Tables[1]);
                 }
                 else
                 {
@@ -147,6 +152,49 @@ namespace Wisol.MES.Forms.CONTENT
             if (e.KeyCode == Keys.Enter)
             {
                 btnSearch.PerformClick();
+            }
+        }
+
+        private void btnGetFileVaccin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = "";
+                fileName = "FILE_TEMPLATE_TIEM_CHUNG.xlsx";
+
+                string url = Application.StartupPath + @"\\" + fileName;
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = fileName;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (WebClient web1 = new WebClient())
+                        web1.DownloadFile(url, saveFileDialog.FileName);
+                    MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Information);
+                    Process.Start(saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
+            }
+        }
+
+        private void btnImportVaccin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                POP.IMPORT_EXCEL import = new POP.IMPORT_EXCEL();
+                import.ImportType = "2";
+                import.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
             }
         }
     }
