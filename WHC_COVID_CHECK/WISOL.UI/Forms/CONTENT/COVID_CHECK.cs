@@ -46,7 +46,7 @@ namespace Wisol.MES.Forms.CONTENT
         {
             try
             {
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE","A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"),cboEvent.SelectedItem.NullString() });
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE", "A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"), cboEvent.SelectedItem.NullString() });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTableCollection data = base.m_ResultDB.ReturnDataSet.Tables;
@@ -63,6 +63,8 @@ namespace Wisol.MES.Forms.CONTENT
                     gvList.Columns["THOI_GIAN_TEST"].Width = 40;
                     gvList.Columns["DIA_DIEM_TEST"].Width = 40;
                     gvList.Columns["NOTE"].Width = 150;
+                    gvList.Columns["CMTND"].Width = 50;
+                    gvList.Columns["NGAY_SINH"].Width = 50;
                     //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
@@ -231,6 +233,18 @@ namespace Wisol.MES.Forms.CONTENT
                         txtName.EditValue = gvList.GetRowCellValue(rowHandle, "NAME").NullString();
                         stlDeptCode.EditValue = gvList.GetRowCellValue(rowHandle, "DEPT_CODE").NullString();
                         txtCalamviec.EditValue = gvList.GetRowCellValue(rowHandle, "CA_LAM_VIEC").NullString();
+                        txtCMTND.EditValue = gvList.GetRowCellValue(rowHandle, "CMTND").NullString();
+                        DateTime dateOb;
+                        DateTime.TryParse(gvList.GetRowCellValue(rowHandle, "NGAY_SINH").NullString(), out dateOb);
+
+                        if (dateOb != null)
+                        {
+                            dateOfB.EditValue = dateOb.ToString("yyyy-MM-dd");
+                        }
+                        else
+                        {
+                            dateOfB.EditValue = null;
+                        }
                         cheTested.Checked = true;
 
                         string OK_NG_PCR = gvList.GetRowCellValue(rowHandle, "PCR_OK").NullString();
@@ -274,6 +288,8 @@ namespace Wisol.MES.Forms.CONTENT
                             cheTested.Checked = true;
                             txtID.EditValue = "";
                             txtNote.EditValue = "PHAT SINH";
+                            dateOfB.EditValue = null;
+                            txtCMTND.EditValue = "";
                         }
                         else
                         {
@@ -284,6 +300,8 @@ namespace Wisol.MES.Forms.CONTENT
                             cheTested.Checked = true;
                             txtID.EditValue = "";
                             txtNote.EditValue = "PHAT SINH";
+                            dateOfB.EditValue = null;
+                            txtCMTND.EditValue = "";
                         }
                     }
 
@@ -331,11 +349,23 @@ namespace Wisol.MES.Forms.CONTENT
                     OK_NG_QUICK = cheTested.Checked ? "OK" : "NG";
                 }
 
+                DateTime dateOb;
+                DateTime.TryParse(dateOfB.EditValue.NullString(), out dateOb);
+                string dateObInput = "";
+                if (dateOb != null)
+                {
+                    dateObInput = dateOb.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    dateObInput = "";
+                }
+
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.UPDATE_ITEM",
-                    new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG_PCR", "A_OKE_NG_QUICK", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST", "A_EVENT" },
+                    new string[] { "A_ID", "A_DATE", "A_PCR_QUICK", "A_LOCATION", "A_MA_NV", "A_NAME", "A_DEPT_CODE", "A_OKE_NG_PCR", "A_OKE_NG_QUICK", "A_NOTE", "A_CA_LAM", "A_THOI_GIAN_TEST", "A_EVENT", "A_NGAY_SINH", "A_CMTND" },
                     new string[] { txtID.EditValue.NullString(), dateCheck.EditValue.NullString(),
-                        cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(), 
-                        dept, OK_NG_PCR, OK_NG_QUICK, txtNote.EditValue.NullString(), txtCalamviec.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),cboEvent.SelectedItem.NullString() });
+                        cboPCR_Quick.Text, location, txtCode.EditValue.NullString().ToUpper(), txtName.EditValue.NullString(),
+                        dept, OK_NG_PCR, OK_NG_QUICK, txtNote.EditValue.NullString(), txtCalamviec.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),cboEvent.SelectedItem.NullString(),dateObInput,txtCMTND.EditValue.NullString() });
 
                 if (base.m_ResultDB.ReturnInt != 0)
                 {
@@ -377,6 +407,8 @@ namespace Wisol.MES.Forms.CONTENT
                     txtCalamviec.Text = "";
                     txtID.EditValue = "";
                     txtNote.EditValue = "";
+                    txtCMTND.EditValue = "";
+                    dateOfB.EditValue = "";
                 }
             }
             catch (Exception ex)
@@ -398,7 +430,7 @@ namespace Wisol.MES.Forms.CONTENT
                     return;
                 }
 
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE", "A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"), cboEvent.SelectedItem.NullString() }) ;
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_NHANVIEN_COVID_CHECK.INIT", new string[] { "A_DATE", "A_EVENT" }, new string[] { DateTime.Parse(dateSearch.EditValue.NullString()).ToString("yyyy-MM-dd"), cboEvent.SelectedItem.NullString() });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTableCollection data = base.m_ResultDB.ReturnDataSet.Tables;
@@ -414,6 +446,8 @@ namespace Wisol.MES.Forms.CONTENT
                     gvList.Columns["THOI_GIAN_TEST"].Width = 40;
                     gvList.Columns["DIA_DIEM_TEST"].Width = 40;
                     gvList.Columns["NOTE"].Width = 150;
+                    gvList.Columns["CMTND"].Width = 50;
+                    gvList.Columns["NGAY_SINH"].Width = 50;
                     //gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.OptionsSelection.MultiSelect = true;
                     gvList.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect;
@@ -455,7 +489,7 @@ namespace Wisol.MES.Forms.CONTENT
                 }
             }
 
-            if(e.Column.FieldName == "CODE")
+            if (e.Column.FieldName == "CODE")
             {
                 if (gvList.GetRowCellValue(e.RowHandle, "CODE").NullString() == lastCode && lastCode != "")
                 {
@@ -480,6 +514,18 @@ namespace Wisol.MES.Forms.CONTENT
                 stlDeptCode.EditValue = gvList.GetRowCellValue(e.RowHandle, "DEPT_CODE").NullString();
                 txtNote.EditValue = gvList.GetRowCellValue(e.RowHandle, "NOTE").NullString();
                 txtLocation.EditValue = txtLocation.EditValue.NullString() == "" ? gvList.GetRowCellValue(e.RowHandle, "DIA_DIEM_TEST").NullString() : txtLocation.EditValue.NullString();
+                txtCMTND.EditValue = gvList.GetRowCellValue(e.RowHandle, "CMTND").NullString();
+                DateTime dateOb;
+                DateTime.TryParse(gvList.GetRowCellValue(e.RowHandle, "NGAY_SINH").NullString(), out dateOb);
+
+                if (dateOb != null)
+                {
+                    dateOfB.EditValue = dateOb.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    dateOfB.EditValue = null;
+                }
 
                 if (cboPCR_Quick.Text == "PCR")
                 {
@@ -675,6 +721,8 @@ namespace Wisol.MES.Forms.CONTENT
             cheTested.Checked = false;
             txtCalamviec.Text = "";
             txtID.EditValue = "";
+            dateOfB.EditValue = "";
+            txtCMTND.EditValue = "";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -743,7 +791,7 @@ namespace Wisol.MES.Forms.CONTENT
                 POP.ADD_EVENT pop = new POP.ADD_EVENT();
                 pop.ShowDialog();
 
-                if(pop.Event.NullString() != "" && !cboEvent.Properties.Items.Contains(pop.Event.NullString()))
+                if (pop.Event.NullString() != "" && !cboEvent.Properties.Items.Contains(pop.Event.NullString()))
                 {
                     cboEvent.Properties.Items.Add(pop.Event.NullString());
                     cboEvent.SelectedItem = pop.Event.NullString();
