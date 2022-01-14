@@ -482,11 +482,8 @@ namespace Wisol.MES.Forms.CONTENT
             }
             else if (gvList.GetRowCellValue(e.RowHandle, "QUICK_OK").NullString() == "OK")
             {
-                if (e.Column.FieldName == "QUICK_OK")
-                {
-                    e.Appearance.BackColor = Color.FromArgb(253, 235, 208);
-                    gvList.SelectRow(e.RowHandle);
-                }
+                e.Appearance.BackColor = Color.LightGreen;
+                gvList.SelectRow(e.RowHandle);
             }
 
             if (e.Column.FieldName == "CODE")
