@@ -75,7 +75,6 @@ namespace Wisol.MES.Forms.CONTENT
             this.txtCode = new Wisol.XTextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -95,6 +94,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gcList = new Wisol.XGridControl();
             this.gvList = new Wisol.XGridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -146,7 +146,6 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
@@ -166,6 +165,7 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -725,15 +725,6 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem3.Text = "Mã NV";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(103, 13);
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.txtName;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 164);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(399, 24);
-            this.layoutControlItem4.Text = "Tên ";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(103, 13);
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.stlDeptCode;
@@ -909,6 +900,15 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem25.Text = "CMTND";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(103, 13);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtName;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 164);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(399, 24);
+            this.layoutControlItem4.Text = "Tên ";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(103, 13);
+            // 
             // gcList
             // 
             this.gcList.Location = new System.Drawing.Point(12, 54);
@@ -1021,7 +1021,6 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.txtCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
@@ -1041,6 +1040,7 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
