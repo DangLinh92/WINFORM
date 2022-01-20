@@ -43,9 +43,9 @@
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Location = new System.Drawing.Point(69, 133);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(249, 32);
+            this.lblTitle.Size = new System.Drawing.Size(246, 32);
             this.lblTitle.TabIndex = 21;
-            this.lblTitle.Text = "WHC법인_SPARE PART";
+            this.lblTitle.Text = "WHC법인_SMART GAS";
             // 
             // lblMsg
             // 

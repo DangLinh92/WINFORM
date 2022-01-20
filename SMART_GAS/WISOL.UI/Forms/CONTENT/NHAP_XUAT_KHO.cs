@@ -23,7 +23,6 @@ namespace Wisol.MES.Forms.CONTENT
 
         private void NHAP_XUAT_KHO_Load(object sender, EventArgs e)
         {
-            cheInput.Checked = true;
             Classes.Common.SetFormIdToButton(this, "NHAP_XUAT_KHO");
             InitData();
         }
@@ -47,6 +46,9 @@ namespace Wisol.MES.Forms.CONTENT
                     m_BindData.BindGridLookEdit(stlCodeBelow, tableCollection[1], "Id", "Name");
 
                     gcList.DataSource = tableCollection[2];
+
+                    gcReturnList.DataSource = tableCollection[3];
+                    gvReturnList.OptionsView.ColumnAutoWidth = true;
 
                     gvList.OptionsView.ColumnAutoWidth = true;
                     gvList.Columns["Id"].Visible = false;
@@ -81,6 +83,12 @@ namespace Wisol.MES.Forms.CONTENT
                 if (stlCode.EditValue.NullString() == "" || dateInput.EditValue.NullString() == "" || stlDepartment.EditValue.NullString() == "" || txtQuantity.EditValue.NullString() == "")
                 {
                     MsgBox.Show("MSG_ERR_044".Translation(), MsgType.Warning);
+                    return;
+                }
+
+                if(!cheInput.Checked && !cheOutput.Checked)
+                {
+                    MsgBox.Show("CHỌN NHẬP HOẶC XUẤT".Translation(), MsgType.Warning);
                     return;
                 }
 
@@ -200,6 +208,8 @@ namespace Wisol.MES.Forms.CONTENT
             dateInput.EditValue = DateTime.Now;
             txtUser.EditValue = "";
             txtNote.EditValue = "";
+            cheInput.Checked = false;
+            cheOutput.Checked = false;
 
             stlDepartment.Enabled = true;
             stlCode.Enabled = true;
@@ -247,6 +257,13 @@ namespace Wisol.MES.Forms.CONTENT
                     return;
                 }
 
+                DateTime date = DateTime.Now;
+                string dateIn = "";
+                if (DateTime.TryParse(dateTranfer.EditValue.NullString(), out date))
+                {
+                    dateIn = date.ToString("yyyy-MM-dd");
+                }
+
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS.LOAN_GAS",
                    new string[] { "A_GAS_ID", "A_QUANTITY", "A_DEPT_FROM", "A_DEPT_TO", "A_DATE", "A_USER" },
                    new string[]
@@ -255,7 +272,7 @@ namespace Wisol.MES.Forms.CONTENT
                        txtQuantityLoan.EditValue.NullString(),
                        stlDeptFrom.EditValue.NullString(),
                        stlDeptTo.EditValue.NullString(),
-                       dateTranfer.EditValue.NullString(),
+                       dateIn,
                        Consts.USER_INFO.Id
                    });
 
@@ -294,6 +311,24 @@ namespace Wisol.MES.Forms.CONTENT
         {
             POP.PRINT_LABEL pop = new POP.PRINT_LABEL();
             pop.ShowDialog();
+        }
+
+        private void gvList_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if (e.RowHandle < 0)
+                return;
+
+            if(e.Column.FieldName == "INOUT")
+            {
+                if(e.CellValue.NullString() == "NHAP")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(46, 204, 113);
+                }
+                else
+                {
+                    e.Appearance.BackColor = Color.FromArgb(250, 215, 160);
+                }
+            }
         }
     }
 }

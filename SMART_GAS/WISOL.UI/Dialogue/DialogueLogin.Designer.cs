@@ -313,7 +313,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("FrmLogin.IconOptions.Icon")));
-            this.IconOptions.Image = global::Wisol.MES.Properties.Resources.bdcd801c_194a_44e0_b02d_a3164d977a3c_200x200;
+            this.IconOptions.Image = global::Wisol.MES.Properties.Resources.vietnam;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLogin";

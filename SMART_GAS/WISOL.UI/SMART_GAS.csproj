@@ -62,7 +62,7 @@
     <StartupObject>Wisol.MES.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SPW-ICON.ico</ApplicationIcon>
+    <ApplicationIcon>gas_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -663,7 +663,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -710,6 +710,9 @@
     <None Include="Resources\icons8-combo-chart-32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="gas_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\AboveAverage_32x32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1121,8 +1124,6 @@
     <Content Include="Resources\purchase_order.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SPW-ICON.ico" />
-    <Content Include="spw.ico" />
     <None Include="bin\Debug\Itenso.TimePeriod.dll" />
     <Content Include="LABEL_POINT.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

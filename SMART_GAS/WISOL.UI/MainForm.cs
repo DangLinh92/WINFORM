@@ -117,7 +117,7 @@ namespace Wisol.MES
                 loginFlag = true;
                 SetLanguage();
                 GetMenu();
-                this.Text = "WHC법인_SPW" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
+                this.Text = "WHC법인_SMART GAS" + " - " + Consts.DEPARTMENT + " - " + Consts.USER_INFO.Name;
                 accordionControl1.Visible = true;
             }
 
