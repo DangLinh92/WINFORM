@@ -31,7 +31,7 @@ namespace Wisol.MES.Forms.CONTENT
         {
             dateInput.EditValue = DateTime.Now;
             dateTranfer.EditValue = DateTime.Now;
-
+            dateSearch.EditValue = DateTime.Now;
             try
             {
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS@INIT_NHAP_XUAT", new string[] { }, new string[] { });
@@ -86,7 +86,7 @@ namespace Wisol.MES.Forms.CONTENT
                     return;
                 }
 
-                if(!cheInput.Checked && !cheOutput.Checked)
+                if (!cheInput.Checked && !cheOutput.Checked)
                 {
                     MsgBox.Show("CHỌN NHẬP HOẶC XUẤT".Translation(), MsgType.Warning);
                     return;
@@ -318,9 +318,9 @@ namespace Wisol.MES.Forms.CONTENT
             if (e.RowHandle < 0)
                 return;
 
-            if(e.Column.FieldName == "INOUT")
+            if (e.Column.FieldName == "INOUT")
             {
-                if(e.CellValue.NullString() == "NHAP")
+                if (e.CellValue.NullString() == "NHAP")
                 {
                     e.Appearance.BackColor = Color.FromArgb(46, 204, 113);
                 }
@@ -328,6 +328,26 @@ namespace Wisol.MES.Forms.CONTENT
                 {
                     e.Appearance.BackColor = Color.FromArgb(250, 215, 160);
                 }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS@SEARCH_NHAP_XUAT", new string[] { "A_DATE" }, new string[] { dateSearch.EditValue.NullString() });
+                if (base.m_ResultDB.ReturnInt == 0)
+                {
+                    DataTableCollection tableCollection = base.m_ResultDB.ReturnDataSet.Tables;
+
+                    gcList.DataSource = tableCollection[0];
+                    gvList.OptionsView.ColumnAutoWidth = true;
+                    gvList.Columns["Id"].Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show(ex.Message, MsgType.Error);
             }
         }
     }

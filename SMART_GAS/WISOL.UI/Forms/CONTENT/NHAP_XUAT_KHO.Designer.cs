@@ -98,6 +98,10 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.stackPanel1 = new DevExpress.Utils.Layout.StackPanel();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dateSearch = new DevExpress.XtraEditors.DateEdit();
+            this.btnSearch = new Wisol.XSimpleButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).BeginInit();
@@ -163,6 +167,11 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
+            this.stackPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSearch.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSearch.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -177,6 +186,7 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             // xLayoutControl1
             // 
+            this.xLayoutControl1.Controls.Add(this.stackPanel1);
             this.xLayoutControl1.Controls.Add(this.btnReload);
             this.xLayoutControl1.Controls.Add(this.panelControl1);
             this.xLayoutControl1.Controls.Add(this.gcList);
@@ -903,7 +913,8 @@ namespace Wisol.MES.Forms.CONTENT
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem24});
+            this.layoutControlItem24,
+            this.layoutControlItem28});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1537, 827);
             this.Root.TextVisible = false;
@@ -931,9 +942,55 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem24.Control = this.btnReload;
             this.layoutControlItem24.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(1517, 34);
+            this.layoutControlItem24.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
+            // 
+            // stackPanel1
+            // 
+            this.stackPanel1.Controls.Add(this.dateSearch);
+            this.stackPanel1.Controls.Add(this.btnSearch);
+            this.stackPanel1.Location = new System.Drawing.Point(145, 12);
+            this.stackPanel1.Name = "stackPanel1";
+            this.stackPanel1.Size = new System.Drawing.Size(1380, 30);
+            this.stackPanel1.TabIndex = 7;
+            // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.stackPanel1;
+            this.layoutControlItem28.Location = new System.Drawing.Point(133, 0);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(1384, 34);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem28.TextVisible = false;
+            // 
+            // dateSearch
+            // 
+            this.dateSearch.EditValue = null;
+            this.dateSearch.Location = new System.Drawing.Point(3, 5);
+            this.dateSearch.Name = "dateSearch";
+            this.dateSearch.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateSearch.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateSearch.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
+            this.dateSearch.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+            this.dateSearch.Size = new System.Drawing.Size(232, 20);
+            this.dateSearch.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FormId = null;
+            this.btnSearch.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.ImageOptions.Image")));
+            this.btnSearch.isFormType = false;
+            this.btnSearch.Location = new System.Drawing.Point(241, 0);
+            this.btnSearch.MaximumSize = new System.Drawing.Size(129, 30);
+            this.btnSearch.MinimumSize = new System.Drawing.Size(129, 30);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(129, 30);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // NHAP_XUAT_KHO
             // 
@@ -1008,6 +1065,11 @@ namespace Wisol.MES.Forms.CONTENT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).EndInit();
+            this.stackPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSearch.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateSearch.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1082,5 +1144,9 @@ namespace Wisol.MES.Forms.CONTENT
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
+        private DevExpress.Utils.Layout.StackPanel stackPanel1;
+        private DevExpress.XtraEditors.DateEdit dateSearch;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private XSimpleButton btnSearch;
     }
 }
