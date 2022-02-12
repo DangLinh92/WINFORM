@@ -45,6 +45,7 @@ namespace Wisol.MES.Forms.CONTENT
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnReload = new Wisol.XSimpleButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).BeginInit();
@@ -86,6 +87,7 @@ namespace Wisol.MES.Forms.CONTENT
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnReload);
             this.panelControl1.Controls.Add(this.btnSearch);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.dateSearch);
@@ -207,6 +209,20 @@ namespace Wisol.MES.Forms.CONTENT
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // btnReload
+            // 
+            this.btnReload.FormId = null;
+            this.btnReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.ImageOptions.Image")));
+            this.btnReload.isFormType = false;
+            this.btnReload.Location = new System.Drawing.Point(767, 6);
+            this.btnReload.MaximumSize = new System.Drawing.Size(129, 30);
+            this.btnReload.MinimumSize = new System.Drawing.Size(129, 30);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(129, 30);
+            this.btnReload.TabIndex = 6;
+            this.btnReload.Text = "Reload data";
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // TON_KHO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +268,6 @@ namespace Wisol.MES.Forms.CONTENT
         private DevExpress.XtraEditors.DateEdit dateSearch;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private XSimpleButton btnSearch;
+        private XSimpleButton btnReload;
     }
 }

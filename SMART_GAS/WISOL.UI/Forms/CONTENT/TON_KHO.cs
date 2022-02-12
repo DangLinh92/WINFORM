@@ -24,15 +24,21 @@ namespace Wisol.MES.Forms.CONTENT
         private void TON_KHO_Load(object sender, EventArgs e)
         {
             Classes.Common.SetFormIdToButton(this, "TON_KHO");
+            InitData();
+        }
+
+        private void InitData()
+        {
             try
             {
+                dateSearch.EditValue = null;
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS@INIT_TONKHO", new string[] { }, new string[] { });
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTableCollection datas = base.m_ResultDB.ReturnDataSet.Tables;
                     gcList.DataSource = datas[0];
 
-                    m_BindData.BindGridLookEdit(stlDepartment, datas[1],"Id","Name");
+                    m_BindData.BindGridLookEdit(stlDepartment, datas[1], "Id", "Name");
 
                     gvList.OptionsView.ColumnAutoWidth = true;
                 }
@@ -61,6 +67,11 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
             }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            InitData();
         }
     }
 }
