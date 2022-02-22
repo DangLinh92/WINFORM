@@ -54,6 +54,11 @@ namespace Wisol.MES.Forms.CONTENT.POP
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (txtQuantity.EditValue.NullString() == "")
+            {
+                return;
+            }
+
             #region print
             string designFile = string.Empty;
             string xml_content_Original = string.Empty;
@@ -71,33 +76,36 @@ namespace Wisol.MES.Forms.CONTENT.POP
 
                 List<XtraReport> reports = new List<XtraReport>();
 
-                xml_content = xml_content.Replace("$CODE$", code).Replace("$BARCODE$",code).Replace("$QUANTITY$", "1");
-
-                xml_content = xml_content.Replace("&", "&amp;");
-                File.WriteAllText(designFile, xml_content);
-
-                XtraReport report = new XtraReport();
-                report.PrintingSystem.ShowPrintStatusDialog = false;
-                report.PrintingSystem.ShowMarginsWarning = false;
-                report.LoadLayoutFromXml(designFile);
-
-                int leftMargine = report.Margins.Left + 0;
-                int rightMargine = report.Margins.Right;
-                int topMargine = report.Margins.Top + 0;
-                int bottomMargine = report.Margins.Bottom;
-                if (leftMargine < 0)
+                for (int i = 0; i < int.Parse(txtQuantity.EditValue.NullString()); i++)
                 {
-                    leftMargine = 0;
-                }
-                if (topMargine < 0)
-                {
-                    topMargine = 0;
-                }
-                report.Margins = new Margins(leftMargine, rightMargine, topMargine, bottomMargine);
-                report.CreateDocument();
 
-                reports.Add(report);
-                File.Delete(designFile);
+                    xml_content = xml_content.Replace("$CODE$", code).Replace("$BARCODE$", code).Replace("$QUANTITY$", "QTY: 1EA");
+                    xml_content = xml_content.Replace("&", "&amp;");
+                    File.WriteAllText(designFile, xml_content);
+
+                    XtraReport report = new XtraReport();
+                    report.PrintingSystem.ShowPrintStatusDialog = false;
+                    report.PrintingSystem.ShowMarginsWarning = false;
+                    report.LoadLayoutFromXml(designFile);
+
+                    int leftMargine = report.Margins.Left + 0;
+                    int rightMargine = report.Margins.Right;
+                    int topMargine = report.Margins.Top + 0;
+                    int bottomMargine = report.Margins.Bottom;
+                    if (leftMargine < 0)
+                    {
+                        leftMargine = 0;
+                    }
+                    if (topMargine < 0)
+                    {
+                        topMargine = 0;
+                    }
+                    report.Margins = new Margins(leftMargine, rightMargine, topMargine, bottomMargine);
+                    report.CreateDocument();
+
+                    reports.Add(report);
+                    File.Delete(designFile);
+                }
 
                 foreach (XtraReport rp in reports)
                 {

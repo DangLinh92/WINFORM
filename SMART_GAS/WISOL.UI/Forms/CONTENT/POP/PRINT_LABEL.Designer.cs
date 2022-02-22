@@ -32,6 +32,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PRINT_LABEL));
             this.xLayoutControl1 = new Wisol.XLayoutControl();
+            this.cboPrinter = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnPrint = new Wisol.XSimpleButton(this.components);
             this.stlGas = new Wisol.AceGridLookUpEdit(this.components);
             this.aceGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -39,22 +40,26 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cboPrinter = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtQuantity = new Wisol.XTextEdit();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).BeginInit();
             this.xLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stlGas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // xLayoutControl1
             // 
+            this.xLayoutControl1.Controls.Add(this.txtQuantity);
             this.xLayoutControl1.Controls.Add(this.cboPrinter);
             this.xLayoutControl1.Controls.Add(this.btnPrint);
             this.xLayoutControl1.Controls.Add(this.stlGas);
@@ -66,12 +71,23 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.xLayoutControl1.TabIndex = 4;
             this.xLayoutControl1.Text = "xLayoutControl1";
             // 
+            // cboPrinter
+            // 
+            this.cboPrinter.Location = new System.Drawing.Point(82, 36);
+            this.cboPrinter.Name = "cboPrinter";
+            this.cboPrinter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboPrinter.Size = new System.Drawing.Size(537, 20);
+            this.cboPrinter.StyleController = this.xLayoutControl1;
+            this.cboPrinter.TabIndex = 6;
+            this.cboPrinter.SelectedIndexChanged += new System.EventHandler(this.cboPrinter_SelectedIndexChanged);
+            // 
             // btnPrint
             // 
             this.btnPrint.FormId = null;
             this.btnPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.ImageOptions.Image")));
             this.btnPrint.isFormType = false;
-            this.btnPrint.Location = new System.Drawing.Point(12, 60);
+            this.btnPrint.Location = new System.Drawing.Point(12, 84);
             this.btnPrint.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnPrint.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnPrint.Name = "btnPrint";
@@ -84,7 +100,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
             // stlGas
             // 
             this.stlGas.EditValue = "";
-            this.stlGas.Location = new System.Drawing.Point(76, 12);
+            this.stlGas.Location = new System.Drawing.Point(82, 12);
             this.stlGas.Name = "stlGas";
             this.stlGas.Properties.Appearance.Options.UseTextOptions = true;
             this.stlGas.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -93,7 +109,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.stlGas.Properties.ImmediatePopup = true;
             this.stlGas.Properties.NullText = "";
             this.stlGas.Properties.PopupView = this.aceGridLookUpEdit1View;
-            this.stlGas.Size = new System.Drawing.Size(543, 20);
+            this.stlGas.Size = new System.Drawing.Size(537, 20);
             this.stlGas.StyleController = this.xLayoutControl1;
             this.stlGas.TabIndex = 4;
             // 
@@ -113,7 +129,8 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.layoutControlItem1,
             this.emptySpaceItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem4});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(631, 239);
             this.Root.TextVisible = false;
@@ -125,35 +142,24 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(611, 24);
             this.layoutControlItem1.Text = "Mã Khí Gas";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(52, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(58, 13);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 82);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 106);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(611, 137);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(611, 113);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnPrint;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(611, 34);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // cboPrinter
-            // 
-            this.cboPrinter.Location = new System.Drawing.Point(76, 36);
-            this.cboPrinter.Name = "cboPrinter";
-            this.cboPrinter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboPrinter.Size = new System.Drawing.Size(543, 20);
-            this.cboPrinter.StyleController = this.xLayoutControl1;
-            this.cboPrinter.TabIndex = 6;
-            this.cboPrinter.SelectedIndexChanged += new System.EventHandler(this.cboPrinter_SelectedIndexChanged);
             // 
             // layoutControlItem3
             // 
@@ -162,7 +168,29 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(611, 24);
             this.layoutControlItem3.Text = "PRINTER";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(52, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(58, 13);
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.IsRequire = false;
+            this.txtQuantity.Location = new System.Drawing.Point(82, 60);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.NullBackColor = System.Drawing.Color.Lime;
+            this.txtQuantity.NullValidation = false;
+            this.txtQuantity.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtQuantity.Properties.Appearance.Options.UseBackColor = true;
+            this.txtQuantity.Size = new System.Drawing.Size(537, 20);
+            this.txtQuantity.StyleController = this.xLayoutControl1;
+            this.txtQuantity.TabIndex = 7;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.txtQuantity;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(611, 24);
+            this.layoutControlItem4.Text = "Số Lượng In";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(58, 13);
             // 
             // PRINT_LABEL
             // 
@@ -176,14 +204,16 @@ namespace Wisol.MES.Forms.CONTENT.POP
             this.Controls.SetChildIndex(this.xLayoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).EndInit();
             this.xLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stlGas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +231,7 @@ namespace Wisol.MES.Forms.CONTENT.POP
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.ComboBoxEdit cboPrinter;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private XTextEdit txtQuantity;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }
