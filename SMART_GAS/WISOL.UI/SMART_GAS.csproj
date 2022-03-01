@@ -235,11 +235,23 @@
     <Compile Include="Dialogue\DialogueSettings.Designer.cs">
       <DependentUpon>DialogueSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CONTENT\CHART_UTILITY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\CHART_UTILITY.Designer.cs">
+      <DependentUpon>CHART_UTILITY.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CONTENT\NHAP_XUAT_KHO.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\CONTENT\NHAP_XUAT_KHO.Designer.cs">
       <DependentUpon>NHAP_XUAT_KHO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\NHAP_XUAT_UTILITY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\NHAP_XUAT_UTILITY.Designer.cs">
+      <DependentUpon>NHAP_XUAT_UTILITY.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CONTENT\POP\PRINT_LABEL.cs">
       <SubType>Form</SubType>
@@ -529,8 +541,14 @@
       <DependentUpon>DialogueSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\CHART_UTILITY.resx">
+      <DependentUpon>CHART_UTILITY.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\NHAP_XUAT_KHO.resx">
       <DependentUpon>NHAP_XUAT_KHO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\NHAP_XUAT_UTILITY.resx">
+      <DependentUpon>NHAP_XUAT_UTILITY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\POP\PRINT_LABEL.resx">
       <DependentUpon>PRINT_LABEL.cs</DependentUpon>
@@ -690,6 +708,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="SPW_TemporaryKey.pfx" />
+    <None Include="TemplateChartGasUti.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-product-documents-32.png">
