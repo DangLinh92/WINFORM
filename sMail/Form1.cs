@@ -391,9 +391,13 @@ namespace sMail
                 document.GetElementbyId("hmuon_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "hmuon").NullString();
                 document.GetElementbyId("Di_muon_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Di muon").NullString();
                 document.GetElementbyId("tru_khac_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "tru khac").NullString();
+                document.GetElementbyId("Truy_Thu_PN_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Truy thu PN").NullString();
+                document.GetElementbyId("TTT_LamTet_Id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Thanh Toan Tien Lam Tet").NullString(); 
+                 
 
                 // THUC NHAN
                 document.GetElementbyId("Thuc_nhan_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Thuc nhan").NullString();
+                
 
                 using (var stream = new MemoryStream())
                 {
