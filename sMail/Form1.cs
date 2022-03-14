@@ -18,6 +18,7 @@ using Microsoft.Office.Interop.Word;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
+using log4net;
 
 namespace sMail
 {
@@ -27,7 +28,7 @@ namespace sMail
         {
             InitializeComponent();
             this.Load += Form1_Load;
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace sMail
             Data = null;
             lblCount.Text = "COUNT: ";
             txtSubject.Text = "WHC - THÔNG TIN LƯƠNG THÁNG ";
+            WriteLogFile.WriteLog("Form1_Load :" + DateTime.Now.ToString());
         }
 
         private void btnGetFileTemp_Click(object sender, EventArgs e)
@@ -63,7 +65,8 @@ namespace sMail
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR :" + ex.Message);
+                WriteLogFile.WriteLog("btnGetFileTemp_Click :" + ex.Message);
+                MessageBox.Show("btnGetFileTemp_Click :" + ex.Message);
             }
         }
         System.Data.DataTable Data;
@@ -145,7 +148,8 @@ namespace sMail
                 catch (Exception ex)
                 {
                     conexcel.Close();
-                    MessageBox.Show("Send error :" + ex.Message);
+                    WriteLogFile.WriteLog("btnLoadTo_Click :" + ex.Message);
+                    MessageBox.Show("btnLoadTo_Click :" + ex.Message);
                 }
             }
         }
@@ -264,7 +268,8 @@ namespace sMail
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Send error :" + ex.Message);
+                WriteLogFile.WriteLog("btnSend_Click :" + ex.Message);
+                MessageBox.Show("SbtnSend_Clickend error :" + ex.Message);
             }
             finally
             {
@@ -409,7 +414,8 @@ namespace sMail
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Send error :" + ex.Message);
+                WriteLogFile.WriteLog("GetBodyMail :" + ex.Message);
+                MessageBox.Show("GetBodyMail :" + ex.Message);
             }
 
             return "";

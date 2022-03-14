@@ -10,6 +10,8 @@ namespace sMail
 {
     public class EmailSender
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private const string SMTP_HOST = "mx.info.wisol.co.kr";
         private const int SMTP_PORT = 25;
         public string SMTP_ID = "dhshin";
@@ -215,11 +217,12 @@ namespace sMail
                 SmtpClient smtp = new SmtpClient(SMTP_HOST, SMTP_PORT);
                 smtp.Credentials = new System.Net.NetworkCredential(SMTP_ID, SMTP_PW);
                 smtp.Send(mail);
-
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                WriteLogFile.WriteLog("Send error1 :" + ex.Message);
+                WriteLogFile.WriteLog("Send error2 :" + ex.StackTrace);
                 return false;
             }
         }
