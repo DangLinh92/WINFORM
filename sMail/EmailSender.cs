@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace sMail
 {
@@ -24,7 +25,7 @@ namespace sMail
         private string _subject = string.Empty;
         private string _body = string.Empty;
         private List<string> _attachmentFilePathList = new List<string>();
-
+        private List<Attachment> _attachmentFileDataList = new List<Attachment>();
 
         public EmailSender() { }
 
@@ -84,6 +85,10 @@ namespace sMail
             _attachmentFilePathList.Add(attachmentFilePath);
         }
 
+        public void AddAttachmentData(Attachment data)
+        {
+            _attachmentFileDataList.Add(data);
+        }
 
         /// <summary>
         /// Add Range Attachment File Path
@@ -149,7 +154,6 @@ namespace sMail
             {
                 if (_toEmailAddressList == null || _toEmailAddressList.Count == 0)
                 {
-                    //ExceptionMessage = "Invalid a email address.";
                     return false;
                 }
 
@@ -157,14 +161,12 @@ namespace sMail
                 {
                     if (String.IsNullOrWhiteSpace(_toEmailAddress))
                     {
-                        //ExceptionMessage = "Invalid a email address.";
                         return false;
                     }
 
                     int atIndex = _toEmailAddress.IndexOf('@');
                     if (atIndex == -1)
                     {
-                        //ExceptionMessage = "Invalid a email address.";
                         return false;
                     }
                 }
@@ -174,18 +176,19 @@ namespace sMail
                     int atIndex = _ccEmailAddress.IndexOf('@');
                     if (atIndex == -1)
                     {
-                        //ExceptionMessage = "Invalid a carbon copy email address.";
                         return false;
                     }
                 }
 
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(FROM_ADDRESS, FROM_NAME);
+
                 // Add To Email Address
                 foreach (string _toEmailAddress in _toEmailAddressList)
                 {
                     mail.To.Add(_toEmailAddress);
                 }
+
                 // Add Carbon Copy Email Address
                 foreach (string _ccEmailAddress in _ccEmailAddressList)
                 {
@@ -209,6 +212,15 @@ namespace sMail
                         mail.Attachments.Add(attachmentFile);
                     }
                 }
+
+                if (_attachmentFileDataList != null && _attachmentFileDataList.Count > 0)
+                {
+                    foreach (var item in _attachmentFileDataList)
+                    {
+                        mail.Attachments.Add(item);
+                    }
+                }
+
                 mail.BodyEncoding = System.Text.Encoding.UTF8;
                 mail.SubjectEncoding = System.Text.Encoding.UTF8;
                 mail.Priority = MailPriority.High;
@@ -219,7 +231,7 @@ namespace sMail
                 smtp.Send(mail);
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 WriteLogFile.WriteLog("Send error1 :" + ex.Message);
                 WriteLogFile.WriteLog("Send error2 :" + ex.StackTrace);

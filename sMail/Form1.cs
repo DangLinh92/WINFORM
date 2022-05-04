@@ -19,6 +19,8 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using log4net;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace sMail
 {
@@ -28,7 +30,7 @@ namespace sMail
         {
             InitializeComponent();
             this.Load += Form1_Load;
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -227,6 +229,7 @@ namespace sMail
 
                 EmailSender emailSender;
                 bool result;
+                string mailTo = "";
                 for (int i = 0; i < gvList.RowCount; i++)
                 {
                     emailSender = new EmailSender();
@@ -234,15 +237,31 @@ namespace sMail
                     emailSender.AddCcEmailAddress(txtCc.Text.Trim());
                     emailSender.Subject = txtSubject.Text;
 
-                    if (gvList.GetRowCellValue(i, "Email") != null)
+                    mailTo = gvList.GetRowCellValue(i, "Email").NullString();
+
+                    if (!string.IsNullOrEmpty(mailTo))
                     {
-                        emailSender.AddToEmailAddress(gvList.GetRowCellValue(i, "Email").NullString());
+                        emailSender.AddToEmailAddress(mailTo);
                     }
 
                     // emailSender.AddAttachmentFilePath(gvList.GetRowCellValue(i, "PATH_FILE").ToString());
 
-                    emailSender.Body = GetBodyMail(i);
+                    string body = GetBodyMail();
+                    string fileBody = GetBodyMailFile(i);
+                    emailSender.Body = body;
 
+                    //var bytes = PDFGenerate.encode(body);//.GeneratePdf(body,"");
+
+                    //MemoryStream file = new MemoryStream(bytes);
+                    //file.Seek(0, SeekOrigin.Begin);
+                    string maNV = gvList.GetRowCellValue(i, "Code").NullString();
+
+                    Attachment data = Attachment.CreateAttachmentFromString(fileBody, maNV + "_payslip.html", Encoding.UTF8, "text/html"); // new Attachment(file, mailTo + "_payslip.html", "text/html");
+                    ContentDisposition disposition = data.ContentDisposition;
+                    disposition.CreationDate = System.DateTime.Now;
+                    disposition.ModificationDate = System.DateTime.Now;
+                    disposition.DispositionType = DispositionTypeNames.Attachment;
+                    emailSender.AddAttachmentData(data);
 
                     result = emailSender.Send();
 
@@ -277,7 +296,30 @@ namespace sMail
             }
         }
 
-        private string GetBodyMail(int rowHandle)
+        private string GetBodyMail()
+        {
+            try
+            {
+                string path = System.Windows.Forms.Application.StartupPath + "\\Templatebody.html";
+                HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+                document.Load(path);
+                using (var stream = new MemoryStream())
+                {
+                    document.Save(stream);
+                    stream.Position = 0;
+                    return new StreamReader(stream).ReadToEnd();
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLogFile.WriteLog("GetBodyMail :" + ex.Message);
+                MessageBox.Show("GetBodyMail :" + ex.Message);
+            }
+
+            return "";
+        }
+
+        private string GetBodyMailFile(int rowHandle)
         {
             try
             {
@@ -285,9 +327,10 @@ namespace sMail
                 HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
                 document.Load(path);
 
-
                 document.GetElementbyId("title_bangluong").InnerHtml += DateTime.Parse(datePaySlip.EditValue.ToString()).ToString("MM/yyyy");
                 document.GetElementbyId("title_payslip").InnerHtml += DateTime.Parse(datePaySlip.EditValue.ToString()).ToString("Y");
+
+                document.GetElementbyId("hdpassword").SetAttributeValue("value", gvList.GetRowCellValue(rowHandle, "Password").NullString());
 
                 // NAME AND DEPT
                 document.GetElementbyId("Name_NV").InnerHtml = gvList.GetRowCellValue(rowHandle, "Ten").NullString();
@@ -397,12 +440,12 @@ namespace sMail
                 document.GetElementbyId("Di_muon_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Di muon").NullString();
                 document.GetElementbyId("tru_khac_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "tru khac").NullString();
                 document.GetElementbyId("Truy_Thu_PN_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Truy thu PN").NullString();
-                document.GetElementbyId("TTT_LamTet_Id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Thanh Toan Tien Lam Tet").NullString(); 
-                 
+                document.GetElementbyId("TTT_LamTet_Id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Thanh Toan Tien Lam Tet").NullString();
+
 
                 // THUC NHAN
                 document.GetElementbyId("Thuc_nhan_id").InnerHtml = gvList.GetRowCellValue(rowHandle, "Thuc nhan").NullString();
-                
+
 
                 using (var stream = new MemoryStream())
                 {
@@ -414,8 +457,8 @@ namespace sMail
             }
             catch (Exception ex)
             {
-                WriteLogFile.WriteLog("GetBodyMail :" + ex.Message);
-                MessageBox.Show("GetBodyMail :" + ex.Message);
+                WriteLogFile.WriteLog("GetBodyMailFile :" + ex.Message);
+                MessageBox.Show("GetBodyMailFile :" + ex.Message);
             }
 
             return "";
