@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.2.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="FF_OUT_BOX" Margins="0, 0, 2, 0" PaperKind="Custom" PageWidth="346" PageHeight="1803" Version="19.2" ShowPrintStatusDialog="false" ShowPrintMarginsWarning="false">
+  <Bands>
+    <Item1 Ref="1" ControlType="TopMarginBand" Name="TopMargin" HeightF="2" />
+    <Item2 Ref="2" ControlType="DetailBand" Name="Detail" HeightF="146.250015">
+      <Controls>
+        <Item1 Ref="3" ControlType="XRLabel" Name="label3" Multiline="true" Text="$EXP_DATE$" TextAlignment="TopLeft" SizeF="132.291672,16.9166565" LocationFloat="0.999999046, 32.166687" Font="Courier New, 7.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="4" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="5" ControlType="XRLabel" Name="label2" Multiline="true" Text="$POSITION$" TextAlignment="TopLeft" SizeF="132.291672,15.5833321" LocationFloat="0.999999046, 16.5833473" Font="Courier New, 8.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="6" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="7" ControlType="XRBarCode" Name="barCode1" Text="$BARCODE$" SizeF="90.625,61.5000076" LocationFloat="133.291672, 1.00000668" Font="Times New Roman, 0.75pt" Padding="5,10,0,0,100">
+          <Symbology Ref="8" Name="QRCode" />
+          <StylePriority Ref="9" UseFont="false" UsePadding="false" />
+        </Item3>
+        <Item4 Ref="10" ControlType="XRLabel" Name="label1" Multiline="true" Text="$CODE$" TextAlignment="TopLeft" SizeF="132.291672,15.5833406" LocationFloat="0.999999046, 1.000007" Font="Courier New, 8.75pt, style=Bold" Padding="0,0,0,0,100">
+          <StylePriority Ref="11" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item2>
+    <Item3 Ref="12" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="0" />
+  </Bands>
+</XtraReportsLayoutSerializer>
