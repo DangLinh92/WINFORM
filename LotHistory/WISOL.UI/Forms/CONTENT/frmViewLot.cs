@@ -30,13 +30,32 @@ namespace Wisol.MES.Forms.CONTENT
         {
             try
             {
-                if (string.IsNullOrEmpty(txtLotID.Text.NullString()) && string.IsNullOrEmpty(txtFileUrl.Text))
-                {
-                    MsgBox.Show("MSG_ERR_044".Translation(), MsgType.Warning);
-                    return;
-                }
-
                 splashScreenManager1.ShowWaitForm();
+
+                if (radioGroup1.SelectedIndex == 0)
+                {
+                    if (string.IsNullOrEmpty(txtLotID.Text.NullString()) && string.IsNullOrEmpty(txtFileUrl.Text))
+                    {
+                        MsgBox.Show("MSG_ERR_044".Translation(), MsgType.Warning);
+                        return;
+                    }
+                }
+                else if (radioGroup1.SelectedIndex == 1)
+                {
+                    if (string.IsNullOrEmpty(txtMarkingNo.Text.NullString()) && string.IsNullOrEmpty(txtFileUrl.Text))
+                    {
+                        MsgBox.Show("MSG_ERR_044".Translation(), MsgType.Warning);
+                        return;
+                    }
+                }
+                else if (radioGroup1.SelectedIndex == 2)
+                {
+                    if (string.IsNullOrEmpty(txtReelId.Text.NullString()) && string.IsNullOrEmpty(txtFileUrl.Text))
+                    {
+                        MsgBox.Show("MSG_ERR_044".Translation(), MsgType.Warning);
+                        return;
+                    }
+                }
 
                 string formatString = "yyyyMMddHHmmss";
 
@@ -80,13 +99,25 @@ namespace Wisol.MES.Forms.CONTENT
                 DataSum.Columns.Add("CUSTOMER_NAME");
                 DataSum.Columns.Add("SHIP_REEL");
                 DataSum.Columns.Add("WAFER_ID");
+                DataSum.Columns.Add("REWORK_LOT");
                 DataSum.Columns.Add("START_FB");
                 DataSum.Columns.Add("END_FB");
 
-                List<string> lstLotId = new List<string>();
-                if (string.IsNullOrEmpty(txtFileUrl.Text) && !string.IsNullOrEmpty(txtLotID.Text.NullString()))
+                List<string> lstLotCondition = new List<string>();
+                if (string.IsNullOrEmpty(txtFileUrl.Text))
                 {
-                    lstLotId.Add(txtLotID.Text.NullString());
+                    if (!string.IsNullOrEmpty(txtLotID.Text.NullString()))
+                    {
+                        lstLotCondition.Add(txtLotID.Text.NullString());
+                    }
+                    else if (!string.IsNullOrEmpty(txtMarkingNo.Text.NullString()))
+                    {
+                        lstLotCondition.Add(txtMarkingNo.Text.NullString());
+                    }
+                    else if (!string.IsNullOrEmpty(txtReelId.Text.NullString()))
+                    {
+                        lstLotCondition.Add(txtReelId.Text.NullString());
+                    }
                 }
                 else if (!string.IsNullOrEmpty(txtFileUrl.Text.NullString()))
                 {
@@ -112,7 +143,7 @@ namespace Wisol.MES.Forms.CONTENT
                         conexcel.Open();
                         DataTable dtExcel = conexcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
-                        string sheetName = "LOTID";
+                        string sheetName = "DATA";
 
                         foreach (DataRow drSheet in dtExcel.Rows)
                         {
@@ -136,9 +167,9 @@ namespace Wisol.MES.Forms.CONTENT
 
                         foreach (DataRow item in DataLotId.Rows)
                         {
-                            if (!lstLotId.Contains(item[0].NullString()))
+                            if (!lstLotCondition.Contains(item[0].NullString()) && item[0].NullString() != "")
                             {
-                                lstLotId.Add(item[0].NullString());
+                                lstLotCondition.Add(item[0].NullString());
                             }
                         }
                     }
@@ -148,242 +179,324 @@ namespace Wisol.MES.Forms.CONTENT
                     }
                 }
 
-                if (lstLotId.Count == 0)
-                    return;
-
-                // 1. Get Lot Info from LotId
-                m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("LOT", lstLotId));
-
-                if (base.m_ResultDB.ReturnInt == 0)
+                Dictionary<string, List<string>> relationDicOrigin = new Dictionary<string, List<string>>();
+                // search by Lot Id
+                if (radioGroup1.SelectedIndex == 0 || radioGroup1.SelectedIndex == 1 || radioGroup1.SelectedIndex == 2)
                 {
-                    DataTable dtaLot = base.m_ResultDB.ReturnDataSet.Tables[0];
+                    if (lstLotCondition.Count == 0)
+                        return;
 
-                    if (dtaLot.Rows.Count > 0)
+                    m_DBaccess.connectionStringParam = 1;// connect to mesdb
+                    if (radioGroup1.SelectedIndex == 0)
                     {
-                        DataRow newRow;
-                        foreach (DataRow row in dtaLot.Rows)
+                        // 1. Get Lot Info from LotId
+                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("LOT", lstLotCondition));
+                    }
+                    else if (radioGroup1.SelectedIndex == 1)
+                    {
+                        // 1. Get Lot Info from LotId
+                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("MARKING_NO", lstLotCondition));
+                    }
+                    else if (radioGroup1.SelectedIndex == 2)
+                    {
+                        // 1. Get Lot Info from reel id
+                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("REEL_ID", lstLotCondition));
+                        DataTable dtaLotId = base.m_ResultDB.ReturnDataSet.Tables[0];
+                        List<string> lotIds = new List<string>();
+                       
+                        foreach (DataRow item in dtaLotId.Rows)
                         {
-                            newRow = Data.NewRow();
-                            newRow["LOT_ID"] = row["LOT_ID"];
-                            newRow["MARKING_NO"] = row["MARKING_NO"];
-                            Data.Rows.Add(newRow);
+                            if (!lotIds.Contains(item["LOT_ID"].NullString()) && item["LOT_ID"].NullString() != "")
+                            {
+                                lotIds.Add(item["LOT_ID"].NullString());
+                            }
+
+                            if (relationDicOrigin.ContainsKey(item["LOT_ID"].NullString()) && !relationDicOrigin[item["LOT_ID"].NullString()].Contains(item["RELATION_LOT_ID"].NullString()))
+                            {
+                                relationDicOrigin[item["LOT_ID"].NullString()].Add(item["RELATION_LOT_ID"].NullString());
+                            }
+                            else
+                            {
+                                relationDicOrigin.Add(item["LOT_ID"].NullString(), new List<string> { item["RELATION_LOT_ID"].NullString() });
+                            }
                         }
+
+                        if(lotIds.Count == 0)
+                        {
+                            MsgBox.Show("Not found lot Id by reel id", MsgType.Warning);
+                            return;
+                        }
+
+                        m_DBaccess.connectionStringParam = 1;
+                        // 1. Get Lot Info from LotId
+                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("LOT", lotIds));
                     }
 
-                    // 2. Get Lot history by LotId
-                    m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                    base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", lstLotId));
                     if (base.m_ResultDB.ReturnInt == 0)
                     {
-                        DataTable dtData = base.m_ResultDB.ReturnDataSet.Tables[0];
-                        if (dtData.Rows.Count > 0)
+                        DataTable dtaLot = base.m_ResultDB.ReturnDataSet.Tables[0];
+                        List<string> lotIds = new List<string>();
+                        if (dtaLot.Rows.Count > 0)
                         {
-                            foreach (DataRow row in dtData.Rows)
+                            DataRow newRow;
+                            foreach (DataRow row in dtaLot.Rows)
                             {
-                                foreach (DataRow row1 in Data.Rows)
+                                newRow = Data.NewRow();
+
+                                if (!lotIds.Contains(row["LOT_ID"].NullString()))
                                 {
-                                    if (row["LOT_ID"].NullString() == row1["LOT_ID"].NullString())
-                                    {
-                                        // marking time
-                                        if (row1["MARKING_TIME"].NullString() == "" && row["Operation"].NullString() == "OC290")
-                                        {
-                                            if (row["Tx Time"].NullString() != "")
-                                            {
-                                                row1["MARKING_TIME"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
-                                            }
-                                        }
-
-                                        // Material Name
-                                        row1["MATERIAL_NAME"] = row["Material Name"];
-
-                                        // ISMECA
-                                        row1["ISMECA"] = row["Equipment Name"];
-
-                                        // START_END_LINE
-                                        if (row1["START_END_LINE"].NullString() == "" && row["Operation"].NullString() == "OC360")
-                                        {
-                                            if (row["Tx Time"].NullString() != "")
-                                            {
-                                                row1["START_END_LINE"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
-                                            }
-                                        }
-
-                                        // END_END_LINE
-                                        if (row["Operation"].NullString() == "OC360")
-                                        {
-                                            if (row["Tx Time"].NullString() != "")
-                                            {
-                                                row1["END_END_LINE"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
-                                            }
-                                        }
-
-                                        // REMARK
-                                        row1["REMARK"] = row["Comment"];
-                                    }
+                                    lotIds.Add(row["LOT_ID"].NullString());
                                 }
+
+                                newRow["LOT_ID"] = row["LOT_ID"];
+                                newRow["MARKING_NO"] = row["MARKING_NO"];
+                                Data.Rows.Add(newRow);
                             }
+                        }
 
-                            Dictionary<string, List<string>> relationDic = new Dictionary<string, List<string>>();
-                            List<string> relationLotId = new List<string>();
-                            foreach (DataRow row in dtData.Rows)
+                        Dictionary<string, List<string>> relationDic = new Dictionary<string, List<string>>();
+                        List<string> relationLotId = new List<string>();
+
+                        // 2. Get Lot history by LotId
+                        m_DBaccess.connectionStringParam = 1;// connect to mesdb
+                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", lotIds));
+                        if (base.m_ResultDB.ReturnInt == 0)
+                        {
+                            DataTable dtData = base.m_ResultDB.ReturnDataSet.Tables[0];
+                            if (dtData.Rows.Count > 0)
                             {
-                                if (row["Relation Lot"].NullString() != "" && row["Operation"].NullString() == "OC360")
+                                foreach (DataRow row in dtData.Rows)
                                 {
-                                    if (relationDic.ContainsKey(row["LOT_ID"].NullString()))
+                                    if(relationDicOrigin.Count > 0)
                                     {
-                                        relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
-                                    }
-                                    else
-                                    {
-                                        relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
-                                    }
-                                }
-                            }
-
-                            foreach (var dic in relationDic)
-                            {
-                                // 3. Get Lot Info from Relation id
-                                m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                                base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("LOT", dic.Value));
-
-                                if (base.m_ResultDB.ReturnInt == 0)
-                                {
-                                    DataTable dtaLot1 = base.m_ResultDB.ReturnDataSet.Tables[0];
-
-                                    if (dtaLot1.Rows.Count > 0)
-                                    {
-                                        DataRow newRow;
-                                        foreach (DataRow row in dtaLot1.Rows)
+                                        if(!relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
                                         {
-                                            newRow = Data1.NewRow();
-                                            newRow["LOT_ID"] = dic.Key;
-                                            newRow["REEL_ID"] = row["LOT_ID"];
-                                            newRow["QTY"] = row["QTY1"];
-                                            Data1.Rows.Add(newRow);
+                                            continue;
                                         }
                                     }
 
-                                    // 4. Get Lot history by Relation Lot
-                                    m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                                    base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", dic.Value));
-                                    DataTable dtData1 = base.m_ResultDB.ReturnDataSet.Tables[0];
-
-                                    string txEdc = "";
-                                    string txHold = "";
-                                    string txEnd = "";
-
-                                    foreach (DataRow row in Data1.Rows)
+                                    foreach (DataRow row1 in Data.Rows)
                                     {
-                                        txEdc = "";
-                                        txHold = "";
-                                        txEnd = "";
-
-                                        foreach (DataRow item in dtData1.Rows)
+                                        if (row["LOT_ID"].NullString() == row1["LOT_ID"].NullString())
                                         {
-                                            if (row["REEL_ID"].NullString() == item["LOT_ID"].NullString())
+                                            // marking time
+                                            if (row1["MARKING_TIME"].NullString() == "" && row["Operation"].NullString() == "OC290")
                                             {
-                                                if (item["Tx Code"].NullString() == "TX_EDC")
+                                                if (row["Tx Time"].NullString() != "")
                                                 {
-                                                    txEdc = "TX_EDC";
-                                                }
-                                                else
-                                                if (item["Tx Code"].NullString() == "TX_HOLD")
-                                                {
-                                                    txHold = "TX_HOLD";
-                                                }
-                                                else
-                                                if (item["Tx Code"].NullString() == "TX_END")
-                                                {
-                                                    txEnd = "TX_END";
+                                                    row1["MARKING_TIME"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
                                                 }
                                             }
-                                        }
 
-                                        if (!string.IsNullOrEmpty(txEdc))
-                                        {
-                                            if (!string.IsNullOrEmpty(txHold))
+                                            // Material Name
+                                            row1["MATERIAL_NAME"] = row["Material Name"];
+
+                                            // ISMECA
+                                            row1["ISMECA"] = row["Equipment Name"];
+
+                                            // START_END_LINE
+                                            if (row1["START_END_LINE"].NullString() == "" && row["Operation"].NullString() == "OC360")
                                             {
-                                                row["FA_JUDGE"] = "FALSE";
+                                                if (row["Tx Time"].NullString() != "")
+                                                {
+                                                    row1["START_END_LINE"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                }
+                                            }
+
+                                            // END_END_LINE
+                                            if (row["Operation"].NullString() == "OC360")
+                                            {
+                                                if (row["Tx Time"].NullString() != "")
+                                                {
+                                                    row1["END_END_LINE"] = DateTime.ParseExact(row["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                }
+                                            }
+
+                                            // REMARK
+                                            row1["REMARK"] = row["Comment"];
+                                        }
+                                    }
+
+                                    if (row["Relation Lot"].NullString() != "" && row["Operation"].NullString() == "OC360")
+                                    {
+                                        if (relationDicOrigin.Count <= 0)
+                                        {
+                                            if (relationDic.ContainsKey(row["LOT_ID"].NullString()))
+                                            {
+                                                if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
+                                                {
+                                                    relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
+                                                }
                                             }
                                             else
-                                            if (!string.IsNullOrEmpty(txEnd))
                                             {
-                                                row["FA_JUDGE"] = "PASS";
+                                                relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
+                                            {
+                                                if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()) && relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
+                                                {
+                                                    relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
+                                                }
+                                            }
+                                            else if (!relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
+                                            {
+                                                if (relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
+                                                {
+                                                    relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
+                                                }
                                             }
                                         }
                                     }
+                                }
 
-                                    DataRow newRow2;
-                                    // Data2.Columns.Add("LOT_ID");
-                                    // Data2.Columns.Add("REEL_ID");
-                                    // Data2.Columns.Add("WAFER_ID");
-                                    // Data2.Columns.Add("START_FB");
-                                    // Data2.Columns.Add("END_FB");
-                                    List<string> lstWaferId = new List<string>();
-                                    foreach (DataRow item in dtData1.Rows)
-                                    {
-                                        newRow2 = Data2.NewRow();
-
-                                        if (item["Relation Lot"].NullString() != "" && !item["Relation Lot"].NullString().StartsWith("CNM"))// assy lot cnm
-                                        {
-                                            newRow2["LOT_ID"] = dic.Key;
-                                            newRow2["REEL_ID"] = item["LOT_ID"];
-                                            newRow2["WAFER_ID"] = item["Relation Lot"];
-                                            lstWaferId.Add(item["Relation Lot"].NullString());
-                                            Data2.Rows.Add(newRow2);
-                                        }
-                                    }
-
-                                    // 5. Get customer and ship reel
+                                foreach (var dic in relationDic)
+                                {
+                                    // 3. Get Lot Info from Relation id
                                     m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                                    base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("DATA", dic.Value));
+                                    base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("LOT", dic.Value));
 
-                                    if(base.m_ResultDB.ReturnInt == 0)
+                                    if (base.m_ResultDB.ReturnInt == 0)
                                     {
-                                        DataTable dtData2 = base.m_ResultDB.ReturnDataSet.Tables[0];
+                                        DataTable dtaLot1 = base.m_ResultDB.ReturnDataSet.Tables[0];
+
+                                        if (dtaLot1.Rows.Count > 0)
+                                        {
+                                            DataRow newRow;
+                                            foreach (DataRow row in dtaLot1.Rows)
+                                            {
+                                                newRow = Data1.NewRow();
+                                                newRow["LOT_ID"] = dic.Key;
+                                                newRow["REEL_ID"] = row["LOT_ID"];
+                                                newRow["QTY"] = row["QTY1"];
+                                                Data1.Rows.Add(newRow);
+                                            }
+                                        }
+
+                                        // 4. Get Lot history by Relation Lot
+                                        m_DBaccess.connectionStringParam = 1;// connect to mesdb
+                                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", dic.Value));
+                                        DataTable dtData1 = base.m_ResultDB.ReturnDataSet.Tables[0];
+
+                                        string txEdc = "";
+                                        string txHold = "";
+                                        string txEnd = "";
 
                                         foreach (DataRow row in Data1.Rows)
                                         {
-                                            foreach (DataRow item in dtData2.Rows)
+                                            txEdc = "";
+                                            txHold = "";
+                                            txEnd = "";
+
+                                            foreach (DataRow item in dtData1.Rows)
                                             {
-                                                if (row["REEL_ID"].NullString() == item["Lot ID"].NullString())
+                                                if (row["REEL_ID"].NullString() == item["LOT_ID"].NullString())
                                                 {
-                                                    row["CUSTOMER_NAME"] = item["Customer Name"];
-                                                    row["SHIP_REEL"] = item["Ship Reel"];
+                                                    if (item["Tx Code"].NullString() == "TX_EDC")
+                                                    {
+                                                        txEdc = "TX_EDC";
+                                                    }
+                                                    else
+                                                    if (item["Tx Code"].NullString() == "TX_HOLD")
+                                                    {
+                                                        txHold = "TX_HOLD";
+                                                    }
+                                                    else
+                                                    if (item["Tx Code"].NullString() == "TX_END")
+                                                    {
+                                                        txEnd = "TX_END";
+                                                    }
+                                                }
+                                            }
+
+                                            if (!string.IsNullOrEmpty(txEdc))
+                                            {
+                                                if (!string.IsNullOrEmpty(txHold))
+                                                {
+                                                    row["FA_JUDGE"] = "FALSE";
+                                                }
+                                                else
+                                                if (!string.IsNullOrEmpty(txEnd))
+                                                {
+                                                    row["FA_JUDGE"] = "PASS";
                                                 }
                                             }
                                         }
-                                    }
 
-                                    if(lstWaferId.Count > 0)
-                                    {
-                                        // Get wafer, start FB, End FB
-
-                                        m_DBaccess.connectionStringParam = 1;// connect to mesdb
-                                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", lstWaferId));
-                                        DataTable dtData3 = base.m_ResultDB.ReturnDataSet.Tables[0];
-
-                                        foreach (DataRow row in Data2.Rows)
+                                        DataRow newRow2;
+                                        // Data2.Columns.Add("LOT_ID");
+                                        // Data2.Columns.Add("REEL_ID");
+                                        // Data2.Columns.Add("WAFER_ID");
+                                        // Data2.Columns.Add("START_FB");
+                                        // Data2.Columns.Add("END_FB");
+                                        List<string> lstWaferId = new List<string>();
+                                        foreach (DataRow item in dtData1.Rows)
                                         {
-                                            foreach (DataRow item in dtData3.Rows)
-                                            {
-                                                if (row["WAFER_ID"].NullString() == item["LOT_ID"].NullString())
-                                                {
-                                                    // Start FB
-                                                    if (row["START_FB"].NullString() == "" && item["Operation"].NullString() == "OC150")
-                                                    {
-                                                        if (item["Tx Time"].NullString() != "")
-                                                        {
-                                                            row["START_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
-                                                        }
-                                                    }
+                                            newRow2 = Data2.NewRow();
 
-                                                    if (item["Operation"].NullString() == "OC150")
+                                            if (item["Relation Lot"].NullString() != "" && !item["Relation Lot"].NullString().StartsWith("CNM"))// assy lot cnm
+                                            {
+                                                newRow2["LOT_ID"] = dic.Key;
+                                                newRow2["REEL_ID"] = item["LOT_ID"];
+                                                newRow2["WAFER_ID"] = item["Relation Lot"];
+                                                lstWaferId.Add(item["Relation Lot"].NullString());
+                                                Data2.Rows.Add(newRow2);
+                                            }
+                                        }
+
+                                        // 5. Get customer and ship reel
+                                        m_DBaccess.connectionStringParam = 1;// connect to mesdb
+                                        base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("DATA", dic.Value));
+
+                                        if (base.m_ResultDB.ReturnInt == 0)
+                                        {
+                                            DataTable dtData2 = base.m_ResultDB.ReturnDataSet.Tables[0];
+
+                                            foreach (DataRow row in Data1.Rows)
+                                            {
+                                                foreach (DataRow item in dtData2.Rows)
+                                                {
+                                                    if (row["REEL_ID"].NullString() == item["Lot ID"].NullString())
                                                     {
-                                                        if (item["Tx Time"].NullString() != "")
+                                                        row["CUSTOMER_NAME"] = item["Customer Name"];
+                                                        row["SHIP_REEL"] = item["Ship Reel"];
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        if (lstWaferId.Count > 0)
+                                        {
+                                            // Get wafer, start FB, End FB
+
+                                            m_DBaccess.connectionStringParam = 1;// connect to mesdb
+                                            base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("WIP", lstWaferId));
+                                            DataTable dtData3 = base.m_ResultDB.ReturnDataSet.Tables[0];
+
+                                            foreach (DataRow row in Data2.Rows)
+                                            {
+                                                foreach (DataRow item in dtData3.Rows)
+                                                {
+                                                    if (row["WAFER_ID"].NullString() == item["LOT_ID"].NullString())
+                                                    {
+                                                        // Start FB
+                                                        if (row["START_FB"].NullString() == "" && item["Operation"].NullString() == "OC150")
                                                         {
-                                                            row["END_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                row["START_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
+                                                        }
+
+                                                        if (item["Operation"].NullString() == "OC150")
+                                                        {
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                row["END_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -391,118 +504,125 @@ namespace Wisol.MES.Forms.CONTENT
                                         }
                                     }
                                 }
-                            }
 
-                            // cho data2 -> data sum
-                            DataRow rowsum;
-                            foreach (DataRow row2 in Data2.Rows)
-                            {
-                                rowsum = DataSum.NewRow();
-                                rowsum["LOT_ID"] = row2["LOT_ID"];
-                                rowsum["REEL_ID"] = row2["REEL_ID"];
-                                rowsum["WAFER_ID"] = row2["WAFER_ID"];
-                                rowsum["START_FB"] = row2["START_FB"];
-                                rowsum["END_FB"] = row2["END_FB"];
-                                DataSum.Rows.Add(rowsum);
-                            }
-
-                            // cho data1 -> data sum
-                            foreach (DataRow row1 in Data1.Rows)
-                            {
-                                foreach (DataRow item in DataSum.Rows)
-                                {
-                                    if (row1["LOT_ID"].NullString() == item["LOT_ID"].NullString() && row1["REEL_ID"].NullString() == item["REEL_ID"].NullString())
-                                    {
-                                        item["QTY"] = row1["QTY"];
-                                        item["FA_JUDGE"] = row1["FA_JUDGE"];
-                                        item["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
-                                        item["SHIP_REEL"] = row1["SHIP_REEL"];
-                                    }
-                                }
-                            }
-
-                            // cho data1 ma k co trong data sum vao data sum
-                            bool exist = false;
-                            foreach (DataRow row1 in Data1.Rows)
-                            {
-                                exist = false;
-                                foreach (DataRow item in DataSum.Rows)
-                                {
-                                    if (row1["LOT_ID"].NullString() == item["LOT_ID"].NullString() && row1["REEL_ID"].NullString() == item["REEL_ID"].NullString())
-                                    {
-                                        exist = true;
-                                        break;
-                                    }
-                                }
-
-                                if (!exist)
+                                // cho data2 -> data sum
+                                DataRow rowsum;
+                                foreach (DataRow row2 in Data2.Rows)
                                 {
                                     rowsum = DataSum.NewRow();
-                                    rowsum["LOT_ID"] = row1["LOT_ID"];
-                                    rowsum["REEL_ID"] = row1["REEL_ID"];
-                                    rowsum["QTY"] = row1["QTY"];
-                                    rowsum["FA_JUDGE"] = row1["FA_JUDGE"];
-                                    rowsum["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
-                                    rowsum["SHIP_REEL"] = row1["SHIP_REEL"];
+                                    rowsum["LOT_ID"] = row2["LOT_ID"];
+                                    rowsum["REEL_ID"] = row2["REEL_ID"];
+                                    rowsum["WAFER_ID"] = row2["WAFER_ID"];
+                                    rowsum["START_FB"] = row2["START_FB"];
+                                    rowsum["END_FB"] = row2["END_FB"];
                                     DataSum.Rows.Add(rowsum);
                                 }
-                            }
 
-                            // cho data vao datasum
-                            foreach (DataRow rsum in DataSum.Rows)
-                            {
-                                foreach (DataRow row in Data.Rows)
+                                // cho data1 -> data sum
+                                foreach (DataRow row1 in Data1.Rows)
                                 {
-                                    if (rsum["LOT_ID"].NullString() == row["LOT_ID"].NullString())
+                                    foreach (DataRow item in DataSum.Rows)
                                     {
-                                        rsum["MARKING_TIME"] = row["MARKING_TIME"];
-                                        rsum["MARKING_NO"] = row["MARKING_NO"];
-                                        rsum["MATERIAL_NAME"] = row["MATERIAL_NAME"];
-                                        rsum["ISMECA"] = row["ISMECA"];
-                                        rsum["START_END_LINE"] = row["START_END_LINE"];
-                                        rsum["END_END_LINE"] = row["END_END_LINE"];
-                                        rsum["REMARK"] = row["REMARK"];
-                                        break;
+                                        if (row1["LOT_ID"].NullString() == item["LOT_ID"].NullString() && row1["REEL_ID"].NullString() == item["REEL_ID"].NullString())
+                                        {
+                                            item["QTY"] = row1["QTY"];
+                                            item["FA_JUDGE"] = row1["FA_JUDGE"];
+
+                                            if (row1["FA_JUDGE"].NullString() == "FALSE")
+                                            {
+                                                item["REWORK_LOT"] = item["WAFER_ID"];
+                                                item["WAFER_ID"] = "";
+                                            }
+
+                                            item["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
+                                            item["SHIP_REEL"] = row1["SHIP_REEL"];
+                                        }
                                     }
                                 }
-                            }
 
-                            foreach (DataRow row1 in Data.Rows)
-                            {
-                                exist = false;
+                                // cho data1 ma k co trong data sum vao data sum
+                                bool exist = false;
+                                foreach (DataRow row1 in Data1.Rows)
+                                {
+                                    exist = false;
+                                    foreach (DataRow item in DataSum.Rows)
+                                    {
+                                        if (row1["LOT_ID"].NullString() == item["LOT_ID"].NullString() && row1["REEL_ID"].NullString() == item["REEL_ID"].NullString())
+                                        {
+                                            exist = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!exist)
+                                    {
+                                        rowsum = DataSum.NewRow();
+                                        rowsum["LOT_ID"] = row1["LOT_ID"];
+                                        rowsum["REEL_ID"] = row1["REEL_ID"];
+                                        rowsum["QTY"] = row1["QTY"];
+                                        rowsum["FA_JUDGE"] = row1["FA_JUDGE"];
+                                        rowsum["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
+                                        rowsum["SHIP_REEL"] = row1["SHIP_REEL"];
+                                        DataSum.Rows.Add(rowsum);
+                                    }
+                                }
+
+                                // cho data vao datasum
                                 foreach (DataRow rsum in DataSum.Rows)
                                 {
-                                    if (rsum["LOT_ID"].NullString() == row1["LOT_ID"].NullString())
+                                    foreach (DataRow row in Data.Rows)
                                     {
-                                        exist = true;
-                                        break;
+                                        if (rsum["LOT_ID"].NullString() == row["LOT_ID"].NullString())
+                                        {
+                                            rsum["MARKING_TIME"] = row["MARKING_TIME"];
+                                            rsum["MARKING_NO"] = row["MARKING_NO"];
+                                            rsum["MATERIAL_NAME"] = row["MATERIAL_NAME"];
+                                            rsum["ISMECA"] = row["ISMECA"];
+                                            rsum["START_END_LINE"] = row["START_END_LINE"];
+                                            rsum["END_END_LINE"] = row["END_END_LINE"];
+                                            rsum["REMARK"] = row["REMARK"];
+                                            break;
+                                        }
                                     }
                                 }
 
-                                if (!exist)
+                                foreach (DataRow row1 in Data.Rows)
                                 {
-                                    rowsum = DataSum.NewRow();
-                                    rowsum["MARKING_TIME"] = row1["MARKING_TIME"];
-                                    rowsum["LOT_ID"] = row1["LOT_ID"];
-                                    rowsum["MARKING_NO"] = row1["MARKING_NO"];
-                                    rowsum["MATERIAL_NAME"] = row1["MATERIAL_NAME"];
-                                    rowsum["ISMECA"] = row1["ISMECA"];
-                                    rowsum["START_END_LINE"] = row1["START_END_LINE"];
-                                    rowsum["END_END_LINE"] = row1["END_END_LINE"];
-                                    rowsum["REMARK"] = row1["REMARK"];
-                                    DataSum.Rows.Add(rowsum);
-                                }
-                            }
+                                    exist = false;
+                                    foreach (DataRow rsum in DataSum.Rows)
+                                    {
+                                        if (rsum["LOT_ID"].NullString() == row1["LOT_ID"].NullString())
+                                        {
+                                            exist = true;
+                                            break;
+                                        }
+                                    }
 
-                            // m_BindData.BindGridView(gcList, DataSum);
-                            gcList.DataSource = DataSum;
-                            gvList.OptionsView.ColumnAutoWidth = true;
+                                    if (!exist)
+                                    {
+                                        rowsum = DataSum.NewRow();
+                                        rowsum["MARKING_TIME"] = row1["MARKING_TIME"];
+                                        rowsum["LOT_ID"] = row1["LOT_ID"];
+                                        rowsum["MARKING_NO"] = row1["MARKING_NO"];
+                                        rowsum["MATERIAL_NAME"] = row1["MATERIAL_NAME"];
+                                        rowsum["ISMECA"] = row1["ISMECA"];
+                                        rowsum["START_END_LINE"] = row1["START_END_LINE"];
+                                        rowsum["END_END_LINE"] = row1["END_END_LINE"];
+                                        rowsum["REMARK"] = row1["REMARK"];
+                                        DataSum.Rows.Add(rowsum);
+                                    }
+                                }
+
+                                // m_BindData.BindGridView(gcList, DataSum);
+                                gcList.DataSource = DataSum;
+                                gvList.OptionsView.ColumnAutoWidth = true;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Error);
+                    else
+                    {
+                        MsgBox.Show(m_ResultDB.ReturnString.Translation(), MsgType.Error);
+                    }
                 }
             }
             catch (Exception ex)
@@ -525,6 +645,8 @@ namespace Wisol.MES.Forms.CONTENT
             {
                 txtFileUrl.Text = dlg.FileName;
                 txtLotID.Text = string.Empty;
+                txtMarkingNo.Text = string.Empty;
+                txtReelId.Text = string.Empty;
             }
         }
 
@@ -569,6 +691,71 @@ namespace Wisol.MES.Forms.CONTENT
                         }
                     }
 
+                }
+                else if (Step == "MARKING_NO") // search by marking No
+                {
+                    string strMarkingNo = " (";
+
+                    foreach (var item in lotIds)
+                    {
+                        strMarkingNo += "'" + item + "',";
+                    }
+
+                    strMarkingNo = strMarkingNo.Substring(0, strMarkingNo.Length - 1) + ") ";
+
+                    strSqlString.AppendFormat("SELECT H.TX_DTTM 'Marking Time' \n");
+                    strSqlString.AppendFormat("       , L.LOT_ID 'LOT_ID' \n");
+                    strSqlString.AppendFormat("       , H.LOT_DESCRIPTION 'Lot Description' \n");
+                    strSqlString.AppendFormat("       , L.LOT_UDF2 'MARKING_NO' \n");
+                    strSqlString.AppendFormat("       , LT.VALUE1 'Lot Type' \n");
+                    strSqlString.AppendFormat("       , LC.VALUE1 'Lot Category' \n");
+                    strSqlString.AppendFormat("       , L.OPERATION_ID 'Operation' \n");
+                    strSqlString.AppendFormat("       , O.OPERATION_SHORT_NAME 'Operation Name' \n");
+                    strSqlString.AppendFormat("       , H.TX_USER_ID + ' : ' + H.TX_USER_NAME 'Worker' \n");
+                    strSqlString.AppendFormat("       , L.MATERIAL_ID 'Material ID' \n");
+                    strSqlString.AppendFormat("       , M.MATERIAL_NAME 'Material Name' \n");
+                    strSqlString.AppendFormat("       , H.EQUIPMENT_ID 'Equipment ID' \n");
+                    strSqlString.AppendFormat("       , E.EQUIPMENT_NAME 'Equipment Name' \n");
+                    strSqlString.AppendFormat("       , ISNULL((SELECT 'Y' FROM NM_LOTS X (NOLOCK) WHERE X.TX_CODE = 'TX_SHIP' AND X.LOT_ID = L.LOT_ID),'N') 'Shipping_Flag' \n");
+                    strSqlString.AppendFormat("  FROM NM_LOT_SUMMARY_NEW L (NOLOCK) \n");
+                    strSqlString.AppendFormat("       INNER JOIN (SELECT LOT_ID, MIN(END_HISTORY_SEQ) AS END_HISTORY_SEQ \n");
+                    strSqlString.AppendFormat("                     FROM NM_LOT_SUMMARY_NEW (NOLOCK) \n");
+                    strSqlString.AppendFormat("                    WHERE LOT_UDF2 IN ");
+                    strSqlString.AppendFormat(strMarkingNo + "     AND LOT_ID LIKE '%0' GROUP BY LOT_ID) X ON \n");
+                    strSqlString.AppendFormat("                  L.LOT_ID = X.LOT_ID AND L.END_HISTORY_SEQ = X.END_HISTORY_SEQ \n");
+                    strSqlString.AppendFormat("       INNER JOIN NM_LOT_HISTORY H (NOLOCK) ON L.LOT_ID = H.LOT_ID AND L.START_HISTORY_SEQ = H.HISTORY_SEQ \n");
+                    strSqlString.AppendFormat("       LEFT OUTER JOIN NB_CODE_DATA LT (NOLOCK) ON L.LOT_TYPE = LT.PK1 AND LT.TABLE_ID = 'LOT_TYPE' AND LT.SITE_ID = 'WHCSP' \n");
+                    strSqlString.AppendFormat("       LEFT OUTER JOIN NB_CODE_DATA LC (NOLOCK) ON L.LOT_CATEGORY = LC.PK1 AND LC.TABLE_ID = 'LOT_CATEGORY' AND LC.SITE_ID = 'WHCSP' \n");
+                    strSqlString.AppendFormat("       INNER JOIN NM_OPERATIONS O (NOLOCK) ON L.SITE_ID = O.SITE_ID AND L.OPERATION_ID = O.OPERATION_ID \n");
+                    strSqlString.AppendFormat("       INNER JOIN NM_MATERIALS M (NOLOCK) ON L.SITE_ID = M.SITE_ID AND L.MATERIAL_ID = M.MATERIAL_ID \n");
+                    strSqlString.AppendFormat("       LEFT OUTER JOIN NM_EQUIPMENT E (NOLOCK) ON H.SITE_ID = E.SITE_ID AND H.EQUIPMENT_ID = E.EQUIPMENT_ID \n");
+                    strSqlString.AppendFormat(" WHERE L.SITE_ID = 'WHCSP' \n");
+                    strSqlString.AppendFormat("       AND L.LOT_UDF2 IN  \n");
+                    strSqlString.AppendFormat(strMarkingNo + "\n");
+                    strSqlString.AppendFormat(" ORDER BY H.TX_DTTM \n");
+                }
+                else if (Step == "REEL_ID") // search lot by reel Id
+                {
+                    string strReelId = " (";
+
+                    foreach (var item in lotIds)
+                    {
+                        strReelId += "'" + item + "',";
+                    }
+
+                    strReelId = strReelId.Substring(0, strReelId.Length - 1) + ") \n";
+
+                    strSqlString.AppendFormat(" SELECT DISTINCT * FROM ( \n");
+                    strSqlString.AppendFormat(" SELECT A.LOT_ID,A.RELATION_LOT_ID \n");
+                    strSqlString.AppendFormat("        , CASE WHEN (A.TX_CODE = 'TX_END' AND O2.PUSH_PULL_FLAG = 'N') OR A.TX_CODE = 'TX_REWORK' THEN O2.OPERATION_ID ELSE O.OPERATION_ID  END 'Operation' \n");
+                    strSqlString.AppendFormat("  FROM NM_LOT_HISTORY A (NOLOCK) \n");
+                    strSqlString.AppendFormat("        INNER JOIN NM_OPERATIONS O (NOLOCK) ON A.SITE_ID = O.SITE_ID AND A.OPERATION_ID = O.OPERATION_ID \n");
+                    strSqlString.AppendFormat("        LEFT OUTER JOIN NM_OPERATIONS O2 (NOLOCK) ON A.SITE_ID = O.SITE_ID AND A.PREV_OPERATION_ID = O2.OPERATION_ID \n");
+                    strSqlString.AppendFormat("  WHERE 1=1  \n");
+                    strSqlString.AppendFormat("    AND A.HISTORY_DELETE_FLAG <> 'Y' \n");
+                    strSqlString.AppendFormat("    AND A.RELATION_LOT_ID IN " + strReelId);
+                    strSqlString.AppendFormat("    ) SUB ");
+                    strSqlString.AppendFormat("  WHERE SUB.Operation = 'OC360' ");
                 }
                 else if (Step == "WIP")
                 {
@@ -735,13 +922,19 @@ namespace Wisol.MES.Forms.CONTENT
 
         private void gvList_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)
         {
-            if (e.Column.FieldName == "MARKING_TIME" || e.Column.FieldName == "LOT_ID" || e.Column.FieldName == "MARKING_NO" || e.Column.FieldName == "MATERIAL_NAME" || e.Column.FieldName == "ISMECA" || e.Column.FieldName == "START_END_LINE" ||
-                e.Column.FieldName == "END_END_LINE" || e.Column.FieldName == "REEL_ID" || e.Column.FieldName == "WAFER_ID")
+            if (e.Column.FieldName == "MARKING_TIME" || e.Column.FieldName == "LOT_ID" || e.Column.FieldName == "MARKING_NO" ||
+                e.Column.FieldName == "MATERIAL_NAME" || e.Column.FieldName == "ISMECA" || e.Column.FieldName == "START_END_LINE" ||
+                e.Column.FieldName == "END_END_LINE" || e.Column.FieldName == "REEL_ID" || e.Column.FieldName == "REMARK")
             {
                 string v1 = gvList.GetRowCellValue(e.RowHandle1, e.Column).NullString();
                 string v2 = gvList.GetRowCellValue(e.RowHandle2, e.Column).NullString();
                 e.Merge = v1 == v2;
                 e.Handled = true;
+            }
+            else
+            {
+                e.Handled = true;
+                e.Merge = false;
             }
         }
 
@@ -769,6 +962,37 @@ namespace Wisol.MES.Forms.CONTENT
             catch (Exception ex)
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
+            }
+        }
+
+        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (radioGroup1.SelectedIndex == 0) // lot Id
+            {
+                txtLotID.Enabled = true;
+                txtMarkingNo.Enabled = false;
+                txtReelId.Enabled = false;
+
+                txtMarkingNo.Text = "";
+                txtReelId.Text = "";
+            }
+            else if (radioGroup1.SelectedIndex == 1) // marking No
+            {
+                txtLotID.Enabled = false;
+                txtMarkingNo.Enabled = true;
+                txtReelId.Enabled = false;
+
+                txtLotID.Text = "";
+                txtReelId.Text = "";
+            }
+            else
+            {
+                txtLotID.Enabled = false;
+                txtMarkingNo.Enabled = false;
+                txtReelId.Enabled = true;
+
+                txtLotID.Text = "";
+                txtMarkingNo.Text = "";
             }
         }
     }

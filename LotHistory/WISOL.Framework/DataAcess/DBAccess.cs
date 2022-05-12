@@ -555,6 +555,7 @@ namespace Wisol.DataAcess
                 cmd.CommandType = CommandType.Text;
 
                 da = new SqlDataAdapter(cmd);
+                da.SelectCommand.CommandTimeout = 600;
                 da.Fill(ds);
                 con.Close();
 
