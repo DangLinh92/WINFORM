@@ -452,8 +452,7 @@
             this.accordionControlElement2});
             this.accordionControl1.Location = new System.Drawing.Point(0, 32);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
-            this.accordionControl1.Size = new System.Drawing.Size(48, 698);
+            this.accordionControl1.Size = new System.Drawing.Size(250, 698);
             this.accordionControl1.TabIndex = 10;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             this.accordionControl1.Click += new System.EventHandler(this.accordionControl1_Click);
@@ -477,6 +476,7 @@
             this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement1.Tag = "SYSTEM";
             this.accordionControlElement1.Text = "SYSTEM";
+            this.accordionControlElement1.Visible = false;
             this.accordionControlElement1.Click += new System.EventHandler(this.accordionControlElement1_Click);
             // 
             // accordionControlElement2
@@ -511,9 +511,9 @@
             this.tabForm.HeaderButtons = ((DevExpress.XtraTab.TabButtons)((((DevExpress.XtraTab.TabButtons.Prev | DevExpress.XtraTab.TabButtons.Next) 
             | DevExpress.XtraTab.TabButtons.Close) 
             | DevExpress.XtraTab.TabButtons.Default)));
-            this.tabForm.Location = new System.Drawing.Point(48, 32);
+            this.tabForm.Location = new System.Drawing.Point(250, 32);
             this.tabForm.Name = "tabForm";
-            this.tabForm.Size = new System.Drawing.Size(960, 698);
+            this.tabForm.Size = new System.Drawing.Size(758, 698);
             this.tabForm.TabIndex = 11;
             this.tabForm.TabStop = false;
             this.tabForm.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabForm_SelectedPageChanged);

@@ -76,6 +76,7 @@ namespace Wisol.MES.Forms.CONTENT
                 Data1.Columns.Add("FA_JUDGE");
                 Data1.Columns.Add("CUSTOMER_NAME");
                 Data1.Columns.Add("SHIP_REEL");
+                Data1.Columns.Add("SHIP_TIME");
 
                 DataTable Data2 = new DataTable();
                 Data2.Columns.Add("LOT_ID");
@@ -83,6 +84,8 @@ namespace Wisol.MES.Forms.CONTENT
                 Data2.Columns.Add("WAFER_ID");
                 Data2.Columns.Add("START_FB");
                 Data2.Columns.Add("END_FB");
+                Data2.Columns.Add("QUIPMENT_FB");
+
 
                 DataTable DataSum = new DataTable();
                 DataSum.Columns.Add("MARKING_TIME");
@@ -94,6 +97,7 @@ namespace Wisol.MES.Forms.CONTENT
                 DataSum.Columns.Add("END_END_LINE");
                 DataSum.Columns.Add("REMARK");
                 DataSum.Columns.Add("REEL_ID");
+                DataSum.Columns.Add("PKG_LOT");
                 DataSum.Columns.Add("QTY");
                 DataSum.Columns.Add("FA_JUDGE");
                 DataSum.Columns.Add("CUSTOMER_NAME");
@@ -102,6 +106,8 @@ namespace Wisol.MES.Forms.CONTENT
                 DataSum.Columns.Add("REWORK_LOT");
                 DataSum.Columns.Add("START_FB");
                 DataSum.Columns.Add("END_FB");
+                DataSum.Columns.Add("QUIPMENT_FB");
+                DataSum.Columns.Add("SHIP_TIME");
 
                 List<string> lstLotCondition = new List<string>();
                 if (string.IsNullOrEmpty(txtFileUrl.Text))
@@ -203,7 +209,7 @@ namespace Wisol.MES.Forms.CONTENT
                         base.m_ResultDB = base.m_DBaccess.SqlExecuteDataTable(MakeSqlString("REEL_ID", lstLotCondition));
                         DataTable dtaLotId = base.m_ResultDB.ReturnDataSet.Tables[0];
                         List<string> lotIds = new List<string>();
-                       
+
                         foreach (DataRow item in dtaLotId.Rows)
                         {
                             if (!lotIds.Contains(item["LOT_ID"].NullString()) && item["LOT_ID"].NullString() != "")
@@ -221,7 +227,7 @@ namespace Wisol.MES.Forms.CONTENT
                             }
                         }
 
-                        if(lotIds.Count == 0)
+                        if (lotIds.Count == 0)
                         {
                             MsgBox.Show("Not found lot Id by reel id", MsgType.Warning);
                             return;
@@ -267,9 +273,9 @@ namespace Wisol.MES.Forms.CONTENT
                             {
                                 foreach (DataRow row in dtData.Rows)
                                 {
-                                    if(relationDicOrigin.Count > 0)
+                                    if (relationDicOrigin.Count > 0)
                                     {
-                                        if(!relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
+                                        if (!relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
                                         {
                                             continue;
                                         }
@@ -317,39 +323,39 @@ namespace Wisol.MES.Forms.CONTENT
                                         }
                                     }
 
-                                    if (row["Relation Lot"].NullString() != "" && row["Operation"].NullString() == "OC360")
+                                    if (row["Relation Lot"].NullString() != "" && (row["Operation"].NullString() == "OC360" || row["Operation"].NullString() == "OC156"))
                                     {
-                                        if (relationDicOrigin.Count <= 0)
+                                        //if (relationDicOrigin.Count <= 0)
+                                        //{
+                                        if (relationDic.ContainsKey(row["LOT_ID"].NullString()))
                                         {
-                                            if (relationDic.ContainsKey(row["LOT_ID"].NullString()))
+                                            if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
                                             {
-                                                if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
-                                                {
-                                                    relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
-                                                }
-                                            }
-                                            else
-                                            {
-                                                relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
+                                                relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
                                             }
                                         }
                                         else
                                         {
-                                            if (relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
-                                            {
-                                                if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()) && relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
-                                                {
-                                                    relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
-                                                }
-                                            }
-                                            else if (!relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
-                                            {
-                                                if (relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
-                                                {
-                                                    relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
-                                                }
-                                            }
+                                            relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
                                         }
+                                        //}
+                                        //else
+                                        //{
+                                        //    if (relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
+                                        //    {
+                                        //        if (!relationDic[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()) && relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
+                                        //        {
+                                        //            relationDic[row["LOT_ID"].NullString()].Add(row["Relation Lot"].NullString());
+                                        //        }
+                                        //    }
+                                        //    else if (!relationDic.ContainsKey(row["LOT_ID"].NullString()) && relationDicOrigin.ContainsKey(row["LOT_ID"].NullString()))
+                                        //    {
+                                        //        if (relationDicOrigin[row["LOT_ID"].NullString()].Contains(row["Relation Lot"].NullString()))
+                                        //        {
+                                        //            relationDic.Add(row["LOT_ID"].NullString(), new List<string>() { row["Relation Lot"].NullString() });
+                                        //        }
+                                        //    }
+                                        //}
                                     }
                                 }
 
@@ -408,6 +414,29 @@ namespace Wisol.MES.Forms.CONTENT
                                                     if (item["Tx Code"].NullString() == "TX_END")
                                                     {
                                                         txEnd = "TX_END";
+                                                    }
+
+                                                    if (!row["REEL_ID"].NullString().StartsWith("CNM")) // PKG LOT 
+                                                    {
+                                                        if (item["Tx Code"].NullString() == "TX_END" && item["Operation"].NullString() == "OC150")
+                                                        {
+                                                            row["QTY"] = item["Chip Qty"];
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (double.TryParse(row["QTY"].NullString(), out _) && double.Parse(row["QTY"].NullString()) == 0)
+                                                        {
+                                                            if (item["Tx Code"].NullString() == "TX_END" && item["Operation"].NullString() == "OC360")
+                                                            {
+                                                                row["QTY"] = item["Chip Qty"];
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (item["Tx Code"].NullString() == "TX_SHIP")
+                                                    {
+                                                        row["SHIP_TIME"] = item["Tx Time"];
                                                     }
                                                 }
                                             }
@@ -498,7 +527,43 @@ namespace Wisol.MES.Forms.CONTENT
                                                                 row["END_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
                                                             }
                                                         }
+
+                                                        row["QUIPMENT_FB"] = item["Equipment"].NullString();
                                                     }
+                                                }
+                                            }
+
+                                            string enfb = "";
+
+                                            foreach (DataRow row in Data2.Rows)
+                                            {
+                                                enfb = "";
+                                                foreach (DataRow item in dtData3.Rows)
+                                                {
+                                                    if (row["WAFER_ID"].NullString() == item["LOT_ID"].NullString())
+                                                    {
+                                                        // Start FB
+                                                        if (row["START_FB"].NullString() == "" && item["Operation"].NullString() == "OC140")
+                                                        {
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                row["START_FB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
+                                                        }
+
+                                                        if (item["Operation"].NullString() == "OC140")
+                                                        {
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                enfb = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                if(row["END_FB"].NullString() == "")
+                                                {
+                                                    row["END_FB"] = enfb;
                                                 }
                                             }
                                         }
@@ -515,6 +580,7 @@ namespace Wisol.MES.Forms.CONTENT
                                     rowsum["WAFER_ID"] = row2["WAFER_ID"];
                                     rowsum["START_FB"] = row2["START_FB"];
                                     rowsum["END_FB"] = row2["END_FB"];
+                                    rowsum["QUIPMENT_FB"] = row2["QUIPMENT_FB"];
                                     DataSum.Rows.Add(rowsum);
                                 }
 
@@ -536,6 +602,11 @@ namespace Wisol.MES.Forms.CONTENT
 
                                             item["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
                                             item["SHIP_REEL"] = row1["SHIP_REEL"];
+
+                                            if (DateTime.TryParseExact(row1["SHIP_TIME"].NullString(), formatString,null,System.Globalization.DateTimeStyles.None, out _))
+                                            {
+                                                item["SHIP_TIME"] = DateTime.ParseExact(row1["SHIP_TIME"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                            }
                                         }
                                     }
                                 }
@@ -558,11 +629,17 @@ namespace Wisol.MES.Forms.CONTENT
                                     {
                                         rowsum = DataSum.NewRow();
                                         rowsum["LOT_ID"] = row1["LOT_ID"];
+
                                         rowsum["REEL_ID"] = row1["REEL_ID"];
+
                                         rowsum["QTY"] = row1["QTY"];
                                         rowsum["FA_JUDGE"] = row1["FA_JUDGE"];
                                         rowsum["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
                                         rowsum["SHIP_REEL"] = row1["SHIP_REEL"];
+                                        if (DateTime.TryParseExact(row1["SHIP_TIME"].NullString(), formatString, null, System.Globalization.DateTimeStyles.None, out _))
+                                        {
+                                            rowsum["SHIP_TIME"] = DateTime.ParseExact(row1["SHIP_TIME"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                        }
                                         DataSum.Rows.Add(rowsum);
                                     }
                                 }
@@ -613,8 +690,19 @@ namespace Wisol.MES.Forms.CONTENT
                                     }
                                 }
 
+                                foreach (DataRow row in DataSum.Rows)
+                                {
+                                    if (!row["REEL_ID"].NullString().StartsWith("CNM"))
+                                    {
+                                        row["PKG_LOT"] = row["REEL_ID"];
+                                        row["REEL_ID"] = "";
+                                    }
+                                }
+
                                 // m_BindData.BindGridView(gcList, DataSum);
                                 gcList.DataSource = DataSum;
+                                gvList.ClearSorting();
+                                gvList.Columns["LOT_ID"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
                                 gvList.OptionsView.ColumnAutoWidth = true;
                             }
                         }
@@ -755,7 +843,7 @@ namespace Wisol.MES.Forms.CONTENT
                     strSqlString.AppendFormat("    AND A.HISTORY_DELETE_FLAG <> 'Y' \n");
                     strSqlString.AppendFormat("    AND A.RELATION_LOT_ID IN " + strReelId);
                     strSqlString.AppendFormat("    ) SUB ");
-                    strSqlString.AppendFormat("  WHERE SUB.Operation = 'OC360' ");
+                    strSqlString.AppendFormat("  WHERE SUB.Operation = 'OC360' OR SUB.Operation = 'OC156' ");
                 }
                 else if (Step == "WIP")
                 {
@@ -924,7 +1012,7 @@ namespace Wisol.MES.Forms.CONTENT
         {
             if (e.Column.FieldName == "MARKING_TIME" || e.Column.FieldName == "LOT_ID" || e.Column.FieldName == "MARKING_NO" ||
                 e.Column.FieldName == "MATERIAL_NAME" || e.Column.FieldName == "ISMECA" || e.Column.FieldName == "START_END_LINE" ||
-                e.Column.FieldName == "END_END_LINE" || e.Column.FieldName == "REEL_ID" || e.Column.FieldName == "REMARK")
+                e.Column.FieldName == "END_END_LINE" || e.Column.FieldName == "REEL_ID" || e.Column.FieldName == "REMARK" || e.Column.FieldName == "PKG_LOT" || e.Column.FieldName == "QTY")
             {
                 string v1 = gvList.GetRowCellValue(e.RowHandle1, e.Column).NullString();
                 string v2 = gvList.GetRowCellValue(e.RowHandle2, e.Column).NullString();
