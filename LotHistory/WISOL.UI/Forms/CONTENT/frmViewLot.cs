@@ -85,6 +85,10 @@ namespace Wisol.MES.Forms.CONTENT
                 Data2.Columns.Add("START_FB");
                 Data2.Columns.Add("END_FB");
                 Data2.Columns.Add("QUIPMENT_FB");
+                Data2.Columns.Add("START_BB");
+                Data2.Columns.Add("END_BB");
+                Data2.Columns.Add("QUIPMENT_BB");
+
 
 
                 DataTable DataSum = new DataTable();
@@ -107,6 +111,11 @@ namespace Wisol.MES.Forms.CONTENT
                 DataSum.Columns.Add("START_FB");
                 DataSum.Columns.Add("END_FB");
                 DataSum.Columns.Add("QUIPMENT_FB");
+
+                DataSum.Columns.Add("START_BB");
+                DataSum.Columns.Add("END_BB");
+                DataSum.Columns.Add("QUIPMENT_BB");
+
                 DataSum.Columns.Add("SHIP_TIME");
 
                 List<string> lstLotCondition = new List<string>();
@@ -528,7 +537,31 @@ namespace Wisol.MES.Forms.CONTENT
                                                             }
                                                         }
 
-                                                        row["QUIPMENT_FB"] = item["Equipment"].NullString();
+                                                        if (row["START_BB"].NullString() == "" && item["Operation"].NullString() == "OC100")
+                                                        {
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                row["START_BB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
+                                                        }
+
+                                                        if (item["Operation"].NullString() == "OC100")
+                                                        {
+                                                            if (item["Tx Time"].NullString() != "")
+                                                            {
+                                                                row["END_BB"] = DateTime.ParseExact(item["Tx Time"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
+                                                            }
+                                                        }
+
+                                                        if (item["Operation"].NullString() == "OC150")
+                                                        {
+                                                            row["QUIPMENT_FB"] = item["Equipment"].NullString();
+                                                        }
+
+                                                        if (item["Operation"].NullString() == "OC100")
+                                                        {
+                                                            row["QUIPMENT_BB"] = item["Equipment"].NullString();
+                                                        }
                                                     }
                                                 }
                                             }
@@ -561,7 +594,7 @@ namespace Wisol.MES.Forms.CONTENT
                                                     }
                                                 }
 
-                                                if(row["END_FB"].NullString() == "")
+                                                if (row["END_FB"].NullString() == "")
                                                 {
                                                     row["END_FB"] = enfb;
                                                 }
@@ -581,6 +614,11 @@ namespace Wisol.MES.Forms.CONTENT
                                     rowsum["START_FB"] = row2["START_FB"];
                                     rowsum["END_FB"] = row2["END_FB"];
                                     rowsum["QUIPMENT_FB"] = row2["QUIPMENT_FB"];
+
+                                    rowsum["START_BB"] = row2["START_BB"];
+                                    rowsum["END_BB"] = row2["END_BB"];
+                                    rowsum["QUIPMENT_BB"] = row2["QUIPMENT_BB"];
+
                                     DataSum.Rows.Add(rowsum);
                                 }
 
@@ -603,7 +641,7 @@ namespace Wisol.MES.Forms.CONTENT
                                             item["CUSTOMER_NAME"] = row1["CUSTOMER_NAME"];
                                             item["SHIP_REEL"] = row1["SHIP_REEL"];
 
-                                            if (DateTime.TryParseExact(row1["SHIP_TIME"].NullString(), formatString,null,System.Globalization.DateTimeStyles.None, out _))
+                                            if (DateTime.TryParseExact(row1["SHIP_TIME"].NullString(), formatString, null, System.Globalization.DateTimeStyles.None, out _))
                                             {
                                                 item["SHIP_TIME"] = DateTime.ParseExact(row1["SHIP_TIME"].NullString(), formatString, null).ToString("yyyy-MM-dd HH:mm:ss");
                                             }
