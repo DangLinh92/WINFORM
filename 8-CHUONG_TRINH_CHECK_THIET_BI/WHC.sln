@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHECKTHIETBI", "WISOL.UI\CHECKTHIETBI.csproj", "{7765A113-AFF4-4257-BED4-4D9463531C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisol.Framework", "WISOL.Framework\Wisol.Framework.csproj", "{B664827E-7282-4566-AB2D-435B613A4E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wisol.Framework.UI", "WISOL.Framework.UI\Wisol.Framework.UI.csproj", "{E049A04F-8D19-4258-9094-F36176562EF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Debug|Any CPU.Build.0 = Debug|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Debug|x86.ActiveCfg = Debug|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Debug|x86.Build.0 = Debug|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Release|Any CPU.ActiveCfg = Release|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Release|x86.ActiveCfg = Release|x86
+		{7765A113-AFF4-4257-BED4-4D9463531C1C}.Release|x86.Build.0 = Release|x86
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Debug|x86.Build.0 = Debug|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Release|x86.ActiveCfg = Release|Any CPU
+		{B664827E-7282-4566-AB2D-435B613A4E75}.Release|x86.Build.0 = Release|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Debug|x86.Build.0 = Debug|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Release|x86.ActiveCfg = Release|Any CPU
+		{E049A04F-8D19-4258-9094-F36176562EF5}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_DetectChanges = True
+		BuildVersion_IncrementBeforeBuild = True
+		BuildVersion_ReplaceNonNumerics = True
+		BuildVersion_UseUniversalClock = False
+		BuildVersion_UseGlobalSettings = False
+		BuildVersion_StartDate = 2020/1/1
+		BuildVersion_UpdateFileVersion = False
+		BuildVersion_UpdateAssemblyVersion = False
+		BuildVersion_BuildVersioningStyle = Increment.Increment.Increment.TimeStamp
+		SolutionGuid = {EE8FA019-2800-4E48-9390-E9A8580C5F6D}
+	EndGlobalSection
+EndGlobal

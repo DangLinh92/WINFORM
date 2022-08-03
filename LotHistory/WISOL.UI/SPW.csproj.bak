@@ -1,0 +1,1691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7765A113-AFF4-4257-BED4-4D9463531C1C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wisol.MES</RootNamespace>
+    <AssemblyName>SPW</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>E:\public\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Wisol.MES.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SPW-ICON.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VN12|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\VN12\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CB39A818E49E60B243E599F0042E919E51F3E5A8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SPW_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Diagram.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Snap.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.Wizard, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDialogs.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Reporting.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AutoClosingMessagebox.cs" />
+    <Compile Include="Classes\Common.cs" />
+    <Compile Include="Classes\DBHelper.cs" />
+    <Compile Include="Classes\NetDrive.cs" />
+    <Compile Include="Classes\ExtendClass.cs" />
+    <Compile Include="Classes\Global.cs" />
+    <Compile Include="Classes\IdleTimeCheck.cs" />
+    <Compile Include="Classes\PrinterClass.cs" />
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Dialogue\DialogueNoticeMinChemical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueNoticeMinChemical.Designer.cs">
+      <DependentUpon>DialogueNoticeMinChemical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWarning.Designer.cs">
+      <DependentUpon>DialogueWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePasswordChange.Designer.cs">
+      <DependentUpon>DialoguePasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueLogin.Designer.cs">
+      <DependentUpon>DialogueLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePassword.Designer.cs">
+      <DependentUpon>DialoguePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueSettings.Designer.cs">
+      <DependentUpon>DialogueSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\BOM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\BOM.Designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\CTG_STOCKIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\CTG_STOCKIN.Designer.cs">
+      <DependentUpon>CTG_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\EXCHANGE_RATE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\EXCHANGE_RATE.Designer.cs">
+      <DependentUpon>EXCHANGE_RATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\GL_ACCOUNT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\GL_ACCOUNT.Designer.cs">
+      <DependentUpon>GL_ACCOUNT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\INPUT_COST.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\INPUT_COST.Designer.cs">
+      <DependentUpon>INPUT_COST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\INVENTORY_SHEET.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\INVENTORY_SHEET.Designer.cs">
+      <DependentUpon>INVENTORY_SHEET.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\LABEL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\LABEL.Designer.cs">
+      <DependentUpon>LABEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\LOCATION.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\LOCATION.Designer.cs">
+      <DependentUpon>LOCATION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\MAKER.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\MAKER.Designer.cs">
+      <DependentUpon>MAKER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\MRP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\MRP.Designer.cs">
+      <DependentUpon>MRP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\CREATE_MRP_CODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\CREATE_MRP_CODE.Designer.cs">
+      <DependentUpon>CREATE_MRP_CODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\EXPORT_EXCEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\EXPORT_EXCEL.Designer.cs">
+      <DependentUpon>EXPORT_EXCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\GOODS_ISSUE_QRcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\GOODS_ISSUE_QRcs.Designer.cs">
+      <DependentUpon>GOODS_ISSUE_QRcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\GOODS_RECEIPT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\GOODS_RECEIPT.Designer.cs">
+      <DependentUpon>GOODS_RECEIPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\HISTORY_GOOD_RE_ISS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\HISTORY_GOOD_RE_ISS.Designer.cs">
+      <DependentUpon>HISTORY_GOOD_RE_ISS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\HISTORY_MOVE_LOCATION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\HISTORY_MOVE_LOCATION.Designer.cs">
+      <DependentUpon>HISTORY_MOVE_LOCATION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\IMPORT_EXCEL.Designer.cs">
+      <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\INVENTORY_SHEET_DETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\INVENTORY_SHEET_DETAIL.Designer.cs">
+      <DependentUpon>INVENTORY_SHEET_DETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\MRP_LIST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\MRP_LIST.Designer.cs">
+      <DependentUpon>MRP_LIST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_DESIGN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_DESIGN.Designer.cs">
+      <DependentUpon>POP_DESIGN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_LOCATION_LABEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_LOCATION_LABEL.Designer.cs">
+      <DependentUpon>POP_LOCATION_LABEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_MAKER_CREATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_MAKER_CREATE.Designer.cs">
+      <DependentUpon>POP_MAKER_CREATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_MAKER_UPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_MAKER_UPDATE.Designer.cs">
+      <DependentUpon>POP_MAKER_UPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_SP_CREATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_SP_CREATE.Designer.cs">
+      <DependentUpon>POP_SP_CREATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_SP_UPDATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\POP_SP_UPDATE.Designer.cs">
+      <DependentUpon>POP_SP_UPDATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PRINT_LABEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PRINT_LABEL.Designer.cs">
+      <DependentUpon>PRINT_LABEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.Designer.cs">
+      <DependentUpon>PURCHASE_REQUEST_DETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\SPAREPART_LEND.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\SPAREPART_LEND.Designer.cs">
+      <DependentUpon>SPAREPART_LEND.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\UPDATE_SPAREPART_CODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\UPDATE_SPAREPART_CODE.Designer.cs">
+      <DependentUpon>UPDATE_SPAREPART_CODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PO_CREATE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\POP\PO_CREATE.Designer.cs">
+      <DependentUpon>PO_CREATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PO_EXPORT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PO_EXPORT.Designer.cs">
+      <DependentUpon>PO_EXPORT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PO_LIST.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PO_LIST.Designer.cs">
+      <DependentUpon>PO_LIST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PR_CHART.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PR_CHART.Designer.cs">
+      <DependentUpon>PR_CHART.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PURCHASE_REQUEST.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\PURCHASE_REQUEST.Designer.cs">
+      <DependentUpon>PURCHASE_REQUEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\REPRINT_LABEL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\REPRINT_LABEL.Designer.cs">
+      <DependentUpon>REPRINT_LABEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\SPAREPART_INVENTORY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\SPAREPART_INVENTORY.Designer.cs">
+      <DependentUpon>SPAREPART_INVENTORY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\SPARE_PART.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\SPARE_PART.Designer.cs">
+      <DependentUpon>SPARE_PART.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCKIN_CANCEL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCKIN_CANCEL.Designer.cs">
+      <DependentUpon>STOCKIN_CANCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCKOUT_CANCEL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCKOUT_CANCEL.Designer.cs">
+      <DependentUpon>STOCKOUT_CANCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCK_IN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCK_IN.Designer.cs">
+      <DependentUpon>STOCK_IN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCK_OUT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\STOCK_OUT.Designer.cs">
+      <DependentUpon>STOCK_OUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\UNIT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\UNIT.Designer.cs">
+      <DependentUpon>UNIT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CONTENT\COST_GLACCOUNT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\COST_GLACCOUNT.Designer.cs">
+      <DependentUpon>COST_GLACCOUNT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\Models\STOCK_OUT_REPORT.cs" />
+    <Compile Include="Forms\REPORT\REPORT_STOCK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_STOCK.Designer.cs">
+      <DependentUpon>REPORT_STOCK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_STOCKIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_STOCKIN.Designer.cs">
+      <DependentUpon>REPORT_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\StockOutReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\StockOutReport.designer.cs">
+      <DependentUpon>StockOutReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.Designer.cs">
+      <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.Designer.cs">
+      <DependentUpon>POP_CANCEL_STOCKOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.Designer.cs">
+      <DependentUpon>POP_LAYOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.Designer.cs">
+      <DependentUpon>POP_LISTDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.Designer.cs">
+      <DependentUpon>POP_STOCKOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.Designer.cs">
+      <DependentUpon>POP_SETTING001_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.Designer.cs">
+      <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.Designer.cs">
+      <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.Designer.cs">
+      <DependentUpon>POP_SETTING003_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.Designer.cs">
+      <DependentUpon>POP_SETTING006_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.Designer.cs">
+      <DependentUpon>POP_SETTING006_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.Designer.cs">
+      <DependentUpon>POP_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING001.Designer.cs">
+      <DependentUpon>SETTING001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING002.Designer.cs">
+      <DependentUpon>SETTING002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING003.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING003.Designer.cs">
+      <DependentUpon>SETTING003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING004.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING004.Designer.cs">
+      <DependentUpon>SETTING004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING005.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING005.Designer.cs">
+      <DependentUpon>SETTING005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING006.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING006.Designer.cs">
+      <DependentUpon>SETTING006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING007.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING007.Designer.cs">
+      <DependentUpon>SETTING007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.Designer.cs">
+      <DependentUpon>SETTING008.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.Designer.cs">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.Designer.cs">
+      <DependentUpon>POP_SYSTEM007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM001.Designer.cs">
+      <DependentUpon>SYSTEM001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM002.Designer.cs">
+      <DependentUpon>SYSTEM002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM004.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM004.Designer.cs">
+      <DependentUpon>SYSTEM004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM005.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM005.Designer.cs">
+      <DependentUpon>SYSTEM005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM006.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM006.Designer.cs">
+      <DependentUpon>SYSTEM006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM007.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM007.Designer.cs">
+      <DependentUpon>SYSTEM007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT001.Designer.cs">
+      <DependentUpon>LOGDAT001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT002.Designer.cs">
+      <DependentUpon>LOGDAT002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.Designer.cs">
+      <DependentUpon>POP_LOGDAT002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM008.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM008.Designer.cs">
+      <DependentUpon>SYSTEM008.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\BaseDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inherit\BaseDocument.Designer.cs">
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\FormType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inherit\FormType.Designer.cs">
+      <DependentUpon>FormType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\PageType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inherit\PageType.Designer.cs">
+      <DependentUpon>PageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\PageTypeListDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inherit\PageTypeListDetail.Designer.cs">
+      <DependentUpon>PageTypeListDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IButton.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POP_MENU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POP_MENU.Designer.cs">
+      <DependentUpon>POP_MENU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dialogue\DialogueWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWait.Designer.cs">
+      <DependentUpon>DialogueWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="UserClass\PrintLabel.cs" />
+    <EmbeddedResource Include="Dialogue\DialogueNoticeMinChemical.resx">
+      <DependentUpon>DialogueNoticeMinChemical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueWarning.resx">
+      <DependentUpon>DialogueWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialoguePasswordChange.resx">
+      <DependentUpon>DialoguePasswordChange.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueLogin.resx">
+      <DependentUpon>DialogueLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialoguePassword.resx">
+      <DependentUpon>DialoguePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueSettings.resx">
+      <DependentUpon>DialogueSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\CTG_STOCKIN.resx">
+      <DependentUpon>CTG_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\EXCHANGE_RATE.resx">
+      <DependentUpon>EXCHANGE_RATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\GL_ACCOUNT.resx">
+      <DependentUpon>GL_ACCOUNT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\INPUT_COST.resx">
+      <DependentUpon>INPUT_COST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\INVENTORY_SHEET.resx">
+      <DependentUpon>INVENTORY_SHEET.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\LABEL.resx">
+      <DependentUpon>LABEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\LOCATION.resx">
+      <DependentUpon>LOCATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\MAKER.resx">
+      <DependentUpon>MAKER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\MRP.resx">
+      <DependentUpon>MRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\CREATE_MRP_CODE.resx">
+      <DependentUpon>CREATE_MRP_CODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\EXPORT_EXCEL.resx">
+      <DependentUpon>EXPORT_EXCEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\GOODS_ISSUE_QRcs.resx">
+      <DependentUpon>GOODS_ISSUE_QRcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\GOODS_RECEIPT.resx">
+      <DependentUpon>GOODS_RECEIPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\HISTORY_GOOD_RE_ISS.resx">
+      <DependentUpon>HISTORY_GOOD_RE_ISS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\HISTORY_MOVE_LOCATION.resx">
+      <DependentUpon>HISTORY_MOVE_LOCATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\IMPORT_EXCEL.resx">
+      <DependentUpon>IMPORT_EXCEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\INVENTORY_SHEET_DETAIL.resx">
+      <DependentUpon>INVENTORY_SHEET_DETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\MRP_LIST.resx">
+      <DependentUpon>MRP_LIST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_DESIGN.resx">
+      <DependentUpon>POP_DESIGN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_LOCATION_LABEL.resx">
+      <DependentUpon>POP_LOCATION_LABEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_MAKER_CREATE.resx">
+      <DependentUpon>POP_MAKER_CREATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_MAKER_UPDATE.resx">
+      <DependentUpon>POP_MAKER_UPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_SP_CREATE.resx">
+      <DependentUpon>POP_SP_CREATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\POP_SP_UPDATE.resx">
+      <DependentUpon>POP_SP_UPDATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\PRINT_LABEL.resx">
+      <DependentUpon>PRINT_LABEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\PURCHASE_REQUEST_DETAIL.resx">
+      <DependentUpon>PURCHASE_REQUEST_DETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\SPAREPART_LEND.resx">
+      <DependentUpon>SPAREPART_LEND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\UPDATE_SPAREPART_CODE.resx">
+      <DependentUpon>UPDATE_SPAREPART_CODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\POP\PO_CREATE.resx">
+      <DependentUpon>PO_CREATE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\PO_EXPORT.resx">
+      <DependentUpon>PO_EXPORT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\PO_LIST.resx">
+      <DependentUpon>PO_LIST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\PR_CHART.resx">
+      <DependentUpon>PR_CHART.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\PURCHASE_REQUEST.resx">
+      <DependentUpon>PURCHASE_REQUEST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\REPRINT_LABEL.resx">
+      <DependentUpon>REPRINT_LABEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\SPAREPART_INVENTORY.resx">
+      <DependentUpon>SPAREPART_INVENTORY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\SPARE_PART.resx">
+      <DependentUpon>SPARE_PART.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\STOCKIN_CANCEL.resx">
+      <DependentUpon>STOCKIN_CANCEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\STOCK_IN.resx">
+      <DependentUpon>STOCK_IN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\STOCK_OUT.resx">
+      <DependentUpon>STOCK_OUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\UNIT.resx">
+      <DependentUpon>UNIT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\COST_GLACCOUNT.resx">
+      <DependentUpon>COST_GLACCOUNT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT_STOCK.resx">
+      <DependentUpon>REPORT_STOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT_STOCKIN.resx">
+      <DependentUpon>REPORT_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\StockOutReport.resx">
+      <DependentUpon>StockOutReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.resx">
+      <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.resx">
+      <DependentUpon>POP_CANCEL_STOCKOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_LAYOUT.resx">
+      <DependentUpon>POP_LAYOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_LISTDETAIL.resx">
+      <DependentUpon>POP_LISTDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_STOCKOUT.resx">
+      <DependentUpon>POP_STOCKOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_1.resx">
+      <DependentUpon>POP_SETTING001_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_2.resx">
+      <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_3.resx">
+      <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING003_1.resx">
+      <DependentUpon>POP_SETTING003_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING006_1.resx">
+      <DependentUpon>POP_SETTING006_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING006_2.resx">
+      <DependentUpon>POP_SETTING006_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_STOCKIN.resx">
+      <DependentUpon>POP_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING001.resx">
+      <DependentUpon>SETTING001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING002.resx">
+      <DependentUpon>SETTING002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING003.resx">
+      <DependentUpon>SETTING003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING004.resx">
+      <DependentUpon>SETTING004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING005.resx">
+      <DependentUpon>SETTING005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING006.resx">
+      <DependentUpon>SETTING006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING007.resx">
+      <DependentUpon>SETTING007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING008.resx">
+      <DependentUpon>SETTING008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING009.resx">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\POP\POP_SYSTEM007.resx">
+      <DependentUpon>POP_SYSTEM007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM001.resx">
+      <DependentUpon>SYSTEM001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM002.resx">
+      <DependentUpon>SYSTEM002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM004.resx">
+      <DependentUpon>SYSTEM004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM005.resx">
+      <DependentUpon>SYSTEM005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM006.resx">
+      <DependentUpon>SYSTEM006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM007.resx">
+      <DependentUpon>SYSTEM007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\LOGDAT001.resx">
+      <DependentUpon>LOGDAT001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\LOGDAT002.resx">
+      <DependentUpon>LOGDAT002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\POP\POP_LOGDAT002.resx">
+      <DependentUpon>POP_LOGDAT002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM008.resx">
+      <DependentUpon>SYSTEM008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\BaseDocument.resx">
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\FormType.resx">
+      <DependentUpon>FormType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\PageType.resx">
+      <DependentUpon>PageType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\PageTypeListDetail.resx">
+      <DependentUpon>PageTypeListDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POP_MENU.resx">
+      <DependentUpon>POP_MENU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueWait.resx">
+      <DependentUpon>DialogueWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="OpenPOMigration%28WHC%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SPW_TemporaryKey.pfx" />
+    <None Include="Worksheet_PR.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-product-documents-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\bdcd801c-194a-44e0-b02d-a3164d977a3c_200x200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\icons8-scan-stock-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\icons8-bar-chart-30.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\icons8-bar-chart-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\icons8-combo-chart-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="answer-tone.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AboveAverage_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\app.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\apply_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\app_error.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\AVG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BelowAverage_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\BOM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Bottom10Items_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Bottom10Percent_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\box.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btnDelete.Image.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\btnDelete.Image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\cancel-receipt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\cancel_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Cancel_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\category.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\China.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\china_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\china_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Close_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\comment_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\comment_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\COUNT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CustomizeGrid_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\delete_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\delete_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\exchange.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\faviconS.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Find_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\folder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientBlueDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientCoralDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientGreenDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientLightBlueDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientMintDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientOrangeDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientRaspberryDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientVioletDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GradientYellowDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\history.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\inentory.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\input.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\input_cost.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\inventory_sheet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\key-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\korea.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\label.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\language.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\loadCDT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Loadlayout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LoadLayout3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\lock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MAX.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MES.ico" />
+    <Content Include="Images\MIN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\moveto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\MRP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\navigationbar_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\navigationbar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\New_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\NO.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Notes_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\OK.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\packing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\per-menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\permission.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Properties_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\purchase_order.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Question_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Refresh_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\report.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\reprint.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\role.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\saveCDT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SaveLayout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\screen.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\screen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SelectAll_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SelectCell_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SelectRow_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\shredder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\south_korea_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\south_korea_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\sp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\spw.ico" />
+    <Content Include="Images\star-rating-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stockout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\StopImage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\storage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SUM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\supplier.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\takout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tension3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tension4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Top10Items_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Top10Percent_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\transit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\unit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\usa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\usa_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\usa_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\vietnam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\vietnam_16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\vietnam_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\WisolLogo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\WisolLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\WisolLogo2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Wisol_Logo_English.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Zoom_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BOM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\box.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\exchange.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\inventory_sheet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MRP.png" />
+    <Content Include="Resources\purchase_order.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SPW-ICON.ico" />
+    <Content Include="spw.ico" />
+    <None Include="bin\Debug\Itenso.TimePeriod.dll" />
+    <Content Include="LABEL_POINT.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NG.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NO.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OK.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\AboveAverage_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\android-chrome-192x192.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\AVG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BelowAverage_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bottom10Items_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bottom10Percent_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\MES.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Wisol_Logo_English.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\WisolLogo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\WisolLogo2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\faviconS.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="SkinInfo.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\btnDelete.Image.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\btnDelete.Image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Cancel_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\China.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Close_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\COUNT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CustomizeGrid_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Find_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientBlueDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientCoralDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientGreenDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientLightBlueDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientMintDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientOrangeDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientRaspberryDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientVioletDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GradientYellowDataBar_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\IMAGE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\key-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\korea.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\loadCDT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Loadlayout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MAX.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MIN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\New_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\NO.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Notes_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\OK.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Properties_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Question_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Refresh_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\saveCDT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SaveLayout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SelectAll_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SelectCell_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SelectRow_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\star-rating-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\StopImage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\SUM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\tension3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\tension4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Top10Items_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Top10Percent_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\usa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\vietnam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\Zoom_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WISOL.Framework.UI\Wisol.Framework.UI.csproj">
+      <Project>{e049a04f-8d19-4258-9094-f36176562ef5}</Project>
+      <Name>Wisol.Framework.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WISOL.Framework\Wisol.Framework.csproj">
+      <Project>{b664827e-7282-4566-ab2d-435b613a4e75}</Project>
+      <Name>Wisol.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

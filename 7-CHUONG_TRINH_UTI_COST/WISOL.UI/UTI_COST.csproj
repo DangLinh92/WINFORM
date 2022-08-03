@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7765A113-AFF4-4257-BED4-4D9463531C1C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wisol.MES</RootNamespace>
+    <AssemblyName>UTI_COST</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Wisol.MES.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cost-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'VN12|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\VN12\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Diagram.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Snap.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.UI, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.Wizard, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Reporting.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AutoClosingMessagebox.cs" />
+    <Compile Include="Classes\DBHelper.cs" />
+    <Compile Include="Classes\NetDrive.cs" />
+    <Compile Include="Classes\ExtendClass.cs" />
+    <Compile Include="Classes\Global.cs" />
+    <Compile Include="Classes\IdleTimeCheck.cs" />
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Dialogue\DialogueNoticeMinChemical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueNoticeMinChemical.Designer.cs">
+      <DependentUpon>DialogueNoticeMinChemical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWarning.Designer.cs">
+      <DependentUpon>DialogueWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePasswordChange.Designer.cs">
+      <DependentUpon>DialoguePasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueLogin.Designer.cs">
+      <DependentUpon>DialogueLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialoguePassword.Designer.cs">
+      <DependentUpon>DialoguePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogue\DialogueSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueSettings.Designer.cs">
+      <DependentUpon>DialogueSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_DRAFT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_DRAFT.Designer.cs">
+      <DependentUpon>REPORT_DRAFT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_SETTING007.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT_SETTING007.Designer.cs">
+      <DependentUpon>REPORT_SETTING007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.Designer.cs">
+      <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.Designer.cs">
+      <DependentUpon>POP_CANCEL_STOCKOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LAYOUT.Designer.cs">
+      <DependentUpon>POP_LAYOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_LISTDETAIL.Designer.cs">
+      <DependentUpon>POP_LISTDETAIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKOUT.Designer.cs">
+      <DependentUpon>POP_STOCKOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_1.Designer.cs">
+      <DependentUpon>POP_SETTING001_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.Designer.cs">
+      <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.Designer.cs">
+      <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING003_1.Designer.cs">
+      <DependentUpon>POP_SETTING003_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_1.Designer.cs">
+      <DependentUpon>POP_SETTING006_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING006_2.Designer.cs">
+      <DependentUpon>POP_SETTING006_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_STOCKIN.Designer.cs">
+      <DependentUpon>POP_STOCKIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING001.Designer.cs">
+      <DependentUpon>SETTING001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING002.Designer.cs">
+      <DependentUpon>SETTING002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING003.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING003.Designer.cs">
+      <DependentUpon>SETTING003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING004.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING004.Designer.cs">
+      <DependentUpon>SETTING004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING005.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING005.Designer.cs">
+      <DependentUpon>SETTING005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING006.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING006.Designer.cs">
+      <DependentUpon>SETTING006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING007.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING007.Designer.cs">
+      <DependentUpon>SETTING007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.Designer.cs">
+      <DependentUpon>SETTING008.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.Designer.cs">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\POP\POP_SYSTEM007.Designer.cs">
+      <DependentUpon>POP_SYSTEM007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM001.Designer.cs">
+      <DependentUpon>SYSTEM001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM002.Designer.cs">
+      <DependentUpon>SYSTEM002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM004.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM004.Designer.cs">
+      <DependentUpon>SYSTEM004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM005.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM005.Designer.cs">
+      <DependentUpon>SYSTEM005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM006.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM006.Designer.cs">
+      <DependentUpon>SYSTEM006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM007.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM007.Designer.cs">
+      <DependentUpon>SYSTEM007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT001.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT001.Designer.cs">
+      <DependentUpon>LOGDAT001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT002.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\LOGDAT002.Designer.cs">
+      <DependentUpon>LOGDAT002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LOGDAT\POP\POP_LOGDAT002.Designer.cs">
+      <DependentUpon>POP_LOGDAT002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM008.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM008.Designer.cs">
+      <DependentUpon>SYSTEM008.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM014.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SYSTEM\SYSTEM014.Designer.cs">
+      <DependentUpon>SYSTEM014.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\BaseDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inherit\BaseDocument.Designer.cs">
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\FormType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inherit\FormType.Designer.cs">
+      <DependentUpon>FormType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\PageType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inherit\PageType.Designer.cs">
+      <DependentUpon>PageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherit\PageTypeListDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inherit\PageTypeListDetail.Designer.cs">
+      <DependentUpon>PageTypeListDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IButton.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POP_MENU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POP_MENU.Designer.cs">
+      <DependentUpon>POP_MENU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dialogue\DialogueWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogue\DialogueWait.Designer.cs">
+      <DependentUpon>DialogueWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="UserClass\PrintLabel.cs" />
+    <EmbeddedResource Include="Dialogue\DialogueNoticeMinChemical.resx">
+      <DependentUpon>DialogueNoticeMinChemical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueWarning.resx">
+      <DependentUpon>DialogueWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialoguePasswordChange.resx">
+      <DependentUpon>DialoguePasswordChange.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueLogin.resx">
+      <DependentUpon>DialogueLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialoguePassword.resx">
+      <DependentUpon>DialoguePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueSettings.resx">
+      <DependentUpon>DialogueSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT_DRAFT.resx">
+      <DependentUpon>REPORT_DRAFT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT_SETTING007.resx">
+      <DependentUpon>REPORT_SETTING007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_CANCEL_STOCKIN.resx">
+      <DependentUpon>POP_CANCEL_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_CANCEL_STOCKOUT.resx">
+      <DependentUpon>POP_CANCEL_STOCKOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_LAYOUT.resx">
+      <DependentUpon>POP_LAYOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_LISTDETAIL.resx">
+      <DependentUpon>POP_LISTDETAIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_STOCKOUT.resx">
+      <DependentUpon>POP_STOCKOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_1.resx">
+      <DependentUpon>POP_SETTING001_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_2.resx">
+      <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_3.resx">
+      <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING003_1.resx">
+      <DependentUpon>POP_SETTING003_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING006_1.resx">
+      <DependentUpon>POP_SETTING006_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING006_2.resx">
+      <DependentUpon>POP_SETTING006_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_STOCKIN.resx">
+      <DependentUpon>POP_STOCKIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING001.resx">
+      <DependentUpon>SETTING001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING002.resx">
+      <DependentUpon>SETTING002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING003.resx">
+      <DependentUpon>SETTING003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING004.resx">
+      <DependentUpon>SETTING004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING005.resx">
+      <DependentUpon>SETTING005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING006.resx">
+      <DependentUpon>SETTING006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING007.resx">
+      <DependentUpon>SETTING007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING008.resx">
+      <DependentUpon>SETTING008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING009.resx">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\POP\POP_SYSTEM007.resx">
+      <DependentUpon>POP_SYSTEM007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM001.resx">
+      <DependentUpon>SYSTEM001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM002.resx">
+      <DependentUpon>SYSTEM002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM004.resx">
+      <DependentUpon>SYSTEM004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM005.resx">
+      <DependentUpon>SYSTEM005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM006.resx">
+      <DependentUpon>SYSTEM006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM007.resx">
+      <DependentUpon>SYSTEM007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\LOGDAT001.resx">
+      <DependentUpon>LOGDAT001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\LOGDAT002.resx">
+      <DependentUpon>LOGDAT002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LOGDAT\POP\POP_LOGDAT002.resx">
+      <DependentUpon>POP_LOGDAT002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM008.resx">
+      <DependentUpon>SYSTEM008.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SYSTEM\SYSTEM014.resx">
+      <DependentUpon>SYSTEM014.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\BaseDocument.resx">
+      <DependentUpon>BaseDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\FormType.resx">
+      <DependentUpon>FormType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\PageType.resx">
+      <DependentUpon>PageType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inherit\PageTypeListDetail.resx">
+      <DependentUpon>PageTypeListDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POP_MENU.resx">
+      <DependentUpon>POP_MENU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogue\DialogueWait.resx">
+      <DependentUpon>DialogueWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2010-04-23 오후 7-52-10.jpg" />
+    <None Include="Resources\작은 내로고.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cost-icon.ico" />
+    <None Include="bin\Debug\Itenso.TimePeriod.dll" />
+    <Content Include="LABEL_POINT.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NG.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NO.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OK.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\2019년_명절선물안받기캠페인홍보.jpg" />
+    <Content Include="Resources\AboveAverage_32x32.png" />
+    <None Include="Resources\android-chrome-192x192.png" />
+    <Content Include="Resources\AVG.png" />
+    <Content Include="Resources\BelowAverage_32x32.png" />
+    <Content Include="Resources\Bottom10Items_32x32.png" />
+    <Content Include="Resources\Bottom10Percent_32x32.png" />
+    <None Include="Resources\MES.ico" />
+    <None Include="Resources\Wisol_Logo_English.png" />
+    <None Include="Resources\WisolLogo.jpg" />
+    <None Include="Resources\WisolLogo2.jpg" />
+    <None Include="Resources\faviconS.ico" />
+    <Content Include="SkinInfo.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\btnDelete.Image.bmp" />
+    <None Include="Resources\btnDelete.Image.png" />
+    <Content Include="Resources\Cancel_32x32.png" />
+    <None Include="Resources\China.png" />
+    <Content Include="Resources\Close_32x32.png" />
+    <Content Include="Resources\COUNT.png" />
+    <Content Include="Resources\CustomizeGrid_32x32.png" />
+    <Content Include="Resources\Find_32x32.png" />
+    <Content Include="Resources\GradientBlueDataBar_32x32.png" />
+    <Content Include="Resources\GradientCoralDataBar_32x32.png" />
+    <Content Include="Resources\GradientGreenDataBar_32x32.png" />
+    <Content Include="Resources\GradientLightBlueDataBar_32x32.png" />
+    <Content Include="Resources\GradientMintDataBar_32x32.png" />
+    <Content Include="Resources\GradientOrangeDataBar_32x32.png" />
+    <Content Include="Resources\GradientRaspberryDataBar_32x32.png" />
+    <Content Include="Resources\GradientVioletDataBar_32x32.png" />
+    <Content Include="Resources\GradientYellowDataBar_32x32.png" />
+    <None Include="Resources\IMAGE.png" />
+    <None Include="Resources\IMAGE %282%29.png" />
+    <Content Include="Resources\key-icon.png" />
+    <None Include="Resources\korea.png" />
+    <Content Include="Resources\loadCDT.png" />
+    <Content Include="Resources\Loadlayout.png" />
+    <Content Include="Resources\MAX.png" />
+    <Content Include="Resources\MIN.png" />
+    <Content Include="Resources\New_32x32.png" />
+    <Content Include="Resources\NO.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Notes_32x32.png" />
+    <Content Include="Resources\OK.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Properties_32x32.png" />
+    <Content Include="Resources\Question_32x32.png" />
+    <Content Include="Resources\Refresh_32x32.png" />
+    <Content Include="Resources\saveCDT.png" />
+    <Content Include="Resources\SaveLayout.png" />
+    <Content Include="Resources\SelectAll_32x32.png" />
+    <Content Include="Resources\SelectCell_32x32.png" />
+    <Content Include="Resources\SelectRow_32x32.png" />
+    <Content Include="Resources\star-rating-icon.png" />
+    <None Include="Resources\StopImage.bmp" />
+    <Content Include="Resources\SUM.png" />
+    <Content Include="Resources\tension3.jpg" />
+    <Content Include="Resources\tension4.jpg" />
+    <Content Include="Resources\Top10Items_32x32.png" />
+    <Content Include="Resources\Top10Percent_32x32.png" />
+    <None Include="Resources\usa.png" />
+    <None Include="Resources\vietnam.png" />
+    <Content Include="Resources\Zoom_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WISOL.Framework.UI\Wisol.Framework.UI.csproj">
+      <Project>{e049a04f-8d19-4258-9094-f36176562ef5}</Project>
+      <Name>Wisol.Framework.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WISOL.Framework\Wisol.Framework.csproj">
+      <Project>{b664827e-7282-4566-ab2d-435b613a4e75}</Project>
+      <Name>Wisol.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
