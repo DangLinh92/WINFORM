@@ -147,27 +147,27 @@ namespace Wisol.MES.Forms.SETTING
                                 if ((dt.Rows[i][7].ToString() != ""))
                                 {
                                     //ton_kho = (uint)(Convert.ToDouble(dt.Rows[i][7].ToString()));
-                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].ToString()));
+                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].IfNullZero()));
                                 }
                                 else { ton_kho = 0; }
                                 if ((dt.Rows[i][8].ToString() != ""))
                                 {
-                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].ToString()));
+                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].IfNullZero()));
                                 }
                                 else { luong_chua_nhap = 0; }
                                 if ((dt.Rows[i][9].ToString() != ""))
                                 {
-                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].ToString()));
+                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].IfNullZero()));
                                 }
                                 else { luong_can_mua_before = 0; }
                                 if ((dt.Rows[i][11].ToString() != ""))
                                 {
-                                    total_usd = Convert.ToDouble(dt.Rows[i][11].ToString());
+                                    total_usd = Convert.ToDouble(dt.Rows[i][11].IfNullZero());
                                 }
                                 else { total_usd = 0; }
                                 //vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].ToString())) + "," + (int)(Convert.ToDouble(dt.Rows[i][6].ToString())) + "," + ton_kho + "," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].ToString()) + "," + total_usd + ")";
-                                vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4)) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].ToString())) + "," + (int)(Convert.ToDouble(dt.Rows[i][6].ToString())) + "," + ton_kho + ",0," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].ToString()) + "," + total_usd + ")";
-                                vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4,2)) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].ToString())) + "," + (Convert.ToDouble(dt.Rows[i][6].ToString())) + "," + ton_kho + ",0," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].ToString()) + "," + total_usd + ")";
+                                vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4)) + "," + (int)(Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4)) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].IfNullZero())) + "," + (int)(Convert.ToDouble(dt.Rows[i][6].IfNullZero())) + "," + ton_kho + ",0," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].IfNullZero()) + "," + total_usd + ")";
+                                vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][2].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][3].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4,2)) + "," + (Math.Round(Convert.ToDouble(dt.Rows[i][4].IfNullZero()) / 4,2)) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].IfNullZero())) + "," + (Convert.ToDouble(dt.Rows[i][6].IfNullZero())) + "," + ton_kho + ",0," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].IfNullZero()) + "," + total_usd + ")";
                                 base.m_DBaccess.ExecuteNoneQuery(vsql);
                             }
 
@@ -203,19 +203,19 @@ namespace Wisol.MES.Forms.SETTING
                                         if (total_Lead_time > 12) { total_Lead_time = 13; }
                                     }
 
-                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].ToString());// Lay he so an toan cua tung CODE
+                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].IfNullZero());// Lay he so an toan cua tung CODE
 
                                 }
                                 for (int j = 5; j < total_Lead_time + 5; j++) // Chạy từ 5 là cột sản lượng tuần đầu tiên......................
                                 {
                                     //total_by_lead_time = total_by_lead_time + dt1.Rows[i][j].ToString().ToInt(); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].ToString()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].IfNullZero()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
                                 }
 
                                 // Check total_lead_time, nếu bằng 13 tức là Lead_time=9 và Offset_lead_time = 4. ************************* ************
                                 if (total_Lead_time == 13)
                                 {
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].ToString());// Cộng thêm 1 tuần cuối nữa.
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].IfNullZero());// Cộng thêm 1 tuần cuối nữa.
                                 }
                                 //********************************************************************************************************* *************
 
@@ -223,13 +223,13 @@ namespace Wisol.MES.Forms.SETTING
                                 luong_can_mua = (int)dinh_muc_can_thiet - dt1.Rows[i]["TON_KHO"].ToString().ToInt() - dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString().ToInt();// So lung can mua
                                 if (luong_can_mua < 0) { luong_can_mua = 0; }// Neu con trong kho thi khong phai mua.
 
-                                total_price = luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].ToString());
+                                total_price = luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].IfNullZero());
 
                                 // Tính lượng trung bình 3 tháng của các phụ liệu.
 
                                 for (int j = 5; j <= 16; j++) {
                                     //temp=temp+ dt1.Rows[i][j].ToString().ToInt();
-                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].ToString());
+                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].IfNullZero());
                                 }
                                 if (temp != 0)
                                 {
@@ -237,7 +237,7 @@ namespace Wisol.MES.Forms.SETTING
                                     temp1 = temp / (double)12.0;
                                     // So sanh voi ton kho hien tai...
 
-                                    a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].ToString());
+                                    a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].IfNullZero());
                                     //if (temp != 0) { a = Math.Floor((double)a / temp1); }
                                     if (temp != 0) { a = Math.Round((double)a / temp1,1); }
                                     else { a = 0; }
@@ -359,22 +359,22 @@ namespace Wisol.MES.Forms.SETTING
                                 if ((dt.Rows[i][7].ToString() != ""))
                                 {
                                     //ton_kho = (uint)(Convert.ToDouble(dt.Rows[i][7].ToString()));
-                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].ToString()));
+                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].IfNullZero()));
                                 }
                                 else { ton_kho = 0; }
                                 if ((dt.Rows[i][8].ToString() != ""))
                                 {
-                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].ToString()));
+                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].IfNullZero()));
                                 }
                                 else { luong_chua_nhap = 0; }
                                 if ((dt.Rows[i][9].ToString() != ""))
                                 {
-                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].ToString()));
+                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].IfNullZero()));
                                 }
                                 else { luong_can_mua_before = 0; }
                                 if ((dt.Rows[i][11].ToString() != ""))
                                 {
-                                    total_usd = Convert.ToDouble(dt.Rows[i][11].ToString());
+                                    total_usd = Convert.ToDouble(dt.Rows[i][11].IfNullZero());
                                 }
                                 else { total_usd = 0; }
                                 //vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].ToString())) + "," + 				(int)(Convert.ToDouble(dt.Rows[i][6].ToString())) + "," + ton_kho + "," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].ToString()) + "," + total_usd + ")";
@@ -412,7 +412,7 @@ namespace Wisol.MES.Forms.SETTING
                                         if (total_Lead_time > 12) { total_Lead_time = 13; }
                                     }
 
-                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].ToString());// Lay he so an toan cua tung CODE
+                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].IfNullZero());// Lay he so an toan cua tung CODE
 
                                 }
 
@@ -424,29 +424,29 @@ namespace Wisol.MES.Forms.SETTING
                                 for (int j = 5; j < total_Lead_time + 5; j++) // Chạy từ 5 là cột sản lượng tuần đầu tiên......................
                                 {
                                     //total_by_lead_time = total_by_lead_time + dt1.Rows[i][j].ToString().ToInt(); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].ToString()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].IfNullZero()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
                                 }
 
                                 // Check total_lead_time, nếu bằng 13 tức là Lead_time=9 và Offset_lead_time = 4. ************************* ************
                                 if (total_Lead_time == 13)
                                 {
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].ToString());// Cộng thêm 1 tuần cuối nữa.
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].IfNullZero());// Cộng thêm 1 tuần cuối nữa.
                                 }
                                 //********************************************************************************************************* *************
 
                                 //dinh_muc_can_thiet = total_by_lead_time * he_so_an_toan; // Dinh muc can thiet 
                                 dinh_muc_can_thiet = Math.Round(total_by_lead_time * he_so_an_toan,2); // Dinh muc can thiet 
                                 //luong_can_mua = (int)dinh_muc_can_thiet - dt1.Rows[i]["TON_KHO"].ToString().ToInt() - dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString().ToInt();// So lung can mua
-                                luong_can_mua = dinh_muc_can_thiet - Convert.ToDouble(dt1.Rows[i]["TON_KHO"].ToString()) - Convert.ToDouble(dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString());// So lung can mua
+                                luong_can_mua = dinh_muc_can_thiet - Convert.ToDouble(dt1.Rows[i]["TON_KHO"].IfNullZero()) - Convert.ToDouble(dt1.Rows[i]["LUONG_CHUA_NHAP"].IfNullZero());// So lung can mua
                                 if (luong_can_mua < 0) { luong_can_mua = 0; }// Neu con trong kho thi khong phai mua.
 
-                                total_price = Math.Round(luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].ToString()),2);
+                                total_price = Math.Round(luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].IfNullZero()),2);
 
                                 // Tính lượng trung bình 3 tháng của các phụ liệu.
 
                                 for (int j = 5; j <= 16; j++)
                                 {
-                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].ToString());
+                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].IfNullZero());
                                 }
                                 if (temp != 0)
                                 {
@@ -459,7 +459,7 @@ namespace Wisol.MES.Forms.SETTING
                                     }
                                     else
                                     {
-                                        a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].ToString());
+                                        a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].IfNullZero());
                                     }
                                     //if (temp != 0) { a = Math.Floor((double)a / temp1); }
                                     if (temp != 0) 
@@ -586,22 +586,22 @@ namespace Wisol.MES.Forms.SETTING
                                 if ((dt.Rows[i][7].ToString() != ""))
                                 {
                                     //ton_kho = (uint)(Convert.ToDouble(dt.Rows[i][7].ToString()));
-                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].ToString()));
+                                    ton_kho = (Convert.ToDouble(dt.Rows[i][7].IfNullZero()));
                                 }
                                 else { ton_kho = 0; }
                                 if ((dt.Rows[i][8].ToString() != ""))
                                 {
-                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].ToString()));
+                                    luong_chua_nhap = (int)(Convert.ToDouble(dt.Rows[i][8].IfNullZero()));
                                 }
                                 else { luong_chua_nhap = 0; }
                                 if ((dt.Rows[i][9].ToString() != ""))
                                 {
-                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].ToString()));
+                                    luong_can_mua_before = (int)(Convert.ToDouble(dt.Rows[i][9].IfNullZero()));
                                 }
                                 else { luong_can_mua_before = 0; }
                                 if ((dt.Rows[i][11].ToString() != ""))
                                 {
-                                    total_usd = Convert.ToDouble(dt.Rows[i][11].ToString());
+                                    total_usd = Convert.ToDouble(dt.Rows[i][11].IfNullZero());
                                 }
                                 else { total_usd = 0; }
                                 //vsql = "insert into EWIPDINH_MUC_NGUYEN_LIEU values('" + dt.Rows[i][0].ToString() + "','" + dt.Rows[i][1].ToString() + "'," + dt.Rows[i][dt.Columns.Count - 1].ToString().ToInt() + ",0," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][2].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][3].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][4].ToString()) / 4) + "," + (int)(Convert.ToDouble(dt.Rows[i][5].ToString())) + "," + 				(int)(Convert.ToDouble(dt.Rows[i][6].ToString())) + "," + ton_kho + "," + luong_chua_nhap + "," + luong_can_mua_before + "," + Convert.ToDouble(dt.Rows[i][10].ToString()) + "," + total_usd + ")";
@@ -640,7 +640,7 @@ namespace Wisol.MES.Forms.SETTING
                                         if (total_Lead_time > 12) { total_Lead_time = 13; }
                                     }
 
-                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].ToString());// Lay he so an toan cua tung CODE
+                                    he_so_an_toan = (float)Convert.ToDouble(mydt.Rows[0][0].IfNullZero());// Lay he so an toan cua tung CODE
 
                                 }
                                 //for (int j = 5; j < total_Lead_time + 4; j++)
@@ -651,29 +651,29 @@ namespace Wisol.MES.Forms.SETTING
                                 for (int j = 5; j < total_Lead_time + 5; j++) // Chạy từ 5 là cột sản lượng tuần đầu tiên......................
                                 {
                                     //total_by_lead_time = total_by_lead_time + dt1.Rows[i][j].ToString().ToInt(); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].ToString()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][j].IfNullZero()); // Tong san luong theo tong Lead time ( khong tinh san luong theo thang).
                                 }
 
                                 // Check total_lead_time, nếu bằng 13 tức là Lead_time=9 và Offset_lead_time = 4. ************************* ************
                                 if (total_Lead_time == 13)
                                 {
-                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].ToString());// Cộng thêm 1 tuần cuối nữa.
+                                    total_by_lead_time = total_by_lead_time + Convert.ToDouble(dt1.Rows[i][16].IfNullZero());// Cộng thêm 1 tuần cuối nữa.
                                 }
                                 //********************************************************************************************************* *************
 
                                 //dinh_muc_can_thiet = total_by_lead_time * he_so_an_toan; // Dinh muc can thiet 
                                 dinh_muc_can_thiet = Math.Round(total_by_lead_time * he_so_an_toan, 2); // Dinh muc can thiet 
                                 //luong_can_mua = (int)dinh_muc_can_thiet - dt1.Rows[i]["TON_KHO"].ToString().ToInt() - dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString().ToInt();// So lung can mua
-                                luong_can_mua = dinh_muc_can_thiet - Convert.ToDouble(dt1.Rows[i]["TON_KHO"].ToString()) - Convert.ToDouble(dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString());// So lung can mua
+                                luong_can_mua = dinh_muc_can_thiet - Convert.ToDouble(dt1.Rows[i]["TON_KHO"].IfNullZero()) - Convert.ToDouble(dt1.Rows[i]["LUONG_CHUA_NHAP"].IfNullZero());// So lung can mua
                                 if (luong_can_mua < 0) { luong_can_mua = 0; }// Neu con trong kho thi khong phai mua.
 
-                                total_price = Math.Round(luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].ToString()), 2);
+                                total_price = Math.Round(luong_can_mua * Convert.ToDouble(dt1.Rows[i]["UNIT_PRICE"].IfNullZero()), 2);
 
                                 // Tính lượng trung bình 3 tháng của các phụ liệu.
 
                                 for (int j = 5; j <= 16; j++)
                                 {
-                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].ToString());
+                                    temp = temp + Convert.ToDouble(dt1.Rows[i][j].IfNullZero());
                                 }
                                 if (temp != 0)
                                 {
@@ -687,7 +687,7 @@ namespace Wisol.MES.Forms.SETTING
                                     }
                                     else
                                     {
-                                        a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].ToString());
+                                        a = Convert.ToDouble(dt.Rows[i]["TON_KHO"].IfNullZero());
                                     }
                                     //if (temp != 0) { a = Math.Floor((double)a / temp1); }
                                     if (temp != 0)

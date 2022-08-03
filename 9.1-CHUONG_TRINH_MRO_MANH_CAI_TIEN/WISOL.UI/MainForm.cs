@@ -305,7 +305,7 @@ namespace Wisol.MES
                 }
                 else
                 {
-                    pageType.ModuleCode = result.Aggregate((x, y) => { return x + " > " + y; }) + " > " + moduleName;// + " (" + moduleCode + ")";
+                    pageType.ModuleCode = result.Aggregate((x, y) => { return x + " > " + y; }) + " > " + moduleName + " (" + moduleCode + ")";
                 }
                 //}
                 pageType.ModuleName = moduleName;

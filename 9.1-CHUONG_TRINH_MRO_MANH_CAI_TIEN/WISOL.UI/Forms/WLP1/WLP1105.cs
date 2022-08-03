@@ -101,9 +101,9 @@ namespace Wisol.MES.Forms.WLP1
                     }
                     for (int i = 0; i < tempDT.Rows.Count; i++)
                     {
-                        if ((tempDT.Rows[i]["CAN_USE_FOR"].ToString() != " ") && (tempDT.Rows[i]["CAN_USE_FOR"].ToString() != ""))
+                        if (tempDT.Rows[i]["CAN_USE_FOR"].NullString() != "")
                         {
-                            tempDT.Rows[i]["CAN_USE"] = Convert.ToDouble(tempDT.Rows[i]["CAN_USE_FOR"].ToString().Substring(1, tempDT.Rows[i]["CAN_USE_FOR"].ToString().Length - 3));
+                            tempDT.Rows[i]["CAN_USE"] = Convert.ToDouble(tempDT.Rows[i]["CAN_USE_FOR"].NullString().Replace("W","").Replace("~",""));
                         }
                     }
 

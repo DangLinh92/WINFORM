@@ -912,9 +912,9 @@ namespace Wisol.MES.Forms.REPORT
 
                     for (int i = 0; i < ton_kho.Rows.Count; i++)
                     {
-                        if ((ton_kho.Rows[i]["CAN_USE_FOR"].ToString() != " ") && (ton_kho.Rows[i]["CAN_USE_FOR"].ToString() != ""))
+                        if ((ton_kho.Rows[i]["CAN_USE_FOR"].NullString() != ""))
                         {
-                            ton_kho.Rows[i]["CAN_USE"] = Convert.ToDouble(ton_kho.Rows[i]["CAN_USE_FOR"].ToString().Substring(1, ton_kho.Rows[i]["CAN_USE_FOR"].ToString().Length - 3));
+                            ton_kho.Rows[i]["CAN_USE"] = Convert.ToDouble(ton_kho.Rows[i]["CAN_USE_FOR"].NullString().Replace("W","").Replace("~",""));
                         }
                     }
                 }
