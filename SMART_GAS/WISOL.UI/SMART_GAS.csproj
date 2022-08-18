@@ -241,6 +241,12 @@
     <Compile Include="Forms\CONTENT\CHART_UTILITY.Designer.cs">
       <DependentUpon>CHART_UTILITY.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CONTENT\IN_LABEL_TAISAN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\CONTENT\IN_LABEL_TAISAN.Designer.cs">
+      <DependentUpon>IN_LABEL_TAISAN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CONTENT\NHAP_XUAT_KHO.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -544,6 +550,9 @@
     <EmbeddedResource Include="Forms\CONTENT\CHART_UTILITY.resx">
       <DependentUpon>CHART_UTILITY.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CONTENT\IN_LABEL_TAISAN.resx">
+      <DependentUpon>IN_LABEL_TAISAN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CONTENT\NHAP_XUAT_KHO.resx">
       <DependentUpon>NHAP_XUAT_KHO.cs</DependentUpon>
     </EmbeddedResource>
@@ -689,6 +698,9 @@
       <DependentUpon>DialogueWait.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="MataisanTmp.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
