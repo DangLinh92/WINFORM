@@ -269,6 +269,24 @@
     <Compile Include="Forms\REPORT\POP\POP_REPORT009.Designer.cs">
       <DependentUpon>POP_REPORT009.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\REPORT\REPORT023.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT023.Designer.cs">
+      <DependentUpon>REPORT023.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT022.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT022.Designer.cs">
+      <DependentUpon>REPORT022.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT021.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\REPORT\REPORT021.Designer.cs">
+      <DependentUpon>REPORT021.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\REPORT\REPORT001.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -401,6 +419,24 @@
     <Compile Include="Forms\SETTING\POP\POP_SETTING001_2.Designer.cs">
       <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING010_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING010_1.Designer.cs">
+      <DependentUpon>POP_SETTING010_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING009_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING009_1.Designer.cs">
+      <DependentUpon>POP_SETTING009_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING008_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\POP\POP_SETTING008_1.Designer.cs">
+      <DependentUpon>POP_SETTING008_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SETTING\POP\POP_SETTING001_3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +496,24 @@
     </Compile>
     <Compile Include="Forms\SETTING\POP\POP_SETTING007_3.Designer.cs">
       <DependentUpon>POP_SETTING007_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING010.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING010.Designer.cs">
+      <DependentUpon>SETTING010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING009.Designer.cs">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SETTING\SETTING008.Designer.cs">
+      <DependentUpon>SETTING008.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SETTING\SETTING001.cs">
       <SubType>UserControl</SubType>
@@ -908,6 +962,15 @@
     <EmbeddedResource Include="Forms\REPORT\POP\POP_REPORT009.resx">
       <DependentUpon>POP_REPORT009.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT023.resx">
+      <DependentUpon>REPORT023.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT022.resx">
+      <DependentUpon>REPORT022.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\REPORT\REPORT021.resx">
+      <DependentUpon>REPORT021.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\REPORT\REPORT001.resx">
       <DependentUpon>REPORT001.cs</DependentUpon>
     </EmbeddedResource>
@@ -974,6 +1037,15 @@
     <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_2.resx">
       <DependentUpon>POP_SETTING001_2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING010_1.resx">
+      <DependentUpon>POP_SETTING010_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING009_1.resx">
+      <DependentUpon>POP_SETTING009_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING008_1.resx">
+      <DependentUpon>POP_SETTING008_1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING001_3.resx">
       <DependentUpon>POP_SETTING001_3.cs</DependentUpon>
     </EmbeddedResource>
@@ -1003,6 +1075,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SETTING\POP\POP_SETTING007_3.resx">
       <DependentUpon>POP_SETTING007_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING010.resx">
+      <DependentUpon>SETTING010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING009.resx">
+      <DependentUpon>SETTING009.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SETTING\SETTING008.resx">
+      <DependentUpon>SETTING008.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SETTING\SETTING001.resx">
       <DependentUpon>SETTING001.cs</DependentUpon>

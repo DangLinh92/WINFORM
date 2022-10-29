@@ -106,6 +106,7 @@
             this.txtLot.Location = new System.Drawing.Point(145, 656);
             this.txtLot.Name = "txtLot";
             this.txtLot.Size = new System.Drawing.Size(201, 20);
+            this.txtLot.StyleController = this.layoutControl1;
             this.txtLot.TabIndex = 45;
             // 
             // chkFlux
@@ -114,6 +115,7 @@
             this.chkFlux.Name = "chkFlux";
             this.chkFlux.Properties.Caption = "FLUX?";
             this.chkFlux.Size = new System.Drawing.Size(60, 20);
+            this.chkFlux.StyleController = this.layoutControl1;
             this.chkFlux.TabIndex = 44;
             this.chkFlux.CheckedChanged += new System.EventHandler(this.chkFlux_CheckedChanged);
             // 
@@ -122,6 +124,7 @@
             this.txtLotMes.Location = new System.Drawing.Point(395, 656);
             this.txtLotMes.Name = "txtLotMes";
             this.txtLotMes.Size = new System.Drawing.Size(201, 20);
+            this.txtLotMes.StyleController = this.layoutControl1;
             this.txtLotMes.TabIndex = 43;
             // 
             // dtpFromDate
@@ -146,6 +149,7 @@
             this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(129, 30);
+            this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "SAVE";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -189,6 +193,7 @@
             this.btnDelete.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
+            this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 35;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);

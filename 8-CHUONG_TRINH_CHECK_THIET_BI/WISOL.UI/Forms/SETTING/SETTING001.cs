@@ -204,6 +204,15 @@ namespace Wisol.MES.Forms.SETTING
                 dt_maintenance_detail = base.m_ResultDB.ReturnDataSet.Tables[2].Copy();
                 base.m_BindData.BindGridLookEdit(gleItemCheck, base.m_ResultDB.ReturnDataSet.Tables[1], "ITEM_CHECK_ID", "ITEM_CHECK_NAME");
                 base.m_BindData.BindGridLookEdit(gleMaintenance, base.m_ResultDB.ReturnDataSet.Tables[2], "MAINTENANCE_ID", "MAINTENANCE_NAME");
+
+                if (txtCode.Text.NullString().Contains("_COPY"))
+                {
+                    txtCode.ReadOnly = false;
+                }
+                else
+                {
+                    txtCode.ReadOnly = true;
+                }
             }
         }
 
@@ -365,7 +374,7 @@ namespace Wisol.MES.Forms.SETTING
                 return;
             }
 
-            DialogResult dialogResult = MsgBox.Show("Code: " + txtCode.Text + "\r\nName: " + txtDeviceName.Text + "\r\n" +  "MSG_COM_015".Translation(), MsgType.Warning, DialogType.OkCancel);
+            DialogResult dialogResult = MsgBox.Show("Code: " + txtCode.Text + "\r\nName: " + txtDeviceName.Text + "\r\n" + "MSG_COM_015".Translation(), MsgType.Warning, DialogType.OkCancel);
             if (dialogResult == DialogResult.OK)
             {
                 try
@@ -400,7 +409,7 @@ namespace Wisol.MES.Forms.SETTING
             DataTable dt_F;
             string factoryID = gleFactory.EditValue.ToString();
 
-            if(factoryID == "")
+            if (factoryID == "")
             {
                 return;
             }
@@ -412,7 +421,7 @@ namespace Wisol.MES.Forms.SETTING
 
         private void btnAddItemCheck_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnAddItemCheck1_Click(object sender, EventArgs e)
@@ -436,6 +445,59 @@ namespace Wisol.MES.Forms.SETTING
             POP.POP_SETTING001_1 popup = new POP.POP_SETTING001_1(device_id, code, device_name, id_check, name, min, max, other, don_vi_tinh);
             popup.ShowDialog();
             GetItemDetail(txtDeviceID.Text);
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDeviceID.Text) || string.IsNullOrEmpty(txtCode.Text.NullString()))
+            {
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDeviceName.Text.Trim()))
+            {
+                MsgBox.Show("Hãy nhập tên thiết bị.\r\nPlease enter Device Name.", MsgType.Warning);
+                return;
+            }
+
+            base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING001.COPY_DEVICE"
+                    , new string[] { "A_PLANT" ,
+                        "A_DEPARTMENT",
+                        "A_TRAN_USER",
+                        "A_LANG",
+                        "A_DEVICE_CODE",
+                        "A_DEVICE_NAME",
+                        "A_LOCATION_ID",
+                        "A_TIME_SETUP",
+                        "A_DEVICE_ID"
+                    }
+                    , new string[] { Consts.PLANT ,
+                        Consts.DEPARTMENT,
+                        Consts.USER_INFO.Id,
+                        Consts.USER_INFO.Language,
+                        txtCode.Text.Trim(),
+                        txtDeviceName.Text.Trim(),
+                        "3",
+                        DateTime.Now.ToString("yyyy-MM-dd"),
+                        txtDeviceID.Text.NullString()
+                    }
+                    );
+
+            if (base.m_ResultDB.ReturnInt == 0)
+            {
+                txtDeviceID.Text = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["DEVICE_ID"].ToString();
+                txtCode.Text = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["CODE"].ToString();
+                txtDeviceName.Text = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["DEVICE_NAME"].ToString();
+                gleFactory.EditValue = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["FACTORY_ID"].ToString();
+                gleLocation.EditValue = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["LOCATION_ID"].ToString();
+                dtpTimeSetup.EditValue = base.m_ResultDB.ReturnDataSet.Tables[0].Rows[0]["TIME_SETUP"].ToString();
+
+                dt_item_check_detail = base.m_ResultDB.ReturnDataSet.Tables[1].Copy();
+                dt_maintenance_detail = base.m_ResultDB.ReturnDataSet.Tables[2].Copy();
+                base.m_BindData.BindGridLookEdit(gleItemCheck, base.m_ResultDB.ReturnDataSet.Tables[1], "ITEM_CHECK_ID", "ITEM_CHECK_NAME");
+                base.m_BindData.BindGridLookEdit(gleMaintenance, base.m_ResultDB.ReturnDataSet.Tables[2], "MAINTENANCE_ID", "MAINTENANCE_NAME");
+
+                txtCode.ReadOnly = false;
+            }
         }
     }
 }

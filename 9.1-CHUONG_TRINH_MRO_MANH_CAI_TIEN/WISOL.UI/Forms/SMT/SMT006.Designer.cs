@@ -137,7 +137,7 @@
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(732, 482);
+            this.txtComment.Location = new System.Drawing.Point(1060, 482);
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(322, 20);
             this.txtComment.StyleController = this.layoutControl1;
@@ -145,7 +145,7 @@
             // 
             // txtNguoiThaoTac
             // 
-            this.txtNguoiThaoTac.Location = new System.Drawing.Point(512, 482);
+            this.txtNguoiThaoTac.Location = new System.Drawing.Point(840, 482);
             this.txtNguoiThaoTac.Name = "txtNguoiThaoTac";
             this.txtNguoiThaoTac.Size = new System.Drawing.Size(142, 20);
             this.txtNguoiThaoTac.StyleController = this.layoutControl1;
@@ -153,7 +153,7 @@
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(142, 482);
+            this.txtModel.Location = new System.Drawing.Point(470, 482);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(122, 20);
             this.txtModel.StyleController = this.layoutControl1;
@@ -162,7 +162,7 @@
             // btnAddNew
             // 
             this.btnAddNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.ImageOptions.Image")));
-            this.btnAddNew.Location = new System.Drawing.Point(1058, 482);
+            this.btnAddNew.Location = new System.Drawing.Point(1386, 482);
             this.btnAddNew.MaximumSize = new System.Drawing.Size(129, 22);
             this.btnAddNew.MinimumSize = new System.Drawing.Size(129, 22);
             this.btnAddNew.Name = "btnAddNew";
@@ -174,7 +174,7 @@
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(342, 482);
+            this.txtInput.Location = new System.Drawing.Point(670, 482);
             this.txtInput.Name = "txtInput";
             this.txtInput.Properties.MaxLength = 6;
             this.txtInput.Size = new System.Drawing.Size(92, 20);
@@ -183,7 +183,7 @@
             // 
             // txtLot
             // 
-            this.txtLot.Location = new System.Drawing.Point(-78, 482);
+            this.txtLot.Location = new System.Drawing.Point(250, 482);
             this.txtLot.Name = "txtLot";
             this.txtLot.Size = new System.Drawing.Size(142, 20);
             this.txtLot.StyleController = this.layoutControl1;
@@ -192,7 +192,7 @@
             // 
             // cbLine
             // 
-            this.cbLine.Location = new System.Drawing.Point(-218, 482);
+            this.cbLine.Location = new System.Drawing.Point(110, 482);
             this.cbLine.Name = "cbLine";
             this.cbLine.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -203,7 +203,7 @@
             // 
             // gcSMT006
             // 
-            this.gcSMT006.Location = new System.Drawing.Point(-304, 520);
+            this.gcSMT006.Location = new System.Drawing.Point(24, 520);
             this.gcSMT006.MainView = this.gvSMT006;
             this.gcSMT006.Name = "gcSMT006";
             this.gcSMT006.Size = new System.Drawing.Size(1646, 151);
@@ -220,7 +220,7 @@
             // dtpFromDate
             // 
             this.dtpFromDate.EditValue = null;
-            this.dtpFromDate.Location = new System.Drawing.Point(-230, 49);
+            this.dtpFromDate.Location = new System.Drawing.Point(98, 49);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -234,7 +234,7 @@
             // 
             this.btnSave.ButtonType = Wisol.ButtonTypes.Save;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1213, 675);
+            this.btnSave.Location = new System.Drawing.Point(1541, 675);
             this.btnSave.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnSave.Name = "btnSave";
@@ -246,7 +246,7 @@
             // 
             // gcList
             // 
-            this.gcList.Location = new System.Drawing.Point(-304, 126);
+            this.gcList.Location = new System.Drawing.Point(24, 126);
             this.gcList.MainView = this.gvList;
             this.gcList.Name = "gcList";
             this.gcList.Size = new System.Drawing.Size(1646, 315);
@@ -264,7 +264,7 @@
             // dtpToDate
             // 
             this.dtpToDate.EditValue = null;
-            this.dtpToDate.Location = new System.Drawing.Point(-30, 49);
+            this.dtpToDate.Location = new System.Drawing.Point(298, 49);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -277,7 +277,7 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportToExcel.ImageOptions.Image")));
-            this.btnExportToExcel.Location = new System.Drawing.Point(1213, 49);
+            this.btnExportToExcel.Location = new System.Drawing.Point(1541, 49);
             this.btnExportToExcel.MaximumSize = new System.Drawing.Size(129, 24);
             this.btnExportToExcel.MinimumSize = new System.Drawing.Size(129, 24);
             this.btnExportToExcel.Name = "btnExportToExcel";
@@ -291,7 +291,7 @@
             // 
             this.btnDelete.ButtonType = Wisol.ButtonTypes.Save;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(1080, 675);
+            this.btnDelete.Location = new System.Drawing.Point(1408, 675);
             this.btnDelete.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnDelete.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnDelete.Name = "btnDelete";
@@ -304,7 +304,7 @@
             // btnClearData
             // 
             this.btnClearData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClearData.ImageOptions.Image")));
-            this.btnClearData.Location = new System.Drawing.Point(1191, 482);
+            this.btnClearData.Location = new System.Drawing.Point(1519, 482);
             this.btnClearData.MaximumSize = new System.Drawing.Size(129, 22);
             this.btnClearData.MinimumSize = new System.Drawing.Size(129, 22);
             this.btnClearData.Name = "btnClearData";

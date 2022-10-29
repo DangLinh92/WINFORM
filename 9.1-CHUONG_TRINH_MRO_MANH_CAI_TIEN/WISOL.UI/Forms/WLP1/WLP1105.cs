@@ -111,17 +111,17 @@ namespace Wisol.MES.Forms.WLP1
                     base.m_BindData.BindGridView(gcList, tempDT);
                     
                     // Cập nhật tất cả các CODE vào bảng LICH_SU_TON_KHO_ALL
-                    base.m_DBaccess.ExecuteNoneQuery("Delete from LICH_SU_TON_KHO_ALL Where DEPARTMENT ='" + Consts.DEPARTMENT + "'");
-                    for (int i = 0; i < gvList.RowCount; i++)
-                    {
-                        string vCODE = gvList.GetRowCellValue(i, "CODE").ToString();
-                        //string sql = "SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG,YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM,sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKIN_NEW T2 where DEPARTMENT= '" + Consts.DEPARTMENT + "' AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) UNION  SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG, YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM, sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKOUT_NEW T1 where DEPARTMENT='" + Consts.DEPARTMENT + "'  AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME))order by THANG";
-                        string sql = "SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG,YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM,sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKIN_NEW T2 where DEPARTMENT= '" + Consts.DEPARTMENT + "' AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) UNION  SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG, YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM, sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKOUT_NEW T1 where DEPARTMENT='" + Consts.DEPARTMENT + "'  AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME))order by NAM,THANG";
-                        DataTable dt_test = base.m_DBaccess.ExecuteQuery(sql);
-                        DataTable mydt_ton_kho_test = new DataTable();
-                        base.m_DBaccess.Update_LICH_SU_TON_KHO_ALL(vCODE, Consts.DEPARTMENT, dt_test, ref mydt_ton_kho_test);
+                    //base.m_DBaccess.ExecuteNoneQuery("Delete from LICH_SU_TON_KHO_ALL Where DEPARTMENT ='" + Consts.DEPARTMENT + "'");
+                    //for (int i = 0; i < gvList.RowCount; i++)
+                    //{
+                    //    string vCODE = gvList.GetRowCellValue(i, "CODE").ToString();
+                    //    //string sql = "SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG,YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM,sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKIN_NEW T2 where DEPARTMENT= '" + Consts.DEPARTMENT + "' AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) UNION  SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG, YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM, sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKOUT_NEW T1 where DEPARTMENT='" + Consts.DEPARTMENT + "'  AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME))order by THANG";
+                    //    string sql = "SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG,YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM,sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKIN_NEW T2 where DEPARTMENT= '" + Consts.DEPARTMENT + "' AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) UNION  SELECT  CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME))as THANG, YEAR(DBO.CHAR_TO_DATE(CREATE_TIME)) as NAM, sum(QUANTITY) as 'SO_LUONG_IN_OUT' FROM EWIPSTOCKOUT_NEW T1 where DEPARTMENT='" + Consts.DEPARTMENT + "'  AND CODE='" + vCODE + "' group by CODE, MONTH(DBO.CHAR_TO_DATE(CREATE_TIME)),YEAR(DBO.CHAR_TO_DATE(CREATE_TIME))order by NAM,THANG";
+                    //    DataTable dt_test = base.m_DBaccess.ExecuteQuery(sql);
+                    //    DataTable mydt_ton_kho_test = new DataTable();
+                    //    base.m_DBaccess.Update_LICH_SU_TON_KHO_ALL(vCODE, Consts.DEPARTMENT, dt_test, ref mydt_ton_kho_test);
 
-                    }
+                    //}
                 }
                 else
                 {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(POP_REPORT002_CHART));
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.txtTop = new DevExpress.XtraEditors.TextEdit();
@@ -49,11 +50,14 @@
             // 
             // chartControl1
             // 
+            this.chartControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(12, 23);
+            this.chartControl1.Location = new System.Drawing.Point(12, 29);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(1251, 533);
+            this.chartControl1.Size = new System.Drawing.Size(1251, 527);
             this.chartControl1.TabIndex = 4;
             // 
             // btnOK
@@ -154,7 +158,9 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.dateFrom);
             this.Controls.Add(this.chartControl1);
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("POP_REPORT002_CHART.IconOptions.Icon")));
             this.Name = "POP_REPORT002_CHART";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CHART";
             this.Controls.SetChildIndex(this.chartControl1, 0);
             this.Controls.SetChildIndex(this.dateFrom, 0);

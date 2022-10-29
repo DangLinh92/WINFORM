@@ -30,6 +30,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SMT001));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtCommCode = new DevExpress.XtraEditors.TextEdit();
             this.btnUpNewMaterial = new Wisol.XSimpleButton(this.components);
             this.btnUpload = new Wisol.XSimpleButton(this.components);
             this.dtpYearMonth = new Wisol.XDateEdit();
@@ -45,6 +46,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -52,10 +54,9 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCommCode = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCommCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpYearMonth.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpYearMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
@@ -76,8 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCommCode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -98,6 +98,14 @@
             this.layoutControl1.Size = new System.Drawing.Size(1366, 746);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtCommCode
+            // 
+            this.txtCommCode.Location = new System.Drawing.Point(942, 49);
+            this.txtCommCode.Name = "txtCommCode";
+            this.txtCommCode.Size = new System.Drawing.Size(400, 20);
+            this.txtCommCode.StyleController = this.layoutControl1;
+            this.txtCommCode.TabIndex = 31;
             // 
             // btnUpNewMaterial
             // 
@@ -267,6 +275,15 @@
             this.layoutControlItem4.Text = "TYPE";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(59, 13);
             // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.txtCommCode;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(466, 24);
+            this.layoutControlItem8.Text = "COMMCODE";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(59, 13);
+            // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.btnSave;
@@ -339,23 +356,6 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
-            // txtCommCode
-            // 
-            this.txtCommCode.Location = new System.Drawing.Point(942, 49);
-            this.txtCommCode.Name = "txtCommCode";
-            this.txtCommCode.Size = new System.Drawing.Size(400, 20);
-            this.txtCommCode.StyleController = this.layoutControl1;
-            this.txtCommCode.TabIndex = 31;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.txtCommCode;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(466, 24);
-            this.layoutControlItem8.Text = "COMMCODE";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(59, 13);
-            // 
             // SMT001
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -364,6 +364,7 @@
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCommCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpYearMonth.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpYearMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
@@ -377,6 +378,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
@@ -384,8 +386,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCommCode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

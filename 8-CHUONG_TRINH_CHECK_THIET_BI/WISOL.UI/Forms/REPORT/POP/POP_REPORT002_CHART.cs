@@ -59,7 +59,7 @@ namespace Wisol.MES.Forms.REPORT.POP
                         DataTable dt_d = new DataTable();
                         DataTable dt_n = new DataTable();
 
-                        dt_d = dt.Select("SHIFT_WORK = 'DAY' ").CopyToDataTable();
+                        //dt_d = dt.Select("SHIFT_WORK = 'DAY' ").CopyToDataTable();
                         //dt_n = dt.Select("SHIFT_WORK = 'NIGHT' ").CopyToDataTable();
 
                         Series line_day = new Series("DAY", ViewType.Line);
@@ -67,10 +67,11 @@ namespace Wisol.MES.Forms.REPORT.POP
 
                         for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            if (dt.Rows[i][2].ToString().ToUpper() == "DAY")
-                            {
-                                line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                            }
+                            line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                            //if (dt.Rows[i][2].ToString().ToUpper() == "DAY")
+                            //{
+                            //    line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                            //}
                             //if (dt.Rows[i][2].ToString().ToUpper() == "NIGHT")
                             //{
                             //    line_night.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
@@ -460,7 +461,7 @@ namespace Wisol.MES.Forms.REPORT.POP
                 {
                     chartControl1.DataSource = null;
                     chartControl1.Series.Clear();
-                    //chartControl1.Titles.Clear();
+                    chartControl1.Titles.Clear();
                     DataTable dt = base.mResultDB.ReturnDataSet.Tables[0];
                     DataTable dt_d = new DataTable();
                     DataTable dt_n = new DataTable();
@@ -484,24 +485,23 @@ namespace Wisol.MES.Forms.REPORT.POP
 
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        if (dt.Rows[i][2].ToString().ToUpper() == "DAY")
-                        {
-                            line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                        }
-                        if (dt.Rows[i][2].ToString().ToUpper() == "NIGHT")
-                        {
-                            line_night.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                        }
+                        line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        //if (dt.Rows[i][2].ToString().ToUpper() == "DAY")
+                        //{
+                        //    line_day.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        //}
+                        //if (dt.Rows[i][2].ToString().ToUpper() == "NIGHT")
+                        //{
+                        //    line_night.Points.Add(new SeriesPoint(dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        //}
                     }
 
-                    chartControl1.Series.AddRange(new Series[] { line_day, line_night });
+                    chartControl1.Series.AddRange(new Series[] { line_day });
 
 
                     XYDiagram diagram = (XYDiagram)chartControl1.Diagram;
                     diagram.AxisX.QualitativeScaleComparer = new CaseInsensitiveComparer();
                     diagram.AxisX.Label.TextPattern = "{S:MM-dd}";
-
-
 
 
                     //if (!string.IsNullOrWhiteSpace(base.mResultDB.ReturnDataSet.Tables[1].Rows[0]["minvalue"].ToString()))
@@ -578,9 +578,9 @@ namespace Wisol.MES.Forms.REPORT.POP
                     ((LineSeriesView)line_day.View).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
                     ((LineSeriesView)line_day.View).LineMarkerOptions.Kind = MarkerKind.Circle;
 
-                    line_night.View.Color = Color.FromArgb(84, 154, 214);
-                    ((LineSeriesView)line_night.View).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
-                    ((LineSeriesView)line_night.View).LineMarkerOptions.Kind = MarkerKind.Circle;
+                    //line_night.View.Color = Color.FromArgb(84, 154, 214);
+                    //((LineSeriesView)line_night.View).MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+                    //((LineSeriesView)line_night.View).LineMarkerOptions.Kind = MarkerKind.Circle;
                 }
                 else
                 {

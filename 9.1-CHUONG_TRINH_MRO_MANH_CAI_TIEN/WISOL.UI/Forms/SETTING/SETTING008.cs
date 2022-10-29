@@ -663,6 +663,16 @@ namespace Wisol.MES.Forms.SETTING
 
                                 //dinh_muc_can_thiet = total_by_lead_time * he_so_an_toan; // Dinh muc can thiet 
                                 dinh_muc_can_thiet = Math.Round(total_by_lead_time * he_so_an_toan, 2); // Dinh muc can thiet 
+
+                                if(dt.Rows[i][0].ToString() == "C0041")
+                                {
+                                    dinh_muc_can_thiet = 300;
+                                }
+                                else if (dt.Rows[i][0].ToString() == "C0042")
+                                {
+                                    dinh_muc_can_thiet = 400;
+                                }
+
                                 //luong_can_mua = (int)dinh_muc_can_thiet - dt1.Rows[i]["TON_KHO"].ToString().ToInt() - dt1.Rows[i]["LUONG_CHUA_NHAP"].ToString().ToInt();// So lung can mua
                                 luong_can_mua = dinh_muc_can_thiet - Convert.ToDouble(dt1.Rows[i]["TON_KHO"].IfNullZero()) - Convert.ToDouble(dt1.Rows[i]["LUONG_CHUA_NHAP"].IfNullZero());// So lung can mua
                                 if (luong_can_mua < 0) { luong_can_mua = 0; }// Neu con trong kho thi khong phai mua.

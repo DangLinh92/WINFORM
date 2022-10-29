@@ -193,6 +193,7 @@
             this.chkRealTime.Name = "chkRealTime";
             this.chkRealTime.Properties.Caption = "Real Time Monitoring";
             this.chkRealTime.Size = new System.Drawing.Size(126, 20);
+            this.chkRealTime.StyleController = this.layoutControl1;
             this.chkRealTime.TabIndex = 34;
             this.chkRealTime.CheckedChanged += new System.EventHandler(this.chkRealTime_CheckedChanged);
             // 

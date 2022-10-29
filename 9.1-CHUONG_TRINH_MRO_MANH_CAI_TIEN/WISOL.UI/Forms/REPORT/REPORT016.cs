@@ -186,6 +186,12 @@ namespace Wisol.MES.Forms.REPORT
                     else
                     {
                         string dinh_luong = dt_hoa_chat.Rows[i]["QUANTITATIVE"].ToString();
+
+                        if (string.IsNullOrEmpty(dinh_luong))
+                        {
+                            dinh_luong = "0 ";
+                        }
+
                         double price_usd = Convert.ToDouble(dt_hoa_chat.Rows[i]["PRICE_USD"].ToString());
                         string v1 = dinh_luong.Substring(0, dinh_luong.IndexOf(' '));
                         string v2 = dinh_luong.Substring(dinh_luong.IndexOf(' ') + 1);
@@ -369,7 +375,7 @@ namespace Wisol.MES.Forms.REPORT
                             {
                                 //string vFrom1= string.Format("{0:yyyyMMdd}", FromDate.DateTime);
                                 string vFrom1 = "20200101"; // Tam thoi Fix thoi diem bawt dau, de khong phai sua thu tuc trong SQL.
-                                string vTo1 = string.Format("{0:yyyyMMdd}", ToDate.DateTime);
+                                string vTo1 = string.Format("{0:yyyyMMdd}", ToDate.DateTime.AddMonths(1).AddDays(-1));
                                 this.Get_ton_kho_HOA_CHAT(ref so_luong_hoa_chat, ref so_tien_hoa_chat, vFrom1, vTo1);
                                 gvList.SetRowCellValue(i, "QUANTITY", so_luong_hoa_chat);
                                 gvList.SetRowCellValue(i, "AMOUNT_USD", so_tien_hoa_chat);
@@ -608,7 +614,7 @@ namespace Wisol.MES.Forms.REPORT
                     //ton_kho = dt_hoa_chat;
                     //string vFrom1 = string.Format("{0:yyyyMMdd}", FromDate.DateTime);
                     string vFrom1 = "20200101"; // tam thoi Fix thoi diem bat dau, de khong phai sua thu tuc trong SQL.
-                    string vTo1 = string.Format("{0:yyyyMMdd}", ToDate.DateTime);
+                    string vTo1 = string.Format("{0:yyyyMMdd}", ToDate.DateTime.AddMonths(1).AddDays(-1));
                     string connString_hoa_chat = "Data Source = 10.70.10.97;Initial Catalog = WLP1;User Id = sa;Password = Wisol@123;Connect Timeout=3";
                     SqlConnection conn_hoa_chat = new SqlConnection(connString_hoa_chat);
                     //if ((FromDate.Text != "") && (ToDate.Text != ""))
@@ -628,6 +634,26 @@ namespace Wisol.MES.Forms.REPORT
                         //dt_hoa_chat.Clear();
 
                         dt_hoa_chat_temp.Load(reader);
+                        dt_hoa_chat_temp.Columns["TOTAL_MONEY_USD"].ReadOnly = false;
+                        foreach (DataRow row in dt_hoa_chat_temp.Rows)
+                        {
+                            if(double.TryParse(row["TOTAL_MONEY_USD"].NullString(),out double usd))
+                            {
+                                if (row["QUANTITATIVE"].ToString() != "EA")
+                                {
+                                    string dinh_luong = row["QUANTITATIVE"].ToString();
+
+                                    if (string.IsNullOrEmpty(dinh_luong))
+                                    {
+                                        dinh_luong = "0 ";
+                                    }
+
+                                    string v1 = dinh_luong.Substring(0, dinh_luong.IndexOf(' '));
+                                    double value = Convert.ToDouble(v1);
+                                    row["TOTAL_MONEY_USD"] = usd * value;
+                                }
+                            }
+                        }
 
                         ton_kho = dt_hoa_chat_temp;
 
@@ -714,9 +740,9 @@ namespace Wisol.MES.Forms.REPORT
                         string fromDate = ToDate.DateTime.AddYears(-1).ToString("yyyyMM");
 
                         //sda = new SqlDataAdapter("select t2.SPARE_PART_CODE, T3.NAME_VI,T4.QUANTITY, T2.INVENTORY_VALUES_US as 'TOTAL_MONEY_USD' from EWIP_INVENTORY_VALUES_BY_TIME T2,EWIP_SPARE_PART T3, EWIP_SPAREPART_INVENTORY T4 where FORMAT(CONVERT(Date,T2.DATE),'MM-yyyy') >='" + vFrom + "' and FORMAT(CONVERT(Date,T2.DATE),'MM-yyyy') <='" + vTo + "' and T2.DEPT_CODE='SMT' and t2.SPARE_PART_CODE=t3.CODE  and t2.DEPT_CODE=t3.SP_DEPT_CODE and T2.DEPT_CODE=T4.DEPT_CODE AND T2.SPARE_PART_CODE=T4.SPARE_PART_CODE --group by T2. DEPT_CODE", conn_spp);
-                        sda_csp = new SqlDataAdapter("select t2.SPARE_PART_CODE, T3.NAME_KR,sum(T4.QUANTITY) as 'QUANTITY', sum(T2.INVENTORY_VALUES_US) as 'TOTAL_MONEY_USD' from EWIP_INVENTORY_VALUES_BY_TIME T2,EWIP_SPARE_PART T3, EWIP_SPAREPART_INVENTORY T4 where FORMAT(CONVERT(Date,T2.DATE),'MM-yyyy') ='" + vTo + "' and T2.DEPT_CODE='CSP' and t2.SPARE_PART_CODE=t3.CODE  and t2.DEPT_CODE=t3.SP_DEPT_CODE and T2.DEPT_CODE=T4.DEPT_CODE AND T2.SPARE_PART_CODE=T4.SPARE_PART_CODE group by t2.SPARE_PART_CODE,t3.NAME_KR", conn_spp_csp);
+                        sda_csp = new SqlDataAdapter("select t2.SPARE_PART_CODE, T3.NAME_KR,sum(T4.QUANTITY) as 'QUANTITY', sum(T2.INVENTORY_VALUES_US) as 'TOTAL_MONEY_USD' from EWIP_INVENTORY_VALUES_BY_TIME T2,EWIP_SPARE_PART T3, EWIP_SPAREPART_INVENTORY T4 where FORMAT(CONVERT(Date,T2.DATE),'MM-yyyy') ='" + vTo + "' and T2.DEPT_CODE='CSP' and t2.SPARE_PART_CODE=t3.CODE  and t2.DEPT_CODE=t3.SP_DEPT_CODE and T2.DEPT_CODE=T4.DEPT_CODE AND T2.SPARE_PART_CODE=T4.SPARE_PART_CODE AND T2.INVENTORY_VALUES_US >= 0 group by t2.SPARE_PART_CODE,t3.NAME_KR", conn_spp_csp);
                         //query_bieu_do = "select right(('0' +  CAST(T1.MONTH AS VARCHAR(10)) + '-' + CAST(T1.YEAR AS VARCHAR(10))),7) as 'TN', ROUND(sum(T1.INVENTORY_VALUES_US),2) AS 'TON' from EWIP_INVENTORY_VALUES_BY_TIME T1  where FORMAT(CONVERT(Date,T1.DATE),'MM-yyyy') <='" + vTo + "' and T1.DEPT_CODE='SMT' group by T1.MONTH,T1.YEAR ORDER BY T1.MONTH,T1.YEAR";
-                        query_bieu_do = "select right(('0' +  CAST(T1.MONTH AS VARCHAR(10)) + '-' + CAST(T1.YEAR AS VARCHAR(10))),7) as 'TN', ROUND(sum(T1.INVENTORY_VALUES_US),2) AS 'TON' from EWIP_INVENTORY_VALUES_BY_TIME T1  where FORMAT(cast(t1.DATE as date),'yyyyMM') >= '" + fromDate + "' AND FORMAT(cast(t1.DATE as date),'yyyyMM') <='" + ToDate.DateTime.ToString("yyyyMM") + "' and T1.DEPT_CODE='CSP' group by T1.MONTH,T1.YEAR ORDER BY  T1.YEAR,T1.MONTH asc";
+                        query_bieu_do = "select right(('0' +  CAST(T1.MONTH AS VARCHAR(10)) + '-' + CAST(T1.YEAR AS VARCHAR(10))),7) as 'TN', ROUND(sum(T1.INVENTORY_VALUES_US),2) AS 'TON' from EWIP_INVENTORY_VALUES_BY_TIME T1  where FORMAT(cast(t1.DATE as date),'yyyyMM') >= '" + fromDate + "' AND FORMAT(cast(t1.DATE as date),'yyyyMM') <='" + ToDate.DateTime.ToString("yyyyMM") + "' and T1.DEPT_CODE='CSP' AND T1.INVENTORY_VALUES_US > 0 group by T1.MONTH,T1.YEAR ORDER BY  T1.YEAR,T1.MONTH asc";
                         sda_query_bieu_do_csp = new SqlDataAdapter(query_bieu_do, conn_spp_csp);
                         sda_query_bieu_do_csp.Fill(bieu_do_ton_kho);
                     }
@@ -914,7 +940,7 @@ namespace Wisol.MES.Forms.REPORT
                     {
                         if ((ton_kho.Rows[i]["CAN_USE_FOR"].NullString() != ""))
                         {
-                            ton_kho.Rows[i]["CAN_USE"] = Convert.ToDouble(ton_kho.Rows[i]["CAN_USE_FOR"].NullString().Replace("W","").Replace("~",""));
+                            ton_kho.Rows[i]["CAN_USE"] = Convert.ToDouble(ton_kho.Rows[i]["CAN_USE_FOR"].NullString().Replace("W", "").Replace("~", ""));
                         }
                     }
                 }
@@ -1043,6 +1069,12 @@ namespace Wisol.MES.Forms.REPORT
             SqlDataAdapter sda;
             conn_spp.Open();
             string vsql = "";
+
+            if (toDate == DateTime.Now.ToString("MM-yyyy"))
+            {
+                vCheck = true;
+            }
+
             if (vCheck) // Lấy giá trị tồn kho hiện tại.....
             {
                 vsql = vsql + " SELECT SUM(SUB.AMOUNT_US),SUM(SUB.QTY) \n";
@@ -1074,7 +1106,7 @@ namespace Wisol.MES.Forms.REPORT
             }
             else // Lấy giá trị tồn kho theo người dùng chon khoảng thời gian....
             {
-                sda = new SqlDataAdapter("select sum(QUANTITY) from EWIP_INVENTORY_BY_TIME where  FORMAT(CONVERT(Date,DATE),'MM-yyyy') ='" + toDate + "' and DEPT_CODE='" + vDept + "' group by DEPT_CODE union all select sum(INVENTORY_VALUES_US) from EWIP_INVENTORY_VALUES_BY_TIME where FORMAT(CONVERT(Date,DATE),'MM-yyyy') ='" + toDate + "' and DEPT_CODE='" + vDept + "' group by DEPT_CODE", conn_spp);
+                sda = new SqlDataAdapter("select sum(QUANTITY) from EWIP_INVENTORY_BY_TIME where  FORMAT(CONVERT(Date,DATE),'MM-yyyy') ='" + toDate + "' and DEPT_CODE='" + vDept + "' group by DEPT_CODE union all select sum(INVENTORY_VALUES_US) from EWIP_INVENTORY_VALUES_BY_TIME where FORMAT(CONVERT(Date,DATE),'MM-yyyy') ='" + toDate + "' and DEPT_CODE='" + vDept + "'  and INVENTORY_VALUES_US >= 0 group by DEPT_CODE", conn_spp);
             }
             DataTable vDt_spp = new DataTable();
             sda.Fill(vDt_spp);
@@ -1134,8 +1166,21 @@ namespace Wisol.MES.Forms.REPORT
                 //}
                 if ((dt_hoa_chat.Rows[i]["CLOSING_STOCK"].ToString() != "") && (dt_hoa_chat.Rows[i]["PRICE"].ToString() != ""))
                 {
-                    temp1 = temp1 + Convert.ToDouble(dt_hoa_chat.Rows[i]["CLOSING_STOCK"].ToString());
-                    temp2 = temp2 + Convert.ToDouble(dt_hoa_chat.Rows[i]["CLOSING_STOCK"].ToString()) * Convert.ToDouble(dt_hoa_chat.Rows[i]["PRICE"].ToString());
+                    if (dt_hoa_chat.Rows[i]["QUANTITATIVE"].ToString() != "EA")
+                    {
+                        string dinh_luong = dt_hoa_chat.Rows[i]["QUANTITATIVE"].ToString();
+
+                        if (string.IsNullOrEmpty(dinh_luong))
+                        {
+                            dinh_luong = "0 ";
+                        }
+
+                        string v1 = dinh_luong.Substring(0, dinh_luong.IndexOf(' '));
+                        double value = Convert.ToDouble(v1);
+
+                        temp1 = temp1 + Convert.ToDouble(dt_hoa_chat.Rows[i]["CLOSING_STOCK"].ToString()) * value;
+                        temp2 = temp2 + Convert.ToDouble(dt_hoa_chat.Rows[i]["CLOSING_STOCK"].ToString()) * value * Convert.ToDouble(dt_hoa_chat.Rows[i]["PRICE"].ToString());
+                    }
                 }
             }
             so_luong_ton = temp1;

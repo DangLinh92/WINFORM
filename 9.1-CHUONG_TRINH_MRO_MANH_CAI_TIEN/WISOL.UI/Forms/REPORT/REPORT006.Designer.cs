@@ -40,7 +40,6 @@
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.dtpToMonth = new DevExpress.XtraEditors.DateEdit();
             this.txtTarget = new DevExpress.XtraEditors.TextEdit();
-            this.btnExportToExcel = new Wisol.XSimpleButton(this.components);
             this.txtY1 = new DevExpress.XtraEditors.TextEdit();
             this.txtY2 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -59,9 +58,10 @@
             this.dtpTo = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnExportToExcel = new Wisol.XSimpleButton(this.components);
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtToMonth.Properties)).BeginInit();
@@ -92,9 +92,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -215,19 +215,6 @@
             this.txtTarget.Size = new System.Drawing.Size(66, 20);
             this.txtTarget.StyleController = this.layoutControl1;
             this.txtTarget.TabIndex = 28;
-            // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportToExcel.ImageOptions.Image")));
-            this.btnExportToExcel.Location = new System.Drawing.Point(963, 49);
-            this.btnExportToExcel.MaximumSize = new System.Drawing.Size(129, 24);
-            this.btnExportToExcel.MinimumSize = new System.Drawing.Size(129, 24);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(129, 24);
-            this.btnExportToExcel.StyleController = this.layoutControl1;
-            this.btnExportToExcel.TabIndex = 29;
-            this.btnExportToExcel.Text = "EXPORT TO EXCEL";
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // txtY1
             // 
@@ -434,17 +421,6 @@
             this.layoutControlItem7.Text = "Target";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(57, 13);
             // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.btnExportToExcel;
-            this.layoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem8.Location = new System.Drawing.Point(939, 0);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(133, 28);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtY1;
@@ -472,6 +448,30 @@
             this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem9.Text = "Y-axis 2";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(57, 13);
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExportToExcel.ImageOptions.Image")));
+            this.btnExportToExcel.Location = new System.Drawing.Point(963, 49);
+            this.btnExportToExcel.MaximumSize = new System.Drawing.Size(129, 24);
+            this.btnExportToExcel.MinimumSize = new System.Drawing.Size(129, 24);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(129, 24);
+            this.btnExportToExcel.StyleController = this.layoutControl1;
+            this.btnExportToExcel.TabIndex = 29;
+            this.btnExportToExcel.Text = "EXPORT TO EXCEL";
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnExportToExcel;
+            this.layoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
+            this.layoutControlItem8.Location = new System.Drawing.Point(939, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(133, 28);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // REPORT006
             // 
@@ -510,9 +510,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

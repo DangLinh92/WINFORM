@@ -32,6 +32,7 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtLotNo = new DevExpress.XtraEditors.TextEdit();
             this.dtpFromDate = new DevExpress.XtraEditors.DateEdit();
+            this.btnSave = new Wisol.XSimpleButton(this.components);
             this.gcList = new DevExpress.XtraGrid.GridControl();
             this.gvList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.dtpToDate = new DevExpress.XtraEditors.DateEdit();
@@ -42,12 +43,11 @@
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnSave = new Wisol.XSimpleButton(this.components);
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLotNo.Properties)).BeginInit();
@@ -64,11 +64,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -107,6 +107,20 @@
             this.dtpFromDate.Size = new System.Drawing.Size(153, 20);
             this.dtpFromDate.StyleController = this.layoutControl1;
             this.dtpFromDate.TabIndex = 29;
+            // 
+            // btnSave
+            // 
+            this.btnSave.ButtonType = Wisol.ButtonTypes.Save;
+            this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
+            this.btnSave.Location = new System.Drawing.Point(1213, 692);
+            this.btnSave.MaximumSize = new System.Drawing.Size(129, 30);
+            this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(129, 30);
+            this.btnSave.StyleController = this.layoutControl1;
+            this.btnSave.TabIndex = 16;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gcList
             // 
@@ -213,6 +227,16 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(1189, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.btnSave;
+            this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
+            this.layoutControlItem13.Location = new System.Drawing.Point(1189, 570);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(133, 34);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
+            // 
             // layoutControlGroup6
             // 
             this.layoutControlGroup6.CustomizationFormText = "CONDITION";
@@ -261,30 +285,6 @@
             this.layoutControlItem11.Text = "TO";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(40, 13);
             // 
-            // btnSave
-            // 
-            this.btnSave.ButtonType = Wisol.ButtonTypes.Save;
-            this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1213, 692);
-            this.btnSave.MaximumSize = new System.Drawing.Size(129, 30);
-            this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 30);
-            this.btnSave.StyleController = this.layoutControl1;
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.btnSave;
-            this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem13.Location = new System.Drawing.Point(1189, 570);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(133, 34);
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem13.TextVisible = false;
-            // 
             // WLP1106
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -307,11 +307,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

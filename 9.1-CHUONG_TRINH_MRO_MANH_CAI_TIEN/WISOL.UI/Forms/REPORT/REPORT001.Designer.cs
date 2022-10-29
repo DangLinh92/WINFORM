@@ -80,6 +80,7 @@
             this.radioTime.Location = new System.Drawing.Point(51, 49);
             this.radioTime.Name = "radioTime";
             this.radioTime.Size = new System.Drawing.Size(669, 24);
+            this.radioTime.StyleController = this.layoutControl1;
             this.radioTime.TabIndex = 33;
             this.radioTime.SelectedIndexChanged += new System.EventHandler(this.radioTime_SelectedIndexChanged);
             // 
@@ -107,6 +108,7 @@
             this.btnExportToExcel.MinimumSize = new System.Drawing.Size(129, 24);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(129, 24);
+            this.btnExportToExcel.StyleController = this.layoutControl1;
             this.btnExportToExcel.TabIndex = 29;
             this.btnExportToExcel.Text = "EXPORT TO EXCEL";
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);

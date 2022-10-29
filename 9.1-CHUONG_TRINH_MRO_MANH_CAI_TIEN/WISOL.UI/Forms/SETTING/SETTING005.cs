@@ -80,6 +80,9 @@ namespace Wisol.MES.Forms.SETTING
                         );
                     base.m_BindData.BindGridLookEdit(gleUnit, base.m_ResultDB.ReturnDataSet.Tables[2], "CODE_GROUP", "NAME_OF_CODE");
                     base.m_BindData.BindGridLookEdit(gleUnitStockIn, base.m_ResultDB.ReturnDataSet.Tables[1], "CODE_GROUP", "NAME_OF_CODE");
+
+                    base.m_BindData.BindGridLookEdit(stlMROType, base.m_ResultDB.ReturnDataSet.Tables[3], "TYPE", "TYPE");
+
                     //base.m_BindData.BindGridLookEdit(gleMaker, base.m_ResultDB.ReturnDataSet.Tables[2], "CODE", "MAKER");
                     //base.m_BindData.BindGridLookEdit(gleStageUse, base.m_ResultDB.ReturnDataSet.Tables[3], "CODE", "NAME_OF_CODE");
                     Init_Control(true);
@@ -170,6 +173,8 @@ namespace Wisol.MES.Forms.SETTING
                 txtSongaylamviec.Text = "";
                 txtSonhanluc.Text = "";
                 txtSolangiaoca.Text = "";
+                stlMROType.EditValue = "";
+                txtMRO_Type.EditValue = "";
 
             }
             catch (Exception ex)
@@ -197,6 +202,13 @@ namespace Wisol.MES.Forms.SETTING
                     MsgBox.Show("MSG_ERR_046".Translation(), MsgType.Warning);
                     return;
                 }
+
+                //if (string.IsNullOrEmpty(txtMRO_Type.EditValue.NullString()))
+                //{
+                //    MsgBox.Show("Nhập thông tin phân loại MRO".Translation(), MsgType.Warning);
+                //    return;
+                //}
+
                 //if (string.IsNullOrEmpty(gleMaker.EditValue.NullString()))
                 //{
                 //    MsgBox.Show("MSG_ERR_047".Translation(), MsgType.Warning);
@@ -223,7 +235,7 @@ namespace Wisol.MES.Forms.SETTING
                     }
                 }
 
-                if(Consts.DEPARTMENT == "CSP" || Consts.DEPARTMENT == "LFEM" || Consts.DEPARTMENT == "WLP1" || Consts.DEPARTMENT == "WLP2")
+                if (Consts.DEPARTMENT == "CSP" || Consts.DEPARTMENT == "LFEM" || Consts.DEPARTMENT == "WLP1" || Consts.DEPARTMENT == "WLP2")
                 {
                     //if (string.IsNullOrEmpty(rdgPhanLoai.EditValue.NullString()))
                     //{
@@ -263,7 +275,7 @@ namespace Wisol.MES.Forms.SETTING
                         "A_SO_NGAY_LAM_VIEC",
                         "A_SO_NHAN_LUC",
                         "A_SO_LAN_GIAO_CA",
-
+                        "A_TYPE"
                         }
                         , new string[] {
                         txtCodeGroup.EditValue.NullString().ToUpper(),
@@ -285,9 +297,10 @@ namespace Wisol.MES.Forms.SETTING
                         txtSoluongthietbi.EditValue.NullString(),
                         txtSongaylamviec.EditValue.NullString(),
                         txtSonhanluc.EditValue.NullString(),
-                        txtSolangiaoca.EditValue.NullString()
+                        txtSolangiaoca.EditValue.NullString(),
+                        txtMRO_Type.EditValue.NullString()
                         }
-                        ); 
+                        );
                 }
                 else if (Consts.DEPARTMENT == "CSP" || Consts.DEPARTMENT == "WLP2")
                 {
@@ -306,7 +319,8 @@ namespace Wisol.MES.Forms.SETTING
                         "A_PHAN_LOAI",
                         "A_LEAD_TIME",
                         "A_OFFSET_LEAD_TIME",
-                        "A_MOQ"
+                        "A_MOQ",
+                        "A_TYPE"
                         }
                         , new string[] {
                         txtCodeGroup.EditValue.NullString().ToUpper(),
@@ -322,11 +336,13 @@ namespace Wisol.MES.Forms.SETTING
                         rdgPhanLoai.Text,
                         txtLeadTime.EditValue.NullString(),
                         txtOffetLeadTime.EditValue.NullString(),
-                        txtMOQ.EditValue.NullString()
+                        txtMOQ.EditValue.NullString(),
+                        txtMRO_Type.EditValue.NullString()
                         }
-                        ) ;
+                        );
                 }
-                else { // Bộ phận LFEM
+                else
+                { // Bộ phận LFEM
                     base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING005.PUT_ITEM_PL"
                     , new string[] { "A_CODE",
                         "A_NAME",
@@ -339,7 +355,8 @@ namespace Wisol.MES.Forms.SETTING
                         "A_DEPARTMENT",
                         "A_DU_PHONG",
                         "A_PHAN_LOAI",
-                        "A_LEAD_TIME"
+                        "A_LEAD_TIME",
+                        "A_TYPE"
                         //"A_OFFSET_LEAD_TIME"
                     }
                     , new string[] {
@@ -354,11 +371,11 @@ namespace Wisol.MES.Forms.SETTING
                         Consts.DEPARTMENT,
                         txtDuPhong.Text.NullString(),
                         rdgPhanLoai.Text,
-                        txtLeadTime.EditValue.NullString()
+                        txtLeadTime.EditValue.NullString(),
+                        txtMRO_Type.EditValue.NullString()
                         //txtOffetLeadTime.EditValue.NullString()
                         }
                         );
-
                 }
 
                 if (base.m_ResultDB.ReturnInt == 0)
@@ -390,8 +407,7 @@ namespace Wisol.MES.Forms.SETTING
                     try
                     {
                         base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING005.GET_ITEM_DETAIL"
-                            , new string[] { "A_CODE", "A_DEPARTMENT"
-                            }
+                            , new string[] { "A_CODE", "A_DEPARTMENT" }
                             , new string[] { gvList.GetDataRow(e.RowHandle)["CODE"].NullString(), Consts.DEPARTMENT
                             }
                             );
@@ -478,6 +494,8 @@ namespace Wisol.MES.Forms.SETTING
                                 txtSolangiaoca.EditValue = dt.Rows[0]["SO_LAN_GIAO_CA"].NullString();
                             }
 
+                            txtMRO_Type.EditValue = dt.Rows[0]["TYPE"].NullString();
+                            stlMROType.EditValue = dt.Rows[0]["TYPE"].NullString();
                         }
                     }
                     catch (Exception ex)
@@ -505,7 +523,7 @@ namespace Wisol.MES.Forms.SETTING
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(txtCodeGroup.Text.Trim() == string.Empty)
+            if (txtCodeGroup.Text.Trim() == string.Empty)
             {
                 return;
             }
@@ -537,7 +555,7 @@ namespace Wisol.MES.Forms.SETTING
                 }
                 SearchPage();
             }
-            
+
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -550,14 +568,14 @@ namespace Wisol.MES.Forms.SETTING
         private void txtOffetLeadTime_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
 
-                if (Convert.ToDecimal(e.NewValue) > txtOffetLeadTime.Properties.MaxValue)
-                {
-                    
-                    txtOffetLeadTime.EditValue = 0;
-                    MessageBox.Show("Nhập lại! Giá trị trong khoảng từ 0 -> 4");
-                    e.Cancel = true;                    
-                }
-   
+            if (Convert.ToDecimal(e.NewValue) > txtOffetLeadTime.Properties.MaxValue)
+            {
+
+                txtOffetLeadTime.EditValue = 0;
+                MessageBox.Show("Nhập lại! Giá trị trong khoảng từ 0 -> 4");
+                e.Cancel = true;
+            }
+
         }
 
         private void txtLeadTime_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -573,6 +591,19 @@ namespace Wisol.MES.Forms.SETTING
         private void gcList_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void stlMROType_EditValueChanged(object sender, EventArgs e)
+        {
+            if (stlMROType.EditValue.NullString() == "")
+            {
+                txtMRO_Type.Enabled = true;
+            }
+            else
+            {
+                txtMRO_Type.Enabled = false;
+            }
+            txtMRO_Type.EditValue = stlMROType.EditValue.NullString();
         }
     }
 }

@@ -108,7 +108,8 @@ namespace Wisol.MES.Forms.CONTENT
 
                 foreach (DataRow row in Data.Rows)
                 {
-                    xml_content = xml_content.Replace("$CODE$", row[0].NullString()).Replace("$BARCODE$", row[0].NullString()).Replace("$QUANTITY$", "");
+                    xml_content = label;
+                    xml_content = xml_content.Replace("$CODE$", row[0].NullString()).Replace("$BARCODE$", row[0].NullString());
                     xml_content = xml_content.Replace("&", "&amp;");
                     File.WriteAllText(designFile, xml_content);
 
@@ -213,7 +214,7 @@ namespace Wisol.MES.Forms.CONTENT
             try
             {
                 label = string.Empty;
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_LABEL.GET_TEMP", new string[] { }, new string[] { });//QRCODE 
+                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_BUSINESS_LABEL.GET_TEMP_TSAN", new string[] { }, new string[] { });//QRCODE 
                 if (m_ResultDB.ReturnInt == 0)
                 {
                     if (base.m_ResultDB.ReturnDataSet.Tables[0].Rows.Count > 0)
