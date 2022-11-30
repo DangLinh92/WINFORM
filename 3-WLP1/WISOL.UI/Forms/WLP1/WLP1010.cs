@@ -35,6 +35,10 @@ namespace Wisol.MES.Forms.WLP1
             //this.layoutControlGroup2.Enabled = false;
             dtpFromDate.EditValue = DateTime.Now.ToString("yyyy-MM-dd");
             dtpToDate.EditValue = DateTime.Now.ToString("yyyy-MM-dd");
+
+            txtCode.Enabled = false;
+            txtQtyMove.Enabled = false;
+            txtLotNo.Enabled = true;
         }
 
 
@@ -80,34 +84,97 @@ namespace Wisol.MES.Forms.WLP1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtLotNo.Text.Trim() == string.Empty)
+            if (chCode.Checked)
             {
-                return;
-            }
-            //////////////////////////////   2020-08-05 COMMENT TO PRINT ULTILITY
-            try
-            {
-                base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_WLP1010.PUT_ITEM"
-                    , new string[] { "A_LOT_NO", "A_TRAN_USER"
-                    }
-                    , new string[] { txtLotNo.Text.Trim(), Consts.USER_INFO.Id
-                    }
-                    );
-                if (base.m_ResultDB.ReturnInt == 0)
+                if (txtCode.Text.Trim() == string.Empty || txtQtyMove.Text.NullString() == "")
                 {
-                    this.SearchPage();
-                    txtLotNo.Text = string.Empty;
+                    return;
                 }
-                else
-                {
-                    MsgBox.Show(base.m_ResultDB.ReturnString.Translation(), MsgType.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.Show(ex.Message, MsgType.Error);
-            }
 
+                try
+                {
+                    base.m_ResultDB = 
+                        base.m_DBaccess.ExcuteProc("PKG_WLP1010.PUT_ITEM_BY_CODE"
+                        , new string[] { "A_CODE", "A_QTY","A_USER"}
+                        , new string[] { txtCode.Text.Trim(),txtQtyMove.Text.NullString(), Consts.USER_INFO.Id });
+
+                    if (base.m_ResultDB.ReturnInt == 0)
+                    {
+                        if (chePrintLabel.Checked)
+                        {
+                            DataTable dtPrint = new DataTable();
+                            dtPrint = base.m_ResultDB.ReturnDataSet.Tables[0];
+                            UserClass.PrintLabel print = new UserClass.PrintLabel(base.m_DBaccess);
+                            print.PrintTest(0, 0, dtPrint);
+                        }
+
+                        this.SearchPage();
+                        txtCode.Text = string.Empty;
+                        txtQtyMove.Text = "";
+                    }
+                    else
+                    {
+                        MsgBox.Show(base.m_ResultDB.ReturnString.Translation(), MsgType.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MsgBox.Show(ex.Message, MsgType.Error);
+                }
+            }
+            else
+            {
+                if (txtLotNo.Text.Trim() == string.Empty)
+                {
+                    return;
+                }
+                //////////////////////////////   2020-08-05 COMMENT TO PRINT ULTILITY
+                try
+                {
+                    base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_WLP1010.PUT_ITEM"
+                        , new string[] { "A_LOT_NO", "A_TRAN_USER"
+                        }
+                        , new string[] { txtLotNo.Text.Trim(), Consts.USER_INFO.Id});
+
+                    if (base.m_ResultDB.ReturnInt == 0)
+                    {
+                        if (chePrintLabel.Checked)
+                        {
+                            DataTable dtPrint = new DataTable();
+                            dtPrint = base.m_ResultDB.ReturnDataSet.Tables[0];
+                            UserClass.PrintLabel print = new UserClass.PrintLabel(base.m_DBaccess);
+                            print.PrintTest(0, 0, dtPrint);
+                        }
+
+                        this.SearchPage();
+                        txtLotNo.Text = string.Empty;
+                    }
+                    else
+                    {
+                        MsgBox.Show(base.m_ResultDB.ReturnString.Translation(), MsgType.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MsgBox.Show(ex.Message, MsgType.Error);
+                }
+            }
+        }
+
+        private void chCode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chCode.Checked)
+            {
+                txtCode.Enabled = true;
+                txtQtyMove.Enabled = true;
+                txtLotNo.Enabled = false;
+            }
+            else
+            {
+                txtCode.Enabled = false;
+                txtQtyMove.Enabled = false;
+                txtLotNo.Enabled = true;
+            }
         }
     }
 }

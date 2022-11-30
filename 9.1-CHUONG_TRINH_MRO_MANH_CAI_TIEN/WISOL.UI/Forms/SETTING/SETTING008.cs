@@ -747,6 +747,7 @@ namespace Wisol.MES.Forms.SETTING
                             );
                             dt2 = base.m_ResultDB.ReturnDataSet.Tables[0]; // Để hiển tị theo tháng
                                                                            //*******************************************************************
+
                             dt1.Columns["NEXT_1"].ColumnName = base.m_ResultDB.ReturnDataSet.Tables[1].Rows[0][0].ToString().Substring(5, 2) + "-W1";
                             dt1.Columns["NEXT_2"].ColumnName = base.m_ResultDB.ReturnDataSet.Tables[1].Rows[0][0].ToString().Substring(5, 2) + "-W2";
                             dt1.Columns["NEXT_3"].ColumnName = base.m_ResultDB.ReturnDataSet.Tables[1].Rows[0][0].ToString().Substring(5, 2) + "-W3";

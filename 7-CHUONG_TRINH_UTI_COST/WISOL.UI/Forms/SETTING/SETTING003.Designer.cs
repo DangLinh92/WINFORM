@@ -226,7 +226,7 @@
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
             this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 35;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "DEL";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtCostControl

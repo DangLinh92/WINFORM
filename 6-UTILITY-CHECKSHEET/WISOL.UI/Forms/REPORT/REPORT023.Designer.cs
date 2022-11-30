@@ -145,7 +145,7 @@
             // 
             // cheAlert
             // 
-            this.cheAlert.Location = new System.Drawing.Point(806, 49);
+            this.cheAlert.Location = new System.Drawing.Point(1135, 49);
             this.cheAlert.Name = "cheAlert";
             this.cheAlert.Properties.Caption = "SHOW ALERT";
             this.cheAlert.Size = new System.Drawing.Size(88, 20);
@@ -155,7 +155,7 @@
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(-317, 697);
+            this.checkEdit1.Location = new System.Drawing.Point(12, 697);
             this.checkEdit1.MaximumSize = new System.Drawing.Size(130, 0);
             this.checkEdit1.MinimumSize = new System.Drawing.Size(130, 0);
             this.checkEdit1.Name = "checkEdit1";
@@ -168,7 +168,7 @@
             // 
             this.hyperlinkLabelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hyperlinkLabelControl1.Appearance.Options.UseFont = true;
-            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(890, 599);
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(1219, 599);
             this.hyperlinkLabelControl1.MaximumSize = new System.Drawing.Size(150, 30);
             this.hyperlinkLabelControl1.MinimumSize = new System.Drawing.Size(150, 30);
             this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
@@ -180,7 +180,7 @@
             // 
             // imageSlider1
             // 
-            this.imageSlider1.Location = new System.Drawing.Point(549, 570);
+            this.imageSlider1.Location = new System.Drawing.Point(878, 570);
             this.imageSlider1.Name = "imageSlider1";
             this.imageSlider1.Size = new System.Drawing.Size(215, 111);
             this.imageSlider1.StyleController = this.layoutControl1;
@@ -190,7 +190,7 @@
             // 
             // lblReport
             // 
-            this.lblReport.Location = new System.Drawing.Point(908, 49);
+            this.lblReport.Location = new System.Drawing.Point(1237, 49);
             this.lblReport.MaximumSize = new System.Drawing.Size(0, 18);
             this.lblReport.MinimumSize = new System.Drawing.Size(0, 18);
             this.lblReport.Name = "lblReport";
@@ -202,7 +202,7 @@
             // 
             // radioGroup1
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(-11, 49);
+            this.radioGroup1.Location = new System.Drawing.Point(318, 49);
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Size = new System.Drawing.Size(170, 24);
             this.radioGroup1.StyleController = this.layoutControl1;
@@ -210,7 +210,7 @@
             // 
             // chkMachineStop
             // 
-            this.chkMachineStop.Location = new System.Drawing.Point(672, 49);
+            this.chkMachineStop.Location = new System.Drawing.Point(1001, 49);
             this.chkMachineStop.MaximumSize = new System.Drawing.Size(130, 0);
             this.chkMachineStop.MinimumSize = new System.Drawing.Size(130, 0);
             this.chkMachineStop.Name = "chkMachineStop";
@@ -222,7 +222,7 @@
             // 
             // chkNG
             // 
-            this.chkNG.Location = new System.Drawing.Point(538, 49);
+            this.chkNG.Location = new System.Drawing.Point(867, 49);
             this.chkNG.MaximumSize = new System.Drawing.Size(130, 0);
             this.chkNG.MinimumSize = new System.Drawing.Size(130, 0);
             this.chkNG.Name = "chkNG";
@@ -236,7 +236,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(499, 49);
+            this.labelControl1.Location = new System.Drawing.Point(828, 49);
             this.labelControl1.MaximumSize = new System.Drawing.Size(0, 18);
             this.labelControl1.MinimumSize = new System.Drawing.Size(0, 18);
             this.labelControl1.Name = "labelControl1";
@@ -247,7 +247,7 @@
             // 
             // chkUnchecked
             // 
-            this.chkUnchecked.Location = new System.Drawing.Point(385, 49);
+            this.chkUnchecked.Location = new System.Drawing.Point(714, 49);
             this.chkUnchecked.MaximumSize = new System.Drawing.Size(100, 0);
             this.chkUnchecked.MinimumSize = new System.Drawing.Size(100, 0);
             this.chkUnchecked.Name = "chkUnchecked";
@@ -258,7 +258,7 @@
             // 
             // gcList2
             // 
-            this.gcList2.Location = new System.Drawing.Point(549, 126);
+            this.gcList2.Location = new System.Drawing.Point(878, 126);
             this.gcList2.MainView = this.gvList2;
             this.gcList2.Name = "gcList2";
             this.gcList2.Size = new System.Drawing.Size(805, 440);
@@ -275,7 +275,7 @@
             // 
             // gcList
             // 
-            this.gcList.Location = new System.Drawing.Point(-305, 126);
+            this.gcList.Location = new System.Drawing.Point(24, 126);
             this.gcList.MainView = this.gvList;
             this.gcList.MaximumSize = new System.Drawing.Size(850, 0);
             this.gcList.Name = "gcList";
@@ -294,7 +294,7 @@
             // dtpDate
             // 
             this.dtpDate.EditValue = null;
-            this.dtpDate.Location = new System.Drawing.Point(-239, 49);
+            this.dtpDate.Location = new System.Drawing.Point(90, 49);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -306,7 +306,7 @@
             // 
             // STATUS1
             // 
-            this.STATUS1.Location = new System.Drawing.Point(191, 49);
+            this.STATUS1.Location = new System.Drawing.Point(520, 49);
             this.STATUS1.MaximumSize = new System.Drawing.Size(70, 18);
             this.STATUS1.MinimumSize = new System.Drawing.Size(70, 18);
             this.STATUS1.Name = "STATUS1";
@@ -318,7 +318,7 @@
             // 
             // chkChecked
             // 
-            this.chkChecked.Location = new System.Drawing.Point(281, 49);
+            this.chkChecked.Location = new System.Drawing.Point(610, 49);
             this.chkChecked.MaximumSize = new System.Drawing.Size(100, 0);
             this.chkChecked.MinimumSize = new System.Drawing.Size(100, 0);
             this.chkChecked.Name = "chkChecked";
@@ -461,7 +461,7 @@
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(200, 28);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem2.Text = "DATE";
+            this.layoutControlItem2.Text = "MONTH";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 13);
             // 
             // emptySpaceItem1

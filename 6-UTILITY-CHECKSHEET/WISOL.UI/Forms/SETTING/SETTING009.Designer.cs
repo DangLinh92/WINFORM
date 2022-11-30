@@ -77,8 +77,6 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnCopy = new Wisol.XSimpleButton(this.components);
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).BeginInit();
@@ -120,12 +118,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.btnCopy);
             this.layoutControl1.Controls.Add(this.dtpTimeSetup);
             this.layoutControl1.Controls.Add(this.btnAddMaintenance);
             this.layoutControl1.Controls.Add(this.btnAddItemCheck);
@@ -438,8 +434,7 @@
             this.layoutControlItem13,
             this.emptySpaceItem2,
             this.layoutControlItem14,
-            this.layoutControlItem15,
-            this.layoutControlItem19});
+            this.layoutControlItem15});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1549, 729);
             this.layoutControlGroup1.TextVisible = false;
@@ -651,7 +646,7 @@
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 675);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(997, 34);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(1130, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem14
@@ -677,28 +672,6 @@
             this.layoutControlItem15.Text = "layoutControlItem13";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
-            // 
-            // btnCopy
-            // 
-            this.btnCopy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.ImageOptions.Image")));
-            this.btnCopy.Location = new System.Drawing.Point(826, 687);
-            this.btnCopy.MaximumSize = new System.Drawing.Size(129, 30);
-            this.btnCopy.MinimumSize = new System.Drawing.Size(129, 30);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(129, 30);
-            this.btnCopy.StyleController = this.layoutControl1;
-            this.btnCopy.TabIndex = 29;
-            this.btnCopy.Text = "COPY ITEM";
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.Control = this.btnCopy;
-            this.layoutControlItem19.Location = new System.Drawing.Point(997, 675);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(133, 34);
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem19.TextVisible = false;
             // 
             // SETTING009
             // 
@@ -747,7 +720,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,7 +774,5 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraEditors.DateEdit dtpTimeSetup;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
-        private XSimpleButton btnCopy;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
     }
 }

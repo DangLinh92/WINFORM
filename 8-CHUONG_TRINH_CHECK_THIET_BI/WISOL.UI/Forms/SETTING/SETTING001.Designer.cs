@@ -30,6 +30,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SETTING001));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnCopy = new Wisol.XSimpleButton(this.components);
             this.dtpTimeSetup = new DevExpress.XtraEditors.DateEdit();
             this.btnAddMaintenance = new DevExpress.XtraEditors.SimpleButton();
             this.btnDeleteMaintenance = new DevExpress.XtraEditors.SimpleButton();
@@ -39,8 +40,6 @@
             this.txtDeviceID = new DevExpress.XtraEditors.TextEdit();
             this.btnDeleteItemCheck = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditItemCheck = new DevExpress.XtraEditors.SimpleButton();
-            this.gleItemCheck = new Wisol.AceGridLookUpEdit(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gleLocation = new Wisol.AceGridLookUpEdit(this.components);
             this.aceGridLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gleFactory = new Wisol.AceGridLookUpEdit(this.components);
@@ -62,7 +61,6 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -77,8 +75,10 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnCopy = new Wisol.XSimpleButton(this.components);
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.gleItemCheck = new Wisol.AceGridLookUpEdit(this.components);
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).BeginInit();
@@ -86,8 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gleMaintenance.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gleItemCheck.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleLocation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit2View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleFactory.Properties)).BeginInit();
@@ -105,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
@@ -121,10 +118,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gleItemCheck.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.gleItemCheck);
             this.layoutControl1.Controls.Add(this.btnCopy);
             this.layoutControl1.Controls.Add(this.dtpTimeSetup);
             this.layoutControl1.Controls.Add(this.btnAddMaintenance);
@@ -134,7 +135,6 @@
             this.layoutControl1.Controls.Add(this.txtDeviceID);
             this.layoutControl1.Controls.Add(this.btnDeleteItemCheck);
             this.layoutControl1.Controls.Add(this.btnEditItemCheck);
-            this.layoutControl1.Controls.Add(this.gleItemCheck);
             this.layoutControl1.Controls.Add(this.gleLocation);
             this.layoutControl1.Controls.Add(this.gleFactory);
             this.layoutControl1.Controls.Add(this.btnSave);
@@ -152,6 +152,19 @@
             this.layoutControl1.Size = new System.Drawing.Size(1366, 768);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.ImageOptions.Image")));
+            this.btnCopy.Location = new System.Drawing.Point(826, 709);
+            this.btnCopy.MaximumSize = new System.Drawing.Size(129, 30);
+            this.btnCopy.MinimumSize = new System.Drawing.Size(129, 30);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(129, 30);
+            this.btnCopy.StyleController = this.layoutControl1;
+            this.btnCopy.TabIndex = 29;
+            this.btnCopy.Text = "COPY ITEM";
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // dtpTimeSetup
             // 
@@ -263,30 +276,6 @@
             this.btnEditItemCheck.TabIndex = 20;
             this.btnEditItemCheck.Text = "EDIT";
             this.btnEditItemCheck.Click += new System.EventHandler(this.btnEditItemCheck_Click);
-            // 
-            // gleItemCheck
-            // 
-            this.gleItemCheck.EditValue = "";
-            this.gleItemCheck.Location = new System.Drawing.Point(770, 165);
-            this.gleItemCheck.Name = "gleItemCheck";
-            this.gleItemCheck.Properties.Appearance.Options.UseTextOptions = true;
-            this.gleItemCheck.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gleItemCheck.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.gleItemCheck.Properties.ImmediatePopup = true;
-            this.gleItemCheck.Properties.NullText = "";
-            this.gleItemCheck.Properties.PopupView = this.gridView1;
-            this.gleItemCheck.Size = new System.Drawing.Size(50, 20);
-            this.gleItemCheck.StyleController = this.layoutControl1;
-            this.gleItemCheck.TabIndex = 19;
-            // 
-            // gridView1
-            // 
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gleLocation
             // 
@@ -473,7 +462,6 @@
             this.layoutControlItem4,
             this.layoutControlItem2,
             this.layoutControlItem5,
-            this.layoutControlItem6,
             this.layoutControlItem7,
             this.layoutControlItem8,
             this.layoutControlItem9,
@@ -483,7 +471,8 @@
             this.emptySpaceItem3,
             this.layoutControlItem18,
             this.layoutControlItem16,
-            this.layoutControlItem17});
+            this.layoutControlItem17,
+            this.layoutControlItem6});
             this.layoutControlGroup4.Location = new System.Drawing.Point(1028, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(675, 697);
@@ -536,15 +525,6 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(439, 24);
             this.layoutControlItem5.Text = "LOCATION";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(72, 13);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.gleItemCheck;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(129, 26);
-            this.layoutControlItem6.Text = "ITEM_CHECK";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(72, 13);
             // 
             // layoutControlItem7
             // 
@@ -681,19 +661,6 @@
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
             // 
-            // btnCopy
-            // 
-            this.btnCopy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xSimpleButton1.ImageOptions.Image")));
-            this.btnCopy.Location = new System.Drawing.Point(826, 709);
-            this.btnCopy.MaximumSize = new System.Drawing.Size(129, 30);
-            this.btnCopy.MinimumSize = new System.Drawing.Size(129, 30);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(129, 30);
-            this.btnCopy.StyleController = this.layoutControl1;
-            this.btnCopy.TabIndex = 29;
-            this.btnCopy.Text = "COPY ITEM";
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.btnCopy;
@@ -702,6 +669,38 @@
             this.layoutControlItem19.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
+            // 
+            // gleItemCheck
+            // 
+            this.gleItemCheck.Location = new System.Drawing.Point(770, 165);
+            this.gleItemCheck.Name = "gleItemCheck";
+            this.gleItemCheck.Properties.Appearance.Options.UseTextOptions = true;
+            this.gleItemCheck.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gleItemCheck.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gleItemCheck.Properties.ImmediatePopup = true;
+            this.gleItemCheck.Properties.NullText = "";
+            this.gleItemCheck.Properties.PopupView = this.gridView1;
+            this.gleItemCheck.Size = new System.Drawing.Size(50, 20);
+            this.gleItemCheck.StyleController = this.layoutControl1;
+            this.gleItemCheck.TabIndex = 30;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.gleItemCheck;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(129, 26);
+            this.layoutControlItem6.Text = "Item Check";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // SETTING001
             // 
@@ -716,8 +715,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gleMaintenance.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gleItemCheck.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleLocation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit2View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleFactory.Properties)).EndInit();
@@ -735,7 +732,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
@@ -751,6 +747,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gleItemCheck.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -778,9 +777,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView aceGridLookUpEdit1View;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private AceGridLookUpEdit gleItemCheck;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton btnDeleteItemCheck;
         private DevExpress.XtraEditors.SimpleButton btnEditItemCheck;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
@@ -807,5 +803,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private XSimpleButton btnCopy;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+        private AceGridLookUpEdit gleItemCheck;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

@@ -160,17 +160,17 @@
             this.layoutControl1.Controls.Add(this.gcList);
             this.layoutControl1.Controls.Add(this.txtValue11);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(763, 476, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1366, 746);
+            this.layoutControl1.Size = new System.Drawing.Size(1366, 768);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtValue10
             // 
-            this.txtValue10.Location = new System.Drawing.Point(942, 361);
+            this.txtValue10.Location = new System.Drawing.Point(942, 357);
             this.txtValue10.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue10.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue10.Name = "txtValue10";
@@ -180,7 +180,7 @@
             // 
             // txtValue9
             // 
-            this.txtValue9.Location = new System.Drawing.Point(942, 337);
+            this.txtValue9.Location = new System.Drawing.Point(942, 333);
             this.txtValue9.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue9.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue9.Name = "txtValue9";
@@ -190,7 +190,7 @@
             // 
             // txtValue8
             // 
-            this.txtValue8.Location = new System.Drawing.Point(942, 313);
+            this.txtValue8.Location = new System.Drawing.Point(942, 309);
             this.txtValue8.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue8.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue8.Name = "txtValue8";
@@ -200,7 +200,7 @@
             // 
             // txtValue7
             // 
-            this.txtValue7.Location = new System.Drawing.Point(942, 289);
+            this.txtValue7.Location = new System.Drawing.Point(942, 285);
             this.txtValue7.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue7.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue7.Name = "txtValue7";
@@ -210,7 +210,7 @@
             // 
             // txtValue6
             // 
-            this.txtValue6.Location = new System.Drawing.Point(942, 265);
+            this.txtValue6.Location = new System.Drawing.Point(942, 261);
             this.txtValue6.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue6.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue6.Name = "txtValue6";
@@ -220,7 +220,7 @@
             // 
             // txtCommNameVT
             // 
-            this.txtCommNameVT.Location = new System.Drawing.Point(942, 97);
+            this.txtCommNameVT.Location = new System.Drawing.Point(942, 93);
             this.txtCommNameVT.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtCommNameVT.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtCommNameVT.Name = "txtCommNameVT";
@@ -232,19 +232,19 @@
             // 
             this.btnDelete.ButtonType = Wisol.ButtonTypes.Cancel;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(1092, 704);
+            this.btnDelete.Location = new System.Drawing.Point(1092, 726);
             this.btnDelete.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnDelete.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
             this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "DEL";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtCommNameKR
             // 
-            this.txtCommNameKR.Location = new System.Drawing.Point(942, 121);
+            this.txtCommNameKR.Location = new System.Drawing.Point(942, 117);
             this.txtCommNameKR.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtCommNameKR.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtCommNameKR.Name = "txtCommNameKR";
@@ -256,7 +256,7 @@
             // 
             this.btnSave.ButtonType = Wisol.ButtonTypes.Save;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1225, 704);
+            this.btnSave.Location = new System.Drawing.Point(1225, 726);
             this.btnSave.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnSave.Name = "btnSave";
@@ -268,11 +268,11 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(942, 438);
+            this.txtRemarks.Location = new System.Drawing.Point(942, 434);
             this.txtRemarks.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtRemarks.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(400, 72);
+            this.txtRemarks.Size = new System.Drawing.Size(400, 80);
             this.txtRemarks.StyleController = this.layoutControl1;
             this.txtRemarks.TabIndex = 15;
             // 
@@ -280,7 +280,7 @@
             // 
             this.btnGroup.ButtonType = Wisol.ButtonTypes.Find;
             this.btnGroup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGroup.ImageOptions.Image")));
-            this.btnGroup.Location = new System.Drawing.Point(704, 49);
+            this.btnGroup.Location = new System.Drawing.Point(704, 45);
             this.btnGroup.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnGroup.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnGroup.Name = "btnGroup";
@@ -293,7 +293,7 @@
             // rdgUseFlag
             // 
             this.rdgUseFlag.EditValue = "Y";
-            this.rdgUseFlag.Location = new System.Drawing.Point(942, 409);
+            this.rdgUseFlag.Location = new System.Drawing.Point(942, 405);
             this.rdgUseFlag.MaximumSize = new System.Drawing.Size(400, 0);
             this.rdgUseFlag.MinimumSize = new System.Drawing.Size(400, 0);
             this.rdgUseFlag.Name = "rdgUseFlag";
@@ -307,7 +307,7 @@
             // 
             // txtValue5
             // 
-            this.txtValue5.Location = new System.Drawing.Point(942, 241);
+            this.txtValue5.Location = new System.Drawing.Point(942, 237);
             this.txtValue5.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue5.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue5.Name = "txtValue5";
@@ -317,7 +317,7 @@
             // 
             // txtValue4
             // 
-            this.txtValue4.Location = new System.Drawing.Point(942, 217);
+            this.txtValue4.Location = new System.Drawing.Point(942, 213);
             this.txtValue4.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue4.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue4.Name = "txtValue4";
@@ -327,7 +327,7 @@
             // 
             // txtValue3
             // 
-            this.txtValue3.Location = new System.Drawing.Point(942, 193);
+            this.txtValue3.Location = new System.Drawing.Point(942, 189);
             this.txtValue3.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue3.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue3.Name = "txtValue3";
@@ -337,7 +337,7 @@
             // 
             // txtValue2
             // 
-            this.txtValue2.Location = new System.Drawing.Point(942, 169);
+            this.txtValue2.Location = new System.Drawing.Point(942, 165);
             this.txtValue2.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue2.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue2.Name = "txtValue2";
@@ -347,7 +347,7 @@
             // 
             // txtValue1
             // 
-            this.txtValue1.Location = new System.Drawing.Point(942, 145);
+            this.txtValue1.Location = new System.Drawing.Point(942, 141);
             this.txtValue1.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue1.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue1.Name = "txtValue1";
@@ -357,7 +357,7 @@
             // 
             // txtCommName
             // 
-            this.txtCommName.Location = new System.Drawing.Point(942, 73);
+            this.txtCommName.Location = new System.Drawing.Point(942, 69);
             this.txtCommName.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtCommName.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtCommName.Name = "txtCommName";
@@ -367,7 +367,7 @@
             // 
             // txtCommCode
             // 
-            this.txtCommCode.Location = new System.Drawing.Point(942, 49);
+            this.txtCommCode.Location = new System.Drawing.Point(942, 45);
             this.txtCommCode.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtCommCode.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtCommCode.Name = "txtCommCode";
@@ -378,7 +378,7 @@
             // gleGroup
             // 
             this.gleGroup.EditValue = "";
-            this.gleGroup.Location = new System.Drawing.Point(105, 49);
+            this.gleGroup.Location = new System.Drawing.Point(105, 45);
             this.gleGroup.Name = "gleGroup";
             this.gleGroup.Properties.Appearance.Options.UseTextOptions = true;
             this.gleGroup.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -401,10 +401,10 @@
             // 
             // gcList
             // 
-            this.gcList.Location = new System.Drawing.Point(24, 132);
+            this.gcList.Location = new System.Drawing.Point(24, 124);
             this.gcList.MainView = this.gvList;
             this.gcList.Name = "gcList";
-            this.gcList.Size = new System.Drawing.Size(809, 556);
+            this.gcList.Size = new System.Drawing.Size(809, 586);
             this.gcList.TabIndex = 4;
             this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvList});
@@ -417,7 +417,7 @@
             // 
             // txtValue11
             // 
-            this.txtValue11.Location = new System.Drawing.Point(942, 385);
+            this.txtValue11.Location = new System.Drawing.Point(942, 381);
             this.txtValue11.MaximumSize = new System.Drawing.Size(400, 0);
             this.txtValue11.MinimumSize = new System.Drawing.Size(400, 0);
             this.txtValue11.Name = "txtValue11";
@@ -438,7 +438,7 @@
             this.emptySpaceItem2,
             this.layoutControlItem16});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1366, 746);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1366, 768);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -446,9 +446,9 @@
             this.layoutControlGroup2.CustomizationFormText = "LIST";
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 83);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 79);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(837, 609);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(837, 635);
             this.layoutControlGroup2.Text = "LIST";
             // 
             // layoutControlItem1
@@ -457,7 +457,7 @@
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(813, 560);
+            this.layoutControlItem1.Size = new System.Drawing.Size(813, 590);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -469,7 +469,7 @@
             this.layoutControlItem11});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(837, 83);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(837, 79);
             this.layoutControlGroup3.Text = "CONDITION";
             // 
             // layoutControlItem2
@@ -516,7 +516,7 @@
             this.layoutControlItem19});
             this.layoutControlGroup4.Location = new System.Drawing.Point(837, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(509, 692);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(509, 714);
             this.layoutControlGroup4.Text = "INPUT_DATA";
             // 
             // layoutControlItem3
@@ -606,9 +606,9 @@
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 465);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 473);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(485, 178);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(485, 196);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem12
@@ -617,7 +617,7 @@
             this.layoutControlItem12.CustomizationFormText = "REMARKS";
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 389);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(485, 76);
+            this.layoutControlItem12.Size = new System.Drawing.Size(485, 84);
             this.layoutControlItem12.Text = "REMARKS";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(78, 13);
             // 
@@ -699,7 +699,7 @@
             // 
             this.layoutControlItem13.Control = this.btnSave;
             this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem13.Location = new System.Drawing.Point(1213, 692);
+            this.layoutControlItem13.Location = new System.Drawing.Point(1213, 714);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
@@ -709,7 +709,7 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 692);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 714);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(1080, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -717,7 +717,7 @@
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.btnDelete;
-            this.layoutControlItem16.Location = new System.Drawing.Point(1080, 692);
+            this.layoutControlItem16.Location = new System.Drawing.Point(1080, 714);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);

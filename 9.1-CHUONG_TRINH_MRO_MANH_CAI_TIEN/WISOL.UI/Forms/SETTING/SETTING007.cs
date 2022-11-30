@@ -62,9 +62,7 @@ namespace Wisol.MES.Forms.SETTING
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING007.GET_LIST"
                     , new string[] { "A_PLANT", "A_LANG", "A_DEPARTMENT", "A_USER"
                     }
-                    , new string[] { Consts.PLANT, Consts.USER_INFO.Language, Consts.DEPARTMENT, Consts.USER_INFO.Id
-                    }
-                    );
+                    , new string[] { Consts.PLANT, Consts.USER_INFO.Language, Consts.DEPARTMENT, Consts.USER_INFO.Id} );
                 if (base.m_ResultDB.ReturnInt == 0)
                 {
                     DataTable dt = base.m_ResultDB.ReturnDataSet.Tables[0];

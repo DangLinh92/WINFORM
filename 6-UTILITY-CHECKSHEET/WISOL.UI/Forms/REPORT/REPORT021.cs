@@ -240,6 +240,8 @@ namespace Wisol.MES.Forms.REPORT
                 string deviceID = gvList.GetRowCellDisplayText(e.RowHandle, "DEVICE_ID");
                 string status = gvList.GetRowCellDisplayText(e.RowHandle, "STATUS");
                 string shift = gvList.GetRowCellDisplayText(e.RowHandle, "SHIFT");
+                g_date = DateTime.Parse(gvList.GetRowCellDisplayText(e.RowHandle, "TIME_CHECK")).ToString("yyyy-MM-dd");
+
                 if (!status.Equals("Checked"))
                 {
                     return;

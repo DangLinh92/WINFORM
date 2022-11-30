@@ -34,29 +34,36 @@ namespace Wisol.MES.Forms.REPORT
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.xLayoutControl1 = new Wisol.XLayoutControl();
+            this.sltCategory = new Wisol.AceGridLookUpEdit(this.components);
+            this.aceGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xLayoutControl3 = new Wisol.XLayoutControl();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.xGridControl1 = new Wisol.XGridControl();
+            this.xGridView1 = new Wisol.XGridView();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
             this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sltCategory = new Wisol.AceGridLookUpEdit(this.components);
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.aceGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.xGridControl1 = new Wisol.XGridControl();
-            this.xGridView1 = new Wisol.XGridView();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).BeginInit();
             this.xLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sltCategory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl3)).BeginInit();
             this.xLayoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -65,16 +72,9 @@ namespace Wisol.MES.Forms.REPORT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sltCategory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // xLayoutControl1
@@ -92,6 +92,30 @@ namespace Wisol.MES.Forms.REPORT
             this.xLayoutControl1.TabIndex = 0;
             this.xLayoutControl1.Text = "xLayoutControl1";
             // 
+            // sltCategory
+            // 
+            this.sltCategory.EditValue = "";
+            this.sltCategory.Location = new System.Drawing.Point(120, 45);
+            this.sltCategory.Name = "sltCategory";
+            this.sltCategory.Properties.Appearance.Options.UseTextOptions = true;
+            this.sltCategory.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.sltCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sltCategory.Properties.ImmediatePopup = true;
+            this.sltCategory.Properties.NullText = "";
+            this.sltCategory.Properties.PopupView = this.aceGridLookUpEdit1View;
+            this.sltCategory.Size = new System.Drawing.Size(290, 20);
+            this.sltCategory.StyleController = this.xLayoutControl1;
+            this.sltCategory.TabIndex = 7;
+            // 
+            // aceGridLookUpEdit1View
+            // 
+            this.aceGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.aceGridLookUpEdit1View.Name = "aceGridLookUpEdit1View";
+            this.aceGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.aceGridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
+            this.aceGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
             // xLayoutControl3
             // 
             this.xLayoutControl3.Controls.Add(this.chart1);
@@ -103,6 +127,37 @@ namespace Wisol.MES.Forms.REPORT
             this.xLayoutControl3.TabIndex = 5;
             this.xLayoutControl3.Text = "xLayoutControl3";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(12, 12);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1141, 345);
+            this.chart1.TabIndex = 5;
+            this.chart1.Text = "chart1";
+            // 
+            // xGridControl1
+            // 
+            this.xGridControl1.Location = new System.Drawing.Point(12, 361);
+            this.xGridControl1.MainView = this.xGridView1;
+            this.xGridControl1.Name = "xGridControl1";
+            this.xGridControl1.Size = new System.Drawing.Size(1141, 248);
+            this.xGridControl1.TabIndex = 4;
+            this.xGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.xGridView1});
+            // 
+            // xGridView1
+            // 
+            this.xGridView1.GridControl = this.xGridControl1;
+            this.xGridView1.Name = "xGridView1";
+            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -113,6 +168,24 @@ namespace Wisol.MES.Forms.REPORT
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1165, 621);
             this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.xGridControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 349);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1145, 252);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.chart1;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(1145, 349);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
             // 
             // dtStartDate
             // 
@@ -199,6 +272,16 @@ namespace Wisol.MES.Forms.REPORT
             this.layoutControlItem5.Text = "END_DATE";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
             // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.sltCategory;
+            this.layoutControlItem1.CustomizationFormText = "CATEGORY_DRAFT";
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(390, 24);
+            this.layoutControlItem1.Text = "CATEGORY_DRAFT";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
+            // 
             // layoutControlGroup4
             // 
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -216,88 +299,6 @@ namespace Wisol.MES.Forms.REPORT
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // sltCategory
-            // 
-            this.sltCategory.Location = new System.Drawing.Point(120, 45);
-            this.sltCategory.Name = "sltCategory";
-            this.sltCategory.Properties.Appearance.Options.UseTextOptions = true;
-            this.sltCategory.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.sltCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sltCategory.Properties.ImmediatePopup = true;
-            this.sltCategory.Properties.NullText = "";
-            this.sltCategory.Properties.PopupView = this.aceGridLookUpEdit1View;
-            this.sltCategory.Size = new System.Drawing.Size(290, 20);
-            this.sltCategory.StyleController = this.xLayoutControl1;
-            this.sltCategory.TabIndex = 7;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.sltCategory;
-            this.layoutControlItem1.CustomizationFormText = "CATEGORY_DRAFT";
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(390, 24);
-            this.layoutControlItem1.Text = "CATEGORY_DRAFT";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
-            // 
-            // aceGridLookUpEdit1View
-            // 
-            this.aceGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.aceGridLookUpEdit1View.Name = "aceGridLookUpEdit1View";
-            this.aceGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.aceGridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
-            this.aceGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // xGridControl1
-            // 
-            this.xGridControl1.Location = new System.Drawing.Point(12, 361);
-            this.xGridControl1.MainView = this.xGridView1;
-            this.xGridControl1.Name = "xGridControl1";
-            this.xGridControl1.Size = new System.Drawing.Size(1141, 248);
-            this.xGridControl1.TabIndex = 4;
-            this.xGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.xGridView1});
-            // 
-            // xGridView1
-            // 
-            this.xGridView1.GridControl = this.xGridControl1;
-            this.xGridView1.Name = "xGridView1";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.xGridControl1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 349);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1145, 252);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1141, 345);
-            this.chart1.TabIndex = 5;
-            this.chart1.Text = "chart1";
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.chart1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1145, 349);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
             // REPORT_DRAFT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,9 +309,16 @@ namespace Wisol.MES.Forms.REPORT
             this.Controls.SetChildIndex(this.xLayoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl1)).EndInit();
             this.xLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sltCategory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xLayoutControl3)).EndInit();
             this.xLayoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).EndInit();
@@ -319,16 +327,9 @@ namespace Wisol.MES.Forms.REPORT
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sltCategory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aceGridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

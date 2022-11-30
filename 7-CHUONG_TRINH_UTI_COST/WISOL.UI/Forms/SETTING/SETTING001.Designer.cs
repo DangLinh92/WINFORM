@@ -30,6 +30,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SETTING001));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.dtpTimeSetup = new DevExpress.XtraEditors.DateEdit();
             this.btnAddMaintenance = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddItemCheck = new DevExpress.XtraEditors.SimpleButton();
             this.btnDeleteMaintenance = new DevExpress.XtraEditors.SimpleButton();
@@ -71,14 +72,15 @@
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dtpTimeSetup = new DevExpress.XtraEditors.DateEdit();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleMaintenance.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceID.Properties)).BeginInit();
@@ -111,13 +113,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -141,18 +141,31 @@
             this.layoutControl1.Controls.Add(this.btnDeleteDevice);
             this.layoutControl1.Controls.Add(this.btnAddNewDevice);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 22);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(763, 476, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1366, 746);
+            this.layoutControl1.Size = new System.Drawing.Size(1366, 768);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // dtpTimeSetup
+            // 
+            this.dtpTimeSetup.EditValue = null;
+            this.dtpTimeSetup.Location = new System.Drawing.Point(944, 141);
+            this.dtpTimeSetup.Name = "dtpTimeSetup";
+            this.dtpTimeSetup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpTimeSetup.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpTimeSetup.Size = new System.Drawing.Size(398, 20);
+            this.dtpTimeSetup.StyleController = this.layoutControl1;
+            this.dtpTimeSetup.TabIndex = 28;
             // 
             // btnAddMaintenance
             // 
             this.btnAddMaintenance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddMaintenance.ImageOptions.Image")));
-            this.btnAddMaintenance.Location = new System.Drawing.Point(1172, 221);
+            this.btnAddMaintenance.Location = new System.Drawing.Point(1172, 217);
             this.btnAddMaintenance.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnAddMaintenance.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnAddMaintenance.Name = "btnAddMaintenance";
@@ -165,7 +178,7 @@
             // btnAddItemCheck
             // 
             this.btnAddItemCheck.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddItemCheck.ImageOptions.Image")));
-            this.btnAddItemCheck.Location = new System.Drawing.Point(998, 221);
+            this.btnAddItemCheck.Location = new System.Drawing.Point(998, 217);
             this.btnAddItemCheck.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnAddItemCheck.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnAddItemCheck.Name = "btnAddItemCheck";
@@ -178,7 +191,7 @@
             // btnDeleteMaintenance
             // 
             this.btnDeleteMaintenance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteMaintenance.ImageOptions.Image")));
-            this.btnDeleteMaintenance.Location = new System.Drawing.Point(1172, 195);
+            this.btnDeleteMaintenance.Location = new System.Drawing.Point(1172, 191);
             this.btnDeleteMaintenance.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnDeleteMaintenance.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnDeleteMaintenance.Name = "btnDeleteMaintenance";
@@ -191,7 +204,7 @@
             // btnEditMaintenance
             // 
             this.btnEditMaintenance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditMaintenance.ImageOptions.Image")));
-            this.btnEditMaintenance.Location = new System.Drawing.Point(998, 195);
+            this.btnEditMaintenance.Location = new System.Drawing.Point(998, 191);
             this.btnEditMaintenance.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnEditMaintenance.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnEditMaintenance.Name = "btnEditMaintenance";
@@ -204,7 +217,7 @@
             // gleMaintenance
             // 
             this.gleMaintenance.EditValue = "";
-            this.gleMaintenance.Location = new System.Drawing.Point(944, 195);
+            this.gleMaintenance.Location = new System.Drawing.Point(944, 191);
             this.gleMaintenance.Name = "gleMaintenance";
             this.gleMaintenance.Properties.Appearance.Options.UseTextOptions = true;
             this.gleMaintenance.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -227,7 +240,7 @@
             // 
             // txtDeviceID
             // 
-            this.txtDeviceID.Location = new System.Drawing.Point(944, 49);
+            this.txtDeviceID.Location = new System.Drawing.Point(944, 45);
             this.txtDeviceID.Name = "txtDeviceID";
             this.txtDeviceID.Properties.ReadOnly = true;
             this.txtDeviceID.Size = new System.Drawing.Size(398, 20);
@@ -237,7 +250,7 @@
             // btnDeleteItemCheck
             // 
             this.btnDeleteItemCheck.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteItemCheck.ImageOptions.Image")));
-            this.btnDeleteItemCheck.Location = new System.Drawing.Point(1172, 169);
+            this.btnDeleteItemCheck.Location = new System.Drawing.Point(1172, 165);
             this.btnDeleteItemCheck.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnDeleteItemCheck.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnDeleteItemCheck.Name = "btnDeleteItemCheck";
@@ -250,7 +263,7 @@
             // btnEditItemCheck
             // 
             this.btnEditItemCheck.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditItemCheck.ImageOptions.Image")));
-            this.btnEditItemCheck.Location = new System.Drawing.Point(998, 169);
+            this.btnEditItemCheck.Location = new System.Drawing.Point(998, 165);
             this.btnEditItemCheck.MaximumSize = new System.Drawing.Size(170, 0);
             this.btnEditItemCheck.MinimumSize = new System.Drawing.Size(170, 0);
             this.btnEditItemCheck.Name = "btnEditItemCheck";
@@ -263,7 +276,7 @@
             // gleItemCheck
             // 
             this.gleItemCheck.EditValue = "";
-            this.gleItemCheck.Location = new System.Drawing.Point(944, 169);
+            this.gleItemCheck.Location = new System.Drawing.Point(944, 165);
             this.gleItemCheck.Name = "gleItemCheck";
             this.gleItemCheck.Properties.Appearance.Options.UseTextOptions = true;
             this.gleItemCheck.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -287,7 +300,7 @@
             // gleLocation
             // 
             this.gleLocation.EditValue = "";
-            this.gleLocation.Location = new System.Drawing.Point(1181, 121);
+            this.gleLocation.Location = new System.Drawing.Point(1181, 117);
             this.gleLocation.Name = "gleLocation";
             this.gleLocation.Properties.Appearance.Options.UseTextOptions = true;
             this.gleLocation.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -311,7 +324,7 @@
             // gleFactory
             // 
             this.gleFactory.EditValue = "";
-            this.gleFactory.Location = new System.Drawing.Point(944, 121);
+            this.gleFactory.Location = new System.Drawing.Point(944, 117);
             this.gleFactory.Name = "gleFactory";
             this.gleFactory.Properties.Appearance.Options.UseTextOptions = true;
             this.gleFactory.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -337,7 +350,7 @@
             // 
             this.btnSave.ButtonType = Wisol.ButtonTypes.Save;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(1225, 687);
+            this.btnSave.Location = new System.Drawing.Point(1225, 709);
             this.btnSave.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnSave.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnSave.Name = "btnSave";
@@ -349,7 +362,7 @@
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(944, 73);
+            this.txtCode.Location = new System.Drawing.Point(944, 69);
             this.txtCode.Name = "txtCode";
             this.txtCode.Properties.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(398, 20);
@@ -358,12 +371,12 @@
             // 
             // gcList
             // 
-            this.gcList.Location = new System.Drawing.Point(-159, 49);
+            this.gcList.Location = new System.Drawing.Point(-159, 45);
             this.gcList.MainView = this.gvList;
             this.gcList.MaximumSize = new System.Drawing.Size(1000, 0);
             this.gcList.MinimumSize = new System.Drawing.Size(1000, 0);
             this.gcList.Name = "gcList";
-            this.gcList.Size = new System.Drawing.Size(1000, 622);
+            this.gcList.Size = new System.Drawing.Size(1000, 648);
             this.gcList.TabIndex = 4;
             this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvList});
@@ -376,7 +389,7 @@
             // 
             // txtDeviceName
             // 
-            this.txtDeviceName.Location = new System.Drawing.Point(944, 97);
+            this.txtDeviceName.Location = new System.Drawing.Point(944, 93);
             this.txtDeviceName.Name = "txtDeviceName";
             this.txtDeviceName.Size = new System.Drawing.Size(398, 20);
             this.txtDeviceName.StyleController = this.layoutControl1;
@@ -386,28 +399,28 @@
             // 
             this.btnDeleteDevice.ButtonType = Wisol.ButtonTypes.Save;
             this.btnDeleteDevice.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteDevice.ImageOptions.Image")));
-            this.btnDeleteDevice.Location = new System.Drawing.Point(1092, 687);
+            this.btnDeleteDevice.Location = new System.Drawing.Point(1092, 709);
             this.btnDeleteDevice.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnDeleteDevice.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnDeleteDevice.Name = "btnDeleteDevice";
             this.btnDeleteDevice.Size = new System.Drawing.Size(129, 30);
             this.btnDeleteDevice.StyleController = this.layoutControl1;
             this.btnDeleteDevice.TabIndex = 16;
-            this.btnDeleteDevice.Text = "Xóa Thiết Bị";
+            this.btnDeleteDevice.Text = "DEL";
             this.btnDeleteDevice.Click += new System.EventHandler(this.btnDeleteDevice_Click);
             // 
             // btnAddNewDevice
             // 
             this.btnAddNewDevice.ButtonType = Wisol.ButtonTypes.Save;
             this.btnAddNewDevice.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNewDevice.ImageOptions.Image")));
-            this.btnAddNewDevice.Location = new System.Drawing.Point(959, 687);
+            this.btnAddNewDevice.Location = new System.Drawing.Point(959, 709);
             this.btnAddNewDevice.MaximumSize = new System.Drawing.Size(129, 30);
             this.btnAddNewDevice.MinimumSize = new System.Drawing.Size(129, 30);
             this.btnAddNewDevice.Name = "btnAddNewDevice";
             this.btnAddNewDevice.Size = new System.Drawing.Size(129, 30);
             this.btnAddNewDevice.StyleController = this.layoutControl1;
             this.btnAddNewDevice.TabIndex = 16;
-            this.btnAddNewDevice.Text = "Thêm Thiết Bị";
+            this.btnAddNewDevice.Text = "ADD";
             this.btnAddNewDevice.Click += new System.EventHandler(this.btnAddNewDevice_Click);
             // 
             // layoutControlGroup1
@@ -423,7 +436,7 @@
             this.layoutControlItem14,
             this.layoutControlItem15});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1549, 729);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1549, 751);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -433,7 +446,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1028, 675);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1028, 697);
             this.layoutControlGroup2.Text = "LIST";
             // 
             // layoutControlItem1
@@ -442,7 +455,7 @@
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 626);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 652);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -468,7 +481,7 @@
             this.layoutControlItem18});
             this.layoutControlGroup4.Location = new System.Drawing.Point(1028, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(501, 675);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(501, 697);
             this.layoutControlGroup4.Text = "INPUT_DATA";
             // 
             // layoutControlItem3
@@ -487,7 +500,7 @@
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 198);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(477, 428);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(477, 454);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -608,11 +621,20 @@
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.dtpTimeSetup;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(477, 24);
+            this.layoutControlItem18.Text = "TIME_SETUP";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(72, 13);
+            // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.btnSave;
             this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem13.Location = new System.Drawing.Point(1396, 675);
+            this.layoutControlItem13.Location = new System.Drawing.Point(1396, 697);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
@@ -622,7 +644,7 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 675);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 697);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(1130, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -632,7 +654,7 @@
             this.layoutControlItem14.Control = this.btnDeleteDevice;
             this.layoutControlItem14.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem14.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem14.Location = new System.Drawing.Point(1263, 675);
+            this.layoutControlItem14.Location = new System.Drawing.Point(1263, 697);
             this.layoutControlItem14.Name = "layoutControlItem14";
             this.layoutControlItem14.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem14.Text = "layoutControlItem13";
@@ -644,34 +666,12 @@
             this.layoutControlItem15.Control = this.btnAddNewDevice;
             this.layoutControlItem15.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem15.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem15.Location = new System.Drawing.Point(1130, 675);
+            this.layoutControlItem15.Location = new System.Drawing.Point(1130, 697);
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(133, 34);
             this.layoutControlItem15.Text = "layoutControlItem13";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextVisible = false;
-            // 
-            // dtpTimeSetup
-            // 
-            this.dtpTimeSetup.EditValue = null;
-            this.dtpTimeSetup.Location = new System.Drawing.Point(944, 145);
-            this.dtpTimeSetup.Name = "dtpTimeSetup";
-            this.dtpTimeSetup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpTimeSetup.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpTimeSetup.Size = new System.Drawing.Size(398, 20);
-            this.dtpTimeSetup.StyleController = this.layoutControl1;
-            this.dtpTimeSetup.TabIndex = 28;
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.dtpTimeSetup;
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 96);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(477, 24);
-            this.layoutControlItem18.Text = "TIME_SETUP";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(72, 13);
             // 
             // SETTING001
             // 
@@ -681,6 +681,8 @@
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gleMaintenance.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeviceID.Properties)).EndInit();
@@ -713,13 +715,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtpTimeSetup.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

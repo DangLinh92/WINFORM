@@ -54,6 +54,8 @@ namespace Wisol.MES.Forms.SETTING
                         base.m_ResultDB.ReturnDataSet.Tables[0]
                         );
 
+                    gvList.Columns["ID"].Visible = false;
+
                     dt_factory = base.m_ResultDB.ReturnDataSet.Tables[1].Copy();
                     base.m_BindData.BindGridLookEdit(gleFactory, dt_factory, "FACTORY_ID", "FACTORY_NAME");
 
@@ -84,6 +86,15 @@ namespace Wisol.MES.Forms.SETTING
                 gleItemCheck.EditValue = string.Empty;
                 gleMaintenance.EditValue = string.Empty;
                 dtpTimeSetup.EditValue = string.Empty;
+
+                txtMaTaiSan.EditValue = string.Empty;
+                txtModel.EditValue = string.Empty;
+                txtSerial.EditValue = string.Empty;
+                txtCongSuat.EditValue = string.Empty;
+                txtDienAp.EditValue = string.Empty;
+                txtSoLuongAcquy.EditValue = string.Empty;
+                txtDungLuongAcquy.EditValue = string.Empty;
+                stlBoPhan.EditValue = string.Empty;
             }
             catch (Exception ex)
             {
@@ -125,7 +136,7 @@ namespace Wisol.MES.Forms.SETTING
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING010.PUT_SAVE"
                     , new string[] { "A_PLANT","A_DEPARTMENT", "A_TRAN_USER", "A_LANG",
                                      "A_DEVICE_ID", "A_DEVICE_NAME", "A_LOCATION_ID", "A_TIME_SETUP","A_MODEL","A_SERIAL","A_CONGSUAT","A_DIEN_AP","A_SOLUONG_ACQTUY","A_DUNGLUONG_ACQUY","A_BOPHAN",
-                    "A_CHUASUDUNG"}
+                    "A_CHUASUDUNG","A_MATSAN"}
 
                     , new string[] { Consts.PLANT, "", Consts.USER_INFO.Id, Consts.USER_INFO.Language,
                                      txtDeviceID.Text, txtDeviceName.Text.Trim(), gleLocation.EditValue.ToString(),
@@ -137,7 +148,7 @@ namespace Wisol.MES.Forms.SETTING
                         txtSoLuongAcquy.EditValue.NullIsZero(),
                         txtDungLuongAcquy.EditValue.NullString(),
                         stlBoPhan.EditValue.NullString(),
-                        sudung
+                        sudung,txtMaTaiSan.EditValue.NullString()
                     }
                     );
                 if (base.m_ResultDB.ReturnInt == 0)
@@ -189,6 +200,7 @@ namespace Wisol.MES.Forms.SETTING
                 gleFactory.EditValue = tableDevIfo.Rows[0]["FACTORY_ID"].ToString();
                 gleLocation.EditValue = tableDevIfo.Rows[0]["LOCATION_ID"].ToString();
                 dtpTimeSetup.EditValue = tableDevIfo.Rows[0]["TIME_SETUP"].ToString();
+                txtMaTaiSan.EditValue = tableDevIfo.Rows[0]["MaTaiSan"].ToString();
 
                 txtModel.EditValue = tableDevIfo.Rows[0]["Model"].ToString();
                 txtSerial.EditValue = tableDevIfo.Rows[0]["Serial"].ToString();
@@ -197,6 +209,7 @@ namespace Wisol.MES.Forms.SETTING
                 txtSoLuongAcquy.EditValue = tableDevIfo.Rows[0]["SoLuongAcquy"].ToString();
                 txtDungLuongAcquy.EditValue = tableDevIfo.Rows[0]["DungLuongAcquy"].ToString();
                 stlBoPhan.EditValue = tableDevIfo.Rows[0]["BoPhan"].ToString();
+                cheSudung.Checked = tableDevIfo.Rows[0]["ChuaSuDung"].ToString() == "N";
 
                 dt_item_check_detail = base.m_ResultDB.ReturnDataSet.Tables[1].Copy();
                 dt_maintenance_detail = base.m_ResultDB.ReturnDataSet.Tables[2].Copy();

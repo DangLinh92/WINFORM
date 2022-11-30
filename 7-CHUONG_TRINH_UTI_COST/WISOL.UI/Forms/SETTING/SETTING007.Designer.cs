@@ -573,7 +573,7 @@ namespace Wisol.MES.Forms.SETTING
             this.btnDestroy.Size = new System.Drawing.Size(129, 30);
             this.btnDestroy.StyleController = this.xLayoutControl1;
             this.btnDestroy.TabIndex = 16;
-            this.btnDestroy.Text = "DESTROY";
+            this.btnDestroy.Text = "DEL";
             this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
             // 
             // btnClear

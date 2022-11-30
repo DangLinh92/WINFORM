@@ -303,7 +303,7 @@ namespace Wisol.MES.Forms.SETTING
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
             this.btnDelete.StyleController = this.xLayoutControl1;
             this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "DEL";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // xLayoutControl2
@@ -318,14 +318,12 @@ namespace Wisol.MES.Forms.SETTING
             // 
             // tlList
             // 
-            this.tlList.DisplayMember = null;
             this.tlList.KeyFieldName = "CODE";
             this.tlList.Location = new System.Drawing.Point(12, 12);
             this.tlList.Name = "tlList";
             this.tlList.ParentFieldName = "GROUP_LOCATION";
             this.tlList.Size = new System.Drawing.Size(804, 617);
             this.tlList.TabIndex = 5;
-            this.tlList.ValueMember = null;
             this.tlList.RowCellClick += new DevExpress.XtraTreeList.RowCellClickEventHandler(this.tlList_RowCellClick);
             // 
             // layoutControlGroup1

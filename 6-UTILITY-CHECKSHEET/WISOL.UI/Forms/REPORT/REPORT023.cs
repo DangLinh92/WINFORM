@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Wisol.Common;
@@ -232,7 +233,16 @@ namespace Wisol.MES.Forms.REPORT
             {
                 string deviceID = gvList.GetRowCellDisplayText(e.RowHandle, "DEVICE_ID");
                 string status = gvList.GetRowCellDisplayText(e.RowHandle, "STATUS");
-                string shift = gvList.GetRowCellDisplayText(e.RowHandle, "SHIFT");
+                string shift = "";
+
+                if (radioGroup1.SelectedIndex == 0)
+                {
+                    shift = "DAY";
+                }
+                if (radioGroup1.SelectedIndex == 1)
+                {
+                    shift = "NIGHT";
+                }
                 if (!status.Equals("Checked"))
                 {
                     return;
@@ -270,7 +280,10 @@ namespace Wisol.MES.Forms.REPORT
                                 string url = dt_url.Rows[i][0].ToString();
                                 url = url.Substring(23);
                                 url = url.Replace("/", @"\");
-                                imageSlider1.Images.Add(Image.FromFile(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url));
+                                if(File.Exists(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url))
+                                {
+                                    imageSlider1.Images.Add(Image.FromFile(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url));
+                                }
                             }
                             imageSlider1.CurrentImage.RotateFlip(RotateFlipType.Rotate270FlipXY);
                             imageSlider1.Refresh();
@@ -322,6 +335,8 @@ namespace Wisol.MES.Forms.REPORT
                 {
                     min_value = 0;
                     max_value = 0;
+                    double otherValue = Math.Round((min_value + max_value) / 2);
+
                     if (!string.IsNullOrWhiteSpace(gvList2.GetDataRow(e.RowHandle)["MIN_VALUE"].NullString()))
                     {
                         min_value = Double.Parse(gvList2.GetDataRow(e.RowHandle)["MIN_VALUE"].NullString());
@@ -331,6 +346,11 @@ namespace Wisol.MES.Forms.REPORT
                     {
                         max_value = Double.Parse(gvList2.GetDataRow(e.RowHandle)["MAX_VALUE"].NullString());
                         temp = true;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(gvList2.GetDataRow(e.RowHandle)["ALERT_VALUE"].NullString()))
+                    {
+                        otherValue = Double.Parse(gvList2.GetDataRow(e.RowHandle)["ALERT_VALUE"].NullString());
                     }
 
                     if (!string.IsNullOrWhiteSpace(gvList2.GetDataRow(e.RowHandle)["REAL_VALUE"].NullString()))
@@ -358,7 +378,7 @@ namespace Wisol.MES.Forms.REPORT
                                 e.Appearance.ForeColor = Color.Red;
                             }
 
-                            if(real_value >= Math.Round((min_value+max_value)/2) && real_value <= max_value)
+                            if(real_value >= otherValue && real_value <= max_value)
                             {
                                 e.Appearance.BackColor = Color.Yellow;
                                 e.Appearance.ForeColor = Color.Red;
@@ -407,7 +427,7 @@ namespace Wisol.MES.Forms.REPORT
                 c_item_id = gvList2.GetRowCellDisplayText(e.RowHandle, "ITEM_CHECK_ID");
                 string min_val = gvList2.GetRowCellDisplayText(e.RowHandle, "MIN_VALUE");
                 string max_val = gvList2.GetRowCellDisplayText(e.RowHandle, "MAX_VALUE");
-                string shift = gvList2.GetRowCellDisplayText(e.RowHandle, "SHIFT");
+                string shift = gvList2.GetRowCellDisplayText(e.RowHandle, "SHIFT").ToUpper();
 
                 if (chkNG.Checked)
                 {
@@ -433,7 +453,11 @@ namespace Wisol.MES.Forms.REPORT
                                     string url = dt_url.Rows[i][0].ToString();
                                     url = url.Substring(23);
                                     url = url.Replace("/", @"\");
-                                    imageSlider1.Images.Add(Image.FromFile(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url));
+                                
+                                    if (File.Exists(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url))
+                                    {
+                                        imageSlider1.Images.Add(Image.FromFile(@"\\10.70.21.236\Audit_Share\PI_LUAN\APP_IMAGE\UTILITY_IMAGE\" + url));
+                                    }
                                 }
                                 imageSlider1.CurrentImage.RotateFlip(RotateFlipType.Rotate270FlipXY);
                                 imageSlider1.Refresh();

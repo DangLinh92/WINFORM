@@ -58,7 +58,8 @@ namespace Wisol.MES.Forms.SETTING.POP
                         "A_DEVICE_CODE",
                         "A_DEVICE_NAME",
                         "A_LOCATION_ID",
-                        "A_TIME_SETUP"
+                        "A_TIME_SETUP",
+                        "A_MATSAN"
                     }
                     , new string[] { Consts.PLANT ,
                         "",
@@ -67,7 +68,8 @@ namespace Wisol.MES.Forms.SETTING.POP
                         txtCode.Text.Trim(),
                         txtDeviceName.Text.Trim(),
                         gleLocation.EditValue.ToString(),
-                        dtpTimeSetup.EditValue.ToString()
+                        dtpTimeSetup.EditValue.ToString(),
+                        txtMaTaiSan.EditValue.NullString()
                     }
                     ); ;
                 if (base.mResultDB.ReturnInt == 0)

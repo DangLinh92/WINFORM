@@ -68,7 +68,7 @@ namespace Wisol.MES.Forms.SETTING.POP
                         caption
 
                     }
-                    ); ;
+                    );
                 if (base.mResultDB.ReturnInt == 0)
                 {
                     base.mBindData.BindGridLookEdit(aceType, base.mResultDB.ReturnDataSet.Tables[0], "CODE", "TYPE");
@@ -217,7 +217,7 @@ namespace Wisol.MES.Forms.SETTING.POP
                         "A_SPIN_2",
                         "A_MAKER_3",
                         "A_SPIN_3",
-                        "A_PAYMENT_DATE"
+                        "A_PAYMENT_DATE","A_NOTE_01","A_NOTE_02","A_NOTE_03"
                     }
                     , new string[] {
                         Consts.PLANT,
@@ -246,7 +246,8 @@ namespace Wisol.MES.Forms.SETTING.POP
                         spinEdit2.EditValue.NullString(),
                         aceMaker3.EditValue.NullString(),
                         spinEdit3.EditValue.NullString(),
-                        paymentDate
+                        paymentDate,
+                        "","",""
                     }
                     ); ; ;
                 if (base.mResultDB.ReturnInt == 0)

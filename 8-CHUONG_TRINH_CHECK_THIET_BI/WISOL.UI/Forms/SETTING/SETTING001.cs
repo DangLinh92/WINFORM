@@ -144,11 +144,11 @@ namespace Wisol.MES.Forms.SETTING
             {
                 base.m_ResultDB = base.m_DBaccess.ExcuteProc("PKG_SETTING001.PUT_SAVE"
                     , new string[] { "A_PLANT","A_DEPARTMENT", "A_TRAN_USER", "A_LANG",
-                                     "A_DEVICE_ID", "A_DEVICE_NAME", "A_LOCATION_ID", "A_TIME_SETUP"
+                                     "A_DEVICE_ID", "A_DEVICE_NAME", "A_LOCATION_ID", "A_TIME_SETUP","A_CODE"
                     }
                     , new string[] { Consts.PLANT, Consts.DEPARTMENT, Consts.USER_INFO.Id, Consts.USER_INFO.Language,
                                      txtDeviceID.Text, txtDeviceName.Text.Trim(), gleLocation.EditValue.ToString(),
-                                     dtpTimeSetup.Text.NullString()
+                                     dtpTimeSetup.Text.NullString(),txtCode.EditValue.NullString()
                     }
                     );
                 if (base.m_ResultDB.ReturnInt == 0)

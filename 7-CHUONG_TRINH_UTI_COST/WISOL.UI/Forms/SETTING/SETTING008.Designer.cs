@@ -109,7 +109,7 @@ namespace Wisol.MES.Forms.SETTING
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
             this.btnDelete.StyleController = this.xLayoutControl1;
             this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "DEL";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel

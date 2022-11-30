@@ -136,7 +136,7 @@
             this.btnEdit.Size = new System.Drawing.Size(129, 30);
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 16;
-            this.btnEdit.Text = "SỬA";
+            this.btnEdit.Text = "UPDATE";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // gcList
@@ -170,7 +170,7 @@
             this.btnDelete.Size = new System.Drawing.Size(129, 30);
             this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 35;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "DEL";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddNew
@@ -184,7 +184,7 @@
             this.btnAddNew.Size = new System.Drawing.Size(129, 30);
             this.btnAddNew.StyleController = this.layoutControl1;
             this.btnAddNew.TabIndex = 35;
-            this.btnAddNew.Text = "Thêm Mới";
+            this.btnAddNew.Text = "Thêm Mới - 신규 추가";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // layoutControlGroup1

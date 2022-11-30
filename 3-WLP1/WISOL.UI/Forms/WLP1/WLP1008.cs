@@ -57,7 +57,7 @@ namespace Wisol.MES.Forms.WLP1008
             //dt.Rows.Add("N", "2020-11", "", "");
             for (int i = 0; i < 6; i++)
             {
-                dt.Rows.Add("N", DateTime.Now.AddMonths(i + 1).ToString("yyyy-MM"),  null);
+                dt.Rows.Add("N", DateTime.Now.AddMonths(i + 1).ToString("yyyy-MM"), null);
             }
 
 
@@ -120,7 +120,7 @@ namespace Wisol.MES.Forms.WLP1008
                 popup.ShowDialog();
 
                 gvList1.SetRowCellValue(x[0], gvList1.Columns[0], "Y");
-               // gvList1.SetRowCellValue(x[0], gvList1.Columns[2], popup.luongchuanhap);
+                // gvList1.SetRowCellValue(x[0], gvList1.Columns[2], popup.luongchuanhap);
                 gvList1.SetRowCellValue(x[0], gvList1.Columns[2], popup.soluongwafer);
             }
 
@@ -152,81 +152,81 @@ namespace Wisol.MES.Forms.WLP1008
                         base.m_ResultDB.ReturnDataSet.Tables[3]
                         );
                 }
+
+
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < gvList1.RowCount; j++)
+                    {
+                        if (dt1.Rows[i]["CODE"].ToString() == gvList1.GetRowCellValue(j, "MONTH").ToString())
+                        {
+                            gvList1.SetRowCellValue(j, "Check", "Y");
+                            gvList1.SetRowCellValue(j, "SO_LUONG_WAFER", dt1.Rows[i]["VAL"].ToString());
+                        }
+                    }
+                }
+
+                gvList1.Columns["SO_LUONG_WAFER"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList1.Columns["SO_LUONG_WAFER"].DisplayFormat.FormatString = "n0";
+
+                gvList2.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList2.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatString = "n0";
+
+                gvList.Columns["MIN_STOCK"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList.Columns["MIN_STOCK"].DisplayFormat.FormatString = "n0";
+                gvList.Columns["QUANTITY"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList.Columns["QUANTITY"].DisplayFormat.FormatString = "n0";
+                //gvList.Columns["LEAD_TIME_DAY"].DisplayFormat.FormatType = FormatType.Numeric;
+                //gvList.Columns["LEAD_TIME_DAY"].DisplayFormat.FormatString = "n0";
+                gvList.Columns["CONSUME"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList.Columns["CONSUME"].DisplayFormat.FormatString = "n0";
+                gvList.Columns["TONG_SO_WAFER"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList.Columns["TONG_SO_WAFER"].DisplayFormat.FormatString = "n0";
+                gvList.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatType = FormatType.Numeric;
+                gvList.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatString = "n0";
+                gvList.Columns["LUONG_CHUA_NHAP"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
+
+                gvList.Columns["SO_HOA_CHAT_DUA_TREN_WAFER"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
+                gvList.Columns["QUANTITY_REQUIRED"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
+                gvList.OptionsView.ShowFooter = false;
+
+                for (int i = 0; i < gvList.RowCount; i++)
+                {
+                    int so_luong_wafer = 0;
+                    double luong_tieu_hao = 0;
+                    double luong_chua_nhap = 0;
+                    double so_luong_hien_tai = 0;
+                    double so_luong_toi_thieu = 0;
+                    double hoa_chat_wafer = 0;
+                    if (!string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "CONSUME").ToString()))
+                    {
+                        so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").NullIsZero());
+                        luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "CONSUME").NullIsZero());
+                        luong_chua_nhap = Convert.ToDouble(string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero()) ? "0" : gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero());
+                        so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").NullIsZero());
+                        so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").NullIsZero());
+                        hoa_chat_wafer = Math.Ceiling(so_luong_wafer * 1.0 / luong_tieu_hao);
+                        gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
+                        gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
+                    }
+                    else
+                    {
+                        so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").NullIsZero());
+                        luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "REPLACEMENT_PERIOD").NullIsZero());
+                        luong_chua_nhap = Convert.ToDouble(string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero()) ? "0" : gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero());
+                        so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").NullIsZero());
+                        so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").NullIsZero());
+                        hoa_chat_wafer = Math.Ceiling(x * luong_tieu_hao);
+                        gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
+                        gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
+                    }
+                }
+                gvList.Columns["QUANTITY_REQUIRED"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
             }
             catch (Exception ex)
             {
                 MsgBox.Show(ex.Message, MsgType.Error);
             }
-
-            for(int i = 0; i < dt1.Rows.Count; i++)
-            {
-                for(int j = 0; j < gvList1.RowCount; j++)
-                {
-                    if(dt1.Rows[i]["CODE"].ToString() == gvList1.GetRowCellValue(j, "MONTH").ToString())
-                    {
-                        gvList1.SetRowCellValue(j, "Check", "Y");
-                        gvList1.SetRowCellValue(j, "SO_LUONG_WAFER", dt1.Rows[i]["VAL"].ToString());
-                    }
-                }
-            }
-
-
-            gvList1.Columns["SO_LUONG_WAFER"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList1.Columns["SO_LUONG_WAFER"].DisplayFormat.FormatString = "n0";
-
-            gvList2.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList2.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatString = "n0";
-
-            gvList.Columns["MIN_STOCK"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList.Columns["MIN_STOCK"].DisplayFormat.FormatString = "n0";
-            gvList.Columns["QUANTITY"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList.Columns["QUANTITY"].DisplayFormat.FormatString = "n0";
-            //gvList.Columns["LEAD_TIME_DAY"].DisplayFormat.FormatType = FormatType.Numeric;
-            //gvList.Columns["LEAD_TIME_DAY"].DisplayFormat.FormatString = "n0";
-            gvList.Columns["CONSUME"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList.Columns["CONSUME"].DisplayFormat.FormatString = "n0";
-            gvList.Columns["TONG_SO_WAFER"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList.Columns["TONG_SO_WAFER"].DisplayFormat.FormatString = "n0";
-            gvList.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatType = FormatType.Numeric;
-            gvList.Columns["LUONG_CHUA_NHAP"].DisplayFormat.FormatString = "n0";
-            gvList.Columns["LUONG_CHUA_NHAP"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
-
-            gvList.Columns["SO_HOA_CHAT_DUA_TREN_WAFER"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
-            gvList.Columns["QUANTITY_REQUIRED"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
-            gvList.OptionsView.ShowFooter = false;
-
-            for (int i = 0; i < gvList.RowCount; i++)
-            {
-                int so_luong_wafer = 0;
-                double luong_tieu_hao = 0;
-                double luong_chua_nhap = 0;
-                double so_luong_hien_tai = 0;
-                double so_luong_toi_thieu = 0;
-                double hoa_chat_wafer = 0;
-                if (!string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "CONSUME").ToString()))
-                {
-                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").ToString());
-                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "CONSUME").ToString());
-                    luong_chua_nhap = Convert.ToDouble(string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString())? "0" : gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString());
-                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").ToString());
-                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").ToString());
-                    hoa_chat_wafer = Math.Ceiling(so_luong_wafer * 1.0 / luong_tieu_hao);
-                    gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
-                    gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
-                }
-                else
-                {
-                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").ToString());
-                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "REPLACEMENT_PERIOD").ToString());
-                    luong_chua_nhap = Convert.ToDouble(string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString()) ? "0" : gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString());
-                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").ToString());
-                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").ToString());
-                    hoa_chat_wafer = Math.Ceiling(x * luong_tieu_hao);
-                    gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
-                    gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
-                }
-            }
-            gvList.Columns["QUANTITY_REQUIRED"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
         }
 
 
@@ -253,7 +253,7 @@ namespace Wisol.MES.Forms.WLP1008
 
             for (int i = 0; i < gvList1.RowCount; i++)
             {
-                if(gvList1.GetRowCellValue(i, "Check").ToString() == "Y")
+                if (gvList1.GetRowCellValue(i, "Check").ToString() == "Y")
                 {
                     count += Convert.ToInt32(gvList1.GetRowCellValue(i, "SO_LUONG_WAFER").ToString());
                     numberOfMonth += 1;
@@ -295,7 +295,7 @@ namespace Wisol.MES.Forms.WLP1008
             gvList.Columns["SO_HOA_CHAT_DUA_TREN_WAFER"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Far;
             gvList.OptionsView.ShowFooter = false;
 
-            for(int i = 0; i < gvList.RowCount; i++)
+            for (int i = 0; i < gvList.RowCount; i++)
             {
                 int so_luong_wafer = 0;
                 double luong_tieu_hao = 0;
@@ -305,23 +305,23 @@ namespace Wisol.MES.Forms.WLP1008
                 double hoa_chat_wafer = 0;
                 if (!string.IsNullOrWhiteSpace(gvList.GetRowCellValue(i, "CONSUME").ToString()))
                 {
-                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").ToString());
-                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "CONSUME").ToString());
-                    luong_chua_nhap = Convert.ToDouble(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString());
-                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").ToString());
-                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").ToString());
+                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").NullIsZero());
+                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "CONSUME").NullIsZero());
+                    luong_chua_nhap = Convert.ToDouble(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero());
+                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").NullIsZero());
+                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").NullIsZero());
                     hoa_chat_wafer = Math.Ceiling(so_luong_wafer * 1.0 / luong_tieu_hao);
                     gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
                     gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
                 }
                 else
                 {
-                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").ToString());
-                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "REPLACEMENT_PERIOD").ToString());
-                    luong_chua_nhap = Convert.ToDouble(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").ToString());
-                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").ToString());
-                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").ToString());
-                    hoa_chat_wafer = Math.Ceiling(numberOfMonth*luong_tieu_hao);
+                    so_luong_wafer = Convert.ToInt32(gvList.GetRowCellValue(i, "TONG_SO_WAFER").NullIsZero());
+                    luong_tieu_hao = Convert.ToDouble(gvList.GetRowCellValue(i, "REPLACEMENT_PERIOD").NullIsZero());
+                    luong_chua_nhap = Convert.ToDouble(gvList.GetRowCellValue(i, "LUONG_CHUA_NHAP").NullIsZero());
+                    so_luong_hien_tai = Convert.ToDouble(gvList.GetRowCellValue(i, "QUANTITY").NullIsZero());
+                    so_luong_toi_thieu = Convert.ToDouble(gvList.GetRowCellValue(i, "MIN_STOCK").NullIsZero());
+                    hoa_chat_wafer = Math.Ceiling(numberOfMonth * luong_tieu_hao);
                     gvList.SetRowCellValue(i, "SO_HOA_CHAT_DUA_TREN_WAFER", hoa_chat_wafer);
                     gvList.SetRowCellValue(i, "QUANTITY_REQUIRED", hoa_chat_wafer - so_luong_hien_tai - luong_chua_nhap + so_luong_toi_thieu);
                 }
